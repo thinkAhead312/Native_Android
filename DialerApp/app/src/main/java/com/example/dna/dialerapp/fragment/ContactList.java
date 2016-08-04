@@ -78,9 +78,11 @@ public class ContactList extends Fragment  {
         protected void onPreExecute() {
             // TODO Auto-generated method stub
             super.onPreExecute();
+
             pd = ProgressDialog.show(context, "Loading Contacts",
                     "Please Wait");
         }
+
         @Override
         protected ArrayList<String> doInBackground(Void... params) {
             // TODO Auto-generated method stub
@@ -106,11 +108,11 @@ public class ContactList extends Fragment  {
             super.onPostExecute(contacts);
 
             pd.cancel();
-
-            Set set = new TreeSet(new ContactComparator());
-            set.addAll(contactItem);
-            final ArrayList newList = new ArrayList(set);
+            ArrayList newList = new ArrayList(contactItem);
             Collections.sort(newList, Contact.ContactNameComparator);
+            Set set = new TreeSet(new ContactComparator());
+            set.addAll(newList);
+            newList = new ArrayList(set);
             adapter = new ContactAdapter(context,0 ,newList);
             list.setAdapter((ListAdapter) adapter);
         }

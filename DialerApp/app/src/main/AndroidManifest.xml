@@ -44,6 +44,14 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/MyMaterialTheme" >
+
+        </activity>
+        <activity
+            android:name=".ViewSms"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_view_sms"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <action android:name="android.intent.action.SENDTO" />
@@ -56,13 +64,7 @@
                 <data android:scheme="mms" />
                 <data android:scheme="mmsto" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".ViewSms"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_view_sms"
-            android:screenOrientation="portrait"
-            android:theme="@style/MyMaterialTheme" >
+
         </activity>
         <activity android:name=".DialPad" >
             <intent-filter>
@@ -82,9 +84,11 @@
 
         <!-- //////////////////////////// SMS RECEIVERS   ////////////////////////// -->
         <!-- BroadcastReceiver that listens to incoming SMS messages -->
-        <receiver android:name=".receivers.SmsReceiver" >
+        <receiver android:name=".receivers.SmsReceiver"
+            android:permission="android.permission.BROADCAST_SMS"
+            >
             <intent-filter>
-                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+                <action android:name="android.provider.Telephony.SMS_DELIVER" />
             </intent-filter>
         </receiver>
 

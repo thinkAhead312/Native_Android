@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * Created by dna on 7/21/16.
  */
-public class SmsAdapter extends ArrayAdapter<Sms> implements UpdateListView{
+public class SmsAdapter extends ArrayAdapter<Sms> {
 
     // List context
     private Context context;
@@ -39,11 +39,6 @@ public class SmsAdapter extends ArrayAdapter<Sms> implements UpdateListView{
         this.context = context;
     }
 
-
-    @Override
-    public void updatingListView() {
-
-    }
 
     /*private view holder class*/
     private class ViewHolder {

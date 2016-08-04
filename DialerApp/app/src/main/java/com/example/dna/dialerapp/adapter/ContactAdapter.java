@@ -100,7 +100,6 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
 
 
 
-
 /* Intent callIntent = new Intent(Intent.ACTION_CALL);
                     callIntent.setData(Uri.parse("tel:" + Uri.encode(phoneNum.trim())));
                     callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

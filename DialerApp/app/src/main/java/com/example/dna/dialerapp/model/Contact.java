@@ -39,10 +39,8 @@ public class Contact {
         public int compare(Contact s1, Contact s2) {
             String ContactName1 = s1.getName().toUpperCase();
             String ContactName2 = s2.getName().toUpperCase();
-
             //ascending order
             return ContactName1.compareTo(ContactName2);
-
             //descending order
             //return StudentName2.compareTo(StudentName1);
         }

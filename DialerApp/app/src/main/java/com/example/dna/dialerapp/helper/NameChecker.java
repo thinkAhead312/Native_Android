@@ -6,6 +6,6 @@ package com.example.dna.dialerapp.helper;
 public class NameChecker {
     public void NameChecker() {}
     public static String nameChecker(String name, String number) {
-        return name == null ? number : name;
+        return name == "" ? number : name;
     }
 }

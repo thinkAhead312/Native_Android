@@ -7,13 +7,13 @@ import java.util.Collection;
  */
 public class Sms  {
 
-    private String number;
+    private String number="";
     // SMS contact_row body
-    private String body;
+    private String body="";
 
-    private String name;
+    private String name="";
 
-    private String date;
+    private String date="";
 
     public String getNumber() {
         return number;
