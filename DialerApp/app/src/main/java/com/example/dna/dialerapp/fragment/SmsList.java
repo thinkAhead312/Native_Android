@@ -179,8 +179,8 @@ public class SmsList extends Fragment  {
             Set set = new TreeSet(new StudentsComparator());
             set.addAll(smsItem);
 
-            final ArrayList newList = new ArrayList(set); 
-            adapter = new SmsAdapter(context,0 ,smsItem);
+            final ArrayList newList = new ArrayList(set);
+            adapter = new SmsAdapter(context,0 ,smsItem); 
 
             lvMsg.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
