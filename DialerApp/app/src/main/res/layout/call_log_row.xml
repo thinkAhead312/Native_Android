@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:id="@+id/call_logs_Layout"
+    android:layout_height="match_parent"
+    android:foreground="?attr/selectableItemBackground"
+    android:padding="10dp"
+    >
+    <TextView android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="TextView" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:id="@+id/txtCallName"/>
+
+    <TextView android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="TextView" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtCallType"/>
+
+    <TextView android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="TextView" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtCallDuration"/>
+
+    <TextView android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="TextView" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtCallDate"/>
+
+
+    <TextView android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="TextView" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/txtCallNumber"/>
+
+
+</LinearLayout>
