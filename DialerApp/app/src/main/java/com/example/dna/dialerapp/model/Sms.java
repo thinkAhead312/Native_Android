@@ -15,6 +15,18 @@ public class Sms  {
 
     private String date="";
 
+
+
+    public Sms(String name, String number, String body, String date) {
+        this.name = name;
+        this.number = number;
+        this.body = body;
+        this.date = date;
+    }
+
+    public Sms() {
+    }
+
     public String getNumber() {
         return number;
     }

@@ -16,9 +16,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.dna.dialerapp.DialPad;
+import com.example.dna.dialerapp.fragment.ContactList;
 import com.example.dna.dialerapp.model.Contact;
 import com.example.dna.dialerapp.R;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -60,58 +62,14 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
             holder.txtName = (TextView) convertView.findViewById(R.id.txtName);
             holder.txtNumber = (TextView) convertView.findViewById(R.id.txtPhone);
             holder.contactLayout = (RelativeLayout) convertView.findViewById(R.id.contactLayout);
-            //holder.txtTitle = (TextView) convertView.findViewById(R.id.title);
+
             convertView.setTag(holder);
-        } else
+        } else {
             holder = (ViewHolder) convertView.getTag();
-
-        display = contactItem.getName();
-        holder.txtName.setText(display);
+        }
+        holder.txtName.setText(contactItem.getName());
         holder.txtNumber.setText(contactItem.getNumber());
-
-        final ViewHolder finalHolder = holder;
-        holder.contactLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String phoneNum = finalHolder.txtNumber.getText().toString().trim();
-                try {
-                    Intent intent = new Intent(context,DialPad.class);
-                    intent.putExtra("Users_ID", phoneNum);
-                    context.startActivity(intent);
-                } catch (ActivityNotFoundException activityException) {
-                    Log.e("helloandroide", "Call failed", activityException);
-                }
-            }
-        });
-
         return convertView;
     }
-
-    private int checkSelfPermission(String callPhone) {
-        return 0;
-    }
-
-
 }
 
-
-
-
-
-
-
-/* Intent callIntent = new Intent(Intent.ACTION_CALL);
-                    callIntent.setData(Uri.parse("tel:" + Uri.encode(phoneNum.trim())));
-                    callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    //callIntent.setPackage("com.android.server.telecom");
-                    if (checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                        // TODO: Consider calling
-                        //    public void requestPermissions(@NonNull String[] permissions, int requestCode)
-                        // here to request the missing permissions, and then overriding
-                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                        //                                          int[] grantResults)
-                        // to handle the case where the user grants the permission. See the documentation
-                        // for Activity#requestPermissions for more details.
-                        return;
-                    }*/
-//context.startActivity(callIntent);

@@ -15,6 +15,7 @@ import com.example.dna.dialerapp.R;
 import com.example.dna.dialerapp.ViewSms;
 import com.example.dna.dialerapp.helper.IntentStartActivity;
 import com.example.dna.dialerapp.helper.NameChecker;
+import com.example.dna.dialerapp.helper.SetHeight;
 import com.example.dna.dialerapp.model.Sms;
 import com.example.dna.dialerapp.receivers.IncomingCall;
 
@@ -30,6 +31,7 @@ public class SmsAdapter extends ArrayAdapter<Sms> {
     private Context context;
     // List values
     private List<Sms> _smsItem = null;
+    LinearLayout.LayoutParams layoutparams;
 
     public SmsAdapter(Context context, int resourceId,
                           List<Sms> smsItem) {
@@ -58,10 +60,12 @@ public class SmsAdapter extends ArrayAdapter<Sms> {
 
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.sms_row, null);
+
             holder = new ViewHolder();
             holder.txtMessage = (TextView) convertView.findViewById(R.id.lblMessage);
             holder.txtContact = (TextView) convertView.findViewById(R.id.lblContact);
             holder.txtPhone = (TextView) convertView.findViewById(R.id.lblPhone);
+
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();

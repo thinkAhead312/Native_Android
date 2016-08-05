@@ -61,14 +61,12 @@
             android:text="2"
             android:id="@+id/btn2"
             android:layout_weight="2" />
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3"
             android:id="@+id/btn3"
             android:layout_weight="2" />
-
 
     </LinearLayout>
 

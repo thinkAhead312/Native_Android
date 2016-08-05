@@ -52,6 +52,7 @@ public class SendSms extends AppCompatActivity {
 
     }
 
+
     private void sendSMS(String phoneNumber, String message)
     {
         String SENT = "SMS_SENT";

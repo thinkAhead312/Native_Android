@@ -33,9 +33,7 @@ public class DialPad extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_dial_pad);
         initializeView();
         phoneNum = getIntent().getExtras().getString("Users_ID");
-        Toast.makeText(DialPad.this, phoneNum, Toast.LENGTH_SHORT).show();
         display(phoneNum);
-
     }
 
     private void initializeView() {

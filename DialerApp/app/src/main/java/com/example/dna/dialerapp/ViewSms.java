@@ -11,11 +11,13 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ViewSms extends AppCompatActivity {
     private Toolbar toolbar;
@@ -35,6 +37,9 @@ public class ViewSms extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         listView = (ListView) findViewById(R.id.listViewSms);
+        listView.setTranscriptMode(AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
+
+
         Uri uri = Uri.parse("content://sms/inbox");
 
         ContentResolver contentResolver = getContentResolver();
@@ -62,7 +67,6 @@ public class ViewSms extends AppCompatActivity {
         }
 
 
-
         //System.out.println(cursor.getCount());
         while (cursor.moveToNext())
         {
@@ -71,10 +75,12 @@ public class ViewSms extends AppCompatActivity {
             smsList.add(strbody);
             //Toast.makeText(ViewSms.this, strbody, Toast.LENGTH_SHORT).show();
         }
+        Collections.reverse(smsList);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, smsList);
 
         listView.setAdapter(adapter);
+        listView.setSelection(adapter.getCount() - 1);
     }
 
     @Override

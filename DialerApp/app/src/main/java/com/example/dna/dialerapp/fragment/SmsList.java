@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -24,13 +25,16 @@ import com.example.dna.dialerapp.SendSms;
 import com.example.dna.dialerapp.adapter.SmsAdapter;
 import com.example.dna.dialerapp.helper.IntentStartActivity;
 import com.example.dna.dialerapp.helper.PhoneNumberFormatter;
+import com.example.dna.dialerapp.helper.SetHeight;
 import com.example.dna.dialerapp.model.Contact;
 import com.example.dna.dialerapp.model.Sms;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -49,7 +53,7 @@ public class SmsList extends Fragment {
     private FloatingActionButton fab;
     private ListView lvMsg;
     // Cursor Adapter
-    private List contactItem = new ArrayList<>();
+    private ArrayList<Contact> contactItem = new ArrayList<Contact>();
     private List<Sms> smsItem = new ArrayList();
     public SmsAdapter adapter; //adapter
     Set set;
@@ -72,27 +76,17 @@ public class SmsList extends Fragment {
     private void initializeView() {
         context = rootView.getContext();
         lvMsg = (ListView) rootView.findViewById(R.id.lvMsg);
+
         LoadContactsAyscn lca = new LoadContactsAyscn();
         lca.execute();
         fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendSMS();
+                IntentStartActivity.intentSendSmsViewActivity(context);
             }
         });
     }
-    private void sendSMS() {
-        try {
-            Intent intent = new Intent(context,SendSms.class);
-            context.startActivity(intent);
-            Log.i("Finished sending SMS...", "");
-        }
-        catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(context, "SMS faild, please try again later.", Toast.LENGTH_SHORT).show();
-        }
-    }
-
 
     class LoadContactsAyscn extends AsyncTask<Void, Void, ArrayList<String>> {
         ProgressDialog pd;
@@ -120,36 +114,35 @@ public class SmsList extends Fragment {
                         .getString(cursorContact
                                 .getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
                 Contact item = new Contact(contactName, PhoneNumberFormatter.phoneNumberFormat(phNumber));
+
                 contactItem.add(item);
             }
             cursorContact.close();
             Uri uri = Uri.parse("content://sms/inbox");
             Cursor c= context.getContentResolver().query(uri, null, null, null, null);
+            final Map<String, Sms> smsMap= new HashMap<String,Sms>();
 
-            if(c.moveToFirst()) {
-                for(int i=0; i < c.getCount(); i++) {
-                    final Sms sms = new Sms();
-                    sms.setNumber(c.getString(c.getColumnIndexOrThrow("address")).toString());
-                    sms.setBody(c.getString(c.getColumnIndexOrThrow("body")).toString());
-                    sms.setDate(c.getString(c.getColumnIndexOrThrow("date")).toString());
+            if(c.moveToFirst()) for (int i = 0; i < c.getCount(); i++) {
+                final Sms sms = new Sms();
+                sms.setNumber(c.getString(c.getColumnIndexOrThrow("address")).toString());
+                sms.setBody(c.getString(c.getColumnIndexOrThrow("body")).toString());
+                sms.setDate(c.getString(c.getColumnIndexOrThrow("date")).toString());
 
-                    Thread thread = new Thread() {
-                        @Override
-                        public void run() {
-                            Iterator iterator = (Iterator) contactItem.iterator();
-                            while (iterator.hasNext()) {
-                                Contact news = (Contact) iterator.next();
-                                if(news.getNumber().equals(sms.getNumber())) {
-                                    sms.setName(news.getName());
-                                }
-                            }
-                        }
-                    };thread.start();
+
+                Iterator iterator = (Iterator) contactItem.iterator();
+                while (iterator.hasNext()) {
+                    Contact contact = (Contact) iterator.next();
+                    if (contact.getNumber().equals(sms.getNumber())) {
+                        sms.setName(contact.getName());
+                    }
+                }
+                if(!smsMap.containsKey(sms.getNumber())) {
+                    smsMap.put(sms.getNumber(), sms);
                     smsItem.add(sms);
-                    c.moveToNext();
-                  }
-          }
-          c.close();
+                }
+                c.moveToNext();
+            }
+            c.close();
             return contacts;
         }
         @Override
@@ -161,7 +154,7 @@ public class SmsList extends Fragment {
             set = new TreeSet(new StudentsComparator());
             set.addAll(smsItem);
             newList = new ArrayList(set);
-            adapter = new SmsAdapter( context,0, newList);
+            adapter = new SmsAdapter(context, 0, newList);
 
             lvMsg.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -169,19 +162,16 @@ public class SmsList extends Fragment {
                                         long arg3) {
                     // TODO Auto-generated method stub
                     Sms sms = (Sms) newList.get(position);
-                    //addNewSms(sms.getNumber(), position);
                     IntentStartActivity.intentViewSmsActivity(context, sms.getNumber());
                 }
             });
+
             lvMsg.setAdapter((ListAdapter) adapter);
-            //adapter.notifyDataSetChanged();
         }
     }
         public void addNewSms(String number, int position) {
-        LoadContactsAyscn lca = new LoadContactsAyscn();
-        lca.execute();
-        Log.d("############", "Items " + number + " " +position);
-            Toast.makeText(context, "Ywo", Toast.LENGTH_SHORT).show();
+                Log.d("############", "Items " + number + " " +position);
+                Toast.makeText(context, "Ywo", Toast.LENGTH_SHORT).show();
          }
     class StudentsComparator implements Comparator<Sms> {
         @Override
