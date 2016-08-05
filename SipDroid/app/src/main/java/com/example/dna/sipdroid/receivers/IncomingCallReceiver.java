@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.dna.sipdroid.MainActivity;
+import com.example.dna.sipdroid.SipAndroid;
 
 
 /**
@@ -26,7 +27,6 @@ public class IncomingCallReceiver extends BroadcastReceiver {
                     Log.i("ONRINGING", "rinnging");
                     Toast.makeText(context, "ONRINGING", Toast.LENGTH_SHORT).show();
                     wtActivity.updateStatus("ONRINGING...");
-
                 }
                 @Override
                 public void onCallEstablished(SipAudioCall call) {
@@ -36,12 +36,12 @@ public class IncomingCallReceiver extends BroadcastReceiver {
                 @Override
                 public void onCallEnded(SipAudioCall call) {
                     Log.i("onCallEnded", "onCallEnded");
+                    Toast.makeText(context, "Ended", Toast.LENGTH_SHORT).show();
                     wtActivity.updateStatus("Ready");
-
                 }
             };
-
-            incomingCall = wtActivity.manager.takeAudioCall(intent, null);
+            SipAndroid sipAndroid = SipAndroid.getInstance();
+            incomingCall = sipAndroid.manager.takeAudioCall(intent, null);
             incomingCall.setListener(listener, true);
             incomingCall.answerCall(30);
             incomingCall.startAudio();
@@ -50,9 +50,8 @@ public class IncomingCallReceiver extends BroadcastReceiver {
             if(incomingCall.isMuted()) {
             //    incomingCall.toggleMute();
             }
-            wtActivity.call = incomingCall;
+            sipAndroid.call = incomingCall;
             wtActivity.updateStatus(incomingCall);
-
         } catch (Exception e) {
             if (incomingCall != null) {
                 incomingCall.close();
