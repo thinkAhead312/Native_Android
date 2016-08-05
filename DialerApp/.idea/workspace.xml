@@ -121,8 +121,8 @@
       <file leaf-file-name="SipDroid.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/dna/dialerapp/SipDroid.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25951558">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.4152249">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1715,7 +1715,7 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="587" />
+    <option name="x" value="189" />
     <option name="y" value="23" />
     <option name="width" value="1593" />
     <option name="height" value="947" />
@@ -2243,7 +2243,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="587" y="23" width="1593" height="947" extended-state="0" />
+    <frame x="189" y="23" width="1593" height="947" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2715,8 +2715,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
-            <element signature="e#2588#2589#0" expanded="true" />
-            <element signature="e#2621#2622#0" expanded="true" />
+            <element signature="e#2588#2589#0" expanded="false" />
+            <element signature="e#2621#2622#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2726,11 +2726,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="83" column="71" selection-start-line="83" selection-start-column="71" selection-end-line="83" selection-end-column="71" />
           <folding>
-            <element signature="e#2558#2752#0" expanded="true" />
-            <element signature="e#2751#2752#0" expanded="true" />
-            <element signature="e#3558#3574#0" expanded="true" />
-            <element signature="e#4757#5216#0" expanded="true" />
-            <element signature="e#5215#5216#0" expanded="true" />
+            <element signature="e#2558#2752#0" expanded="false" />
+            <element signature="e#2751#2752#0" expanded="false" />
+            <element signature="e#3558#3574#0" expanded="false" />
+            <element signature="e#4757#5216#0" expanded="false" />
+            <element signature="e#5215#5216#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2827,8 +2827,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/dna/dialerapp/SipDroid.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25951558">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.4152249">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
