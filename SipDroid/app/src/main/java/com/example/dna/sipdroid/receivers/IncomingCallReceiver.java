@@ -46,7 +46,6 @@ public class IncomingCallReceiver extends BroadcastReceiver {
             incomingCall.answerCall(30);
             incomingCall.startAudio();
             //incomingCall.setSpeakerMode(true);
-
             if(incomingCall.isMuted()) {
             //    incomingCall.toggleMute();
             }
