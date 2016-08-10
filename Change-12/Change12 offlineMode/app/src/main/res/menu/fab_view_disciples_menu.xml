@@ -1,0 +1,42 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+tools:context=".MainActivity">
+
+
+    <item
+        android:id="@+id/myDisciples"
+        android:orderInCategory="200"
+        android:title="Disciples"
+        android:icon="@drawable/img_disciples"
+        app:showAsAction="ifRoom"
+        ></item>
+
+    <item
+        android:id="@+id/myConsolidates"
+        android:orderInCategory="600"
+        android:title="Consolidates"
+        android:icon="@drawable/img_consolidates"
+        app:showAsAction="ifRoom"
+        ></item>
+
+    <item
+        android:id="@+id/myCalendar"
+        android:orderInCategory="600"
+        android:title="Set Schedule"
+        android:icon="@drawable/ic_calendar"
+        app:showAsAction="ifRoom"
+        ></item>
+
+    <item
+        android:id="@+id/mySms"
+        android:orderInCategory="600"
+        android:title="Send SMS"
+        android:icon="@drawable/img_sms"
+        app:showAsAction="ifRoom"
+        ></item>
+
+
+
+</menu>
+

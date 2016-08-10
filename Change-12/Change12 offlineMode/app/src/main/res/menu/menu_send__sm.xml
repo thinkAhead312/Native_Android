@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+
+
+
+    <item
+        android:id="@+id/myCancel"
+
+        android:title="Cancel"
+        android:icon="@drawable/ic_cancel"
+        app:showAsAction="ifRoom"
+        ></item>
+
+    <item
+        android:id="@+id/mySms"
+
+        android:title="Send SMS"
+        android:icon="@drawable/img_sms"
+        app:showAsAction="ifRoom"
+        ></item>
+
+
+
+</menu>
+

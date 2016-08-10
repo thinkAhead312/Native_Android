@@ -1,0 +1,221 @@
+
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFF"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:screenOrientation="portrait"
+    android:id="@+id/popup_element"
+
+    >
+
+
+
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#F9690E"
+            android:visibility="visible"
+            android:titleTextColor="#FFF"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+
+            />
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="0dp" >
+
+
+
+                        <EditText
+                            android:id="@+id/edEvent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:textSize="20dp"
+                            android:hint="Enter Event,Schedule"
+                            android:padding="15dp"/>
+
+
+
+            </LinearLayout>
+
+             <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="25dp"
+                 android:layout_marginRight="10dp"
+                 android:paddingRight="5dp">
+                         <EditText
+                             android:id="@+id/edLocation"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:singleLine="true"
+                             android:textSize="20dp"
+                             android:hint="Location"
+                             android:padding="15dp"
+                             />
+
+             </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="10dp"
+                android:paddingRight="5dp">
+                <EditText
+                    android:id="@+id/edDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:textSize="20dp"
+                    android:hint="Description"
+                    android:padding="15dp"
+                    />
+                <TextView
+                    android:text="FROM"
+                    android:paddingLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/txtUserId"
+                    android:layout_toRightOf="@+id/linearBack"
+                    android:layout_toEndOf="@+id/linearBack"
+                    android:textSize="18dp"
+                    />
+
+
+                    <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="0dp"
+                        android:weightSum="1">
+                        <Button
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:text="From Date"
+                            android:foregroundGravity="left"
+                            android:id="@+id/btnFromDate"
+                            android:onClick="clkFromDate"
+                            />
+                        <Button
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:text="From Time"
+                            android:id="@+id/btnFromTime"
+                            android:foregroundGravity="left"
+                            android:layout_weight="0.79"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_toRightOf="@+id/btnFromDate"
+                            android:layout_toEndOf="@+id/btnFromDate"
+                            android:onClick="clkFromTime"/>
+                    </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="0dp"
+                    android:weightSum="1">
+                    <Button
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:text="End Date"
+                        android:foregroundGravity="left"
+                        android:id="@+id/btnEndDate"
+                        android:onClick="clkEndDate"
+
+                      />
+                    <Button
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:text="End Time"
+                        android:id="@+id/btnEndTime"
+                        android:layout_weight="0.79"
+                        android:onClick="clkEndTime"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toRightOf="@+id/btnEndDate"
+                        android:layout_toEndOf="@+id/btnEndDate"
+                        />
+                </RelativeLayout>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="All Day"
+                    android:textSize="20dp"
+                    android:id="@+id/checkALlDay"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60px"
+                    >
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Save Schedule"
+                        android:id="@+id/btnCalendarSave"
+                        android:background="#26A65B"
+                        android:textColor="#000"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:padding="10dp"
+                        android:onClick="clikCalendarSave"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentBottom="true" />
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cancel"
+                        android:id="@+id/btnCalendarSkip"
+                        android:onClick="clkCalendarSkip"
+                        android:background="#D91E18"
+                        android:textColor="#FFF"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</android.support.design.widget.CoordinatorLayout>

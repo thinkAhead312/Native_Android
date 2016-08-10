@@ -1,0 +1,161 @@
+<resources>
+    <string name="app_name">Change 12</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="nav_item_attachment">Attachment</string>
+    <string name="nav_item_images">Images</string>
+    <string name="nav_item_location">My Location</string>
+    <string name="nav_sub_menu">Sub Menu</string>
+    <string name="nav_sub_menu_item01">Sub Menu Item 1</string>
+    <string name="nav_sub_menu_item02">Sub Menu Item 2</string>
+    <string name="drawer_header_text">Drawer Header</string>
+    <string name="second_activity_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur diam id aliquam scelerisque. Donec ultrices lacus vel dignissim pharetra. Vivamus pharetra augue quis rhoncus placerat. Sed ultricies at risus non cursus. Nam rutrum leo nec placerat consectetur. Vestibulum feugiat eleifend diam, nec interdum augue tincidunt sit amet. Praesent feugiat est auctor lacus consectetur, vitae pellentesque dolor laoreet.</string>
+    <string name="title_activity_second">SecondActivity</string>
+    <string name="title_activity_change12_">Change12_Activity</string>
+
+
+
+    <string name="lesson1_parag_1">This verse tells us about God\'s Eternal Plan and you are included in it. Yes! God has a wonderful plan for you. He knows your Hopes, Dreams, and all the desires of your heart because He is the one who placed it there </string>
+    <string name="lesson1_parag_2">The Bible tells us that.. God has placed eternity in the hearts of men (Ecclesiastes 3:11). Meaning, that we are an eternal being, and that the things that can satisfy us are only things with eternal value. By knowing God\'s Eternal Plan for us is what brings real satisfaction.</string>
+    <string name="lesson1_parag_3">Everyone has its own view of what life is, But the truth is, life is a journey that one day we are all going to reach our final Destination -- ETERNITY. The Bible is clear that we only have two destinations when our journey of life is over, we are either going to Perish in hell or have Eternal life in HEAVEN.</string>
+    <string name="lesson1_parag_4">The problem is even though we wanted to go to heaven we cannot, because all of us have SINNED. Sin separates us from God and men have tried everything to be connected back to God but we always fall short.</string>
+    <string name="lesson1_parag_5">He is only solution so we can change our destination from perish ti eternal life, For God so loved the world that He gave His one and only Son. Jesus took our place, became the sacrifice and died on the cross for our sin so we can be restored back to God</string>
+    <string name="romans5_8">But God showed His great love for us by sending Christ to die for us while we were still sinners. And since we have been made right in God\'s sight by the blood of Christ. He will certainly save us from God\'s condemnation. For since our friendship with God was restored by the death of His Son while we were still His enemies, we will certainly be saved through the life of His Son</string>
+    <string name="lesson1_parag_6">Jesus promise us that whoever believes in Him will not perish but have eternal life, We can receieve God\'s gift of salvation by placing our faith in what Jesus has done on the cross for us. To believe is to trust Jesus </string>
+    <string name="eph_2_8_9">For it is by grace you have been saved, through faith---and this is not from yourselves, it is the gift of God--not by works, so that no one can boast</string>
+    <string name="lesson_app_1">• Now are you willing to surrender your sins befor God and put your faith in Jesus alone for salvation?(Prayer of Salvation)</string>
+    <string name="lesson_app_2">• Have you believed and confessed Jesus as your Lord and Master of your Life?</string>
+    <string name="lesson_app_3">• Are you willing to obey and follow Him for the rest of your life?</string>
+    <string name="lesson_prayer_of_salvation">Heavenly Father... I acknowledge that because of my Sins I am separated from you.. I am sorry for my sins... and I ask you to forgive and cleanse me... I thank You that You sent You sent Your Son, Jesus to pay the penalty for my sins... Jesus I ask you to come into my heart be my Lord and Savior... I believe that you died on the cross for me... I believe that you have risen from the dead, now by faith i receive your gift of eternal life. Thank you for loving and accepting me. Help me to love, serve and obey You... for the rest of my Life... In Jesus name. Amen</string>
+
+    <!--Lesson Two -->
+    <string name="lesson2_parag_1">The Moment you made a decision to receive God\'s gift of eternal life through Christ Jesus, your destination was change, from perish to eternal life. Now that you have a changed destination, you must have a change direction.</string>
+    <string name="lesson2_parag_2">Walking in a wrong direction will take you somewhere but not to where you want to be, and it leads to frustraion, doubt and fear. This is also true with our spiritual lives. A step in a wrong direction is a step away from God</string>
+    <string name="lesson2_parag_3">The problem with lost people is that they dont know that they are lost. They have no idea that every step they\'re taking is getting closer to destruction, unless they turn around(REPENT) and begin to follow Jesus.</string>
+    <string name="lesson2_acts_3_19">Repent, then turn to God, so that your sins may be wiped out, that times of refresting may come from the Lord</string>
+    <string name="lesson2_parag_4">Jesus declares that He is the only way, so we can return back to God. When we decide to follow His ways, it is a sure thing that we won\'t get lost again</string>
+    <string name="lesson2_parag_5">Sometimes we are in bondage with so many lies of regrets and condemnation, saying that \"I can no longer change, I cannot experience freedom and I will not be forgiven.\"</string>
+    <string name="lesson2_parag_6">Forgiveness and justification are received if we confess our sins. It takes a humble heart abd surrendered life to produce true repentance.\n </string>
+    <string name="lesson2_parag_7">True Repentance(Godly Sorrow) is a personal decision of taking full responsibility and acknowledging that you have hurt God because of your Sin. \n</string>
+    <string name="lesson2_parag_8">On the other there is also false repentance (Worldly Sorrow) it\'s feeling sorry because they are caught but not taking full responsibility, passing blame to others, always self centered -- seing themselves hurt instead God because of Sin.</string>
+    <string name="lesson2_2cor_7_10">Godly sorrow brings repentance that leads to salvation and leaves no regret, but worldly sorrow brings death.\n</string>
+    <string name="lesson2_parag_9">The difference between the two is the result.</string>
+    <string name="lesson2_parag_10">True repentance (Godly Sorrow) produces salvation and no regrets.</string>
+    <string name="lesson2_parag_11">A false repentance(Worldly Sorrow) brings spiritual death and doesn\'t result to change lives.\n</string>
+    <string name="lesson2_parag_12">The truth is when we follow Jesus He will bring conviction not condemnation that will lead us to true repentance and change direction</string>
+    <string name="lesson2_parag_13">Making Jesus as your new direction leads to fullness of Life. He will take you to places you have never been before. It is going to be the most exciting journey of your life. Enjoying every step of the way to where you are going and not worrying of being in a wrong direction.\n</string>
+    <string name="lesson2_john_10_10">The thief comes only in order to steal, kill, and destroy. I have come in order that you might have life --- Life in all its fullness</string>
+    <string name="lesson2_app1">• Is your life going in a new direction?</string>
+    <string name="lesson2_app2">• Are there things in your life that you need to turn away from and turn back to God?</string>
+    <string name="lesson2_app3">• Are there weaknesses, sins and struggles that you have surrendered but still felt condemned and need prayer to be released?</string>
+
+    <!-- Lesson Three -->
+    <string name="lesson3_parag_1">To know the condition of your heart is very important, our heart is the source of our life,\n(Proverbs 4:23 NLT) it determines the course of Life we are to live. If our heart is affected then everything around us are affected.You may have suffered a lot in your life but God is so gracious that He promise us a Change Heart is we trust in Him.</string>
+    <string name="lesson3_parag_title_1">GOD FORGAVE US AND GAVE US A NEW HEART AND NEW SPIRIT</string>
+    <string name="lesson3_parag_2">You can know that you are unconditionally loved no matter what is going on your life, whether you are accepted or rejected by others, you can know that God has completely accepted, loved and forgiven you.</string>
+    <string name="lesson3_mark3_28">I tell you the truth, all sin and blasphemy can be forgiven</string>
+    <string name="lesson3_parag_3">\nThe only sin God can\'t Forgive, is the one you won\'t take to Him!\nSo take your broken heart to God because he alone can give you a new Heart.</string>
+    <string name="lesson3_parag_title_2">WE FORGIVE OTHERS SO GOD CAN TAKE AWAY OUR STONY AND STUBBORN HEART</string>
+    <string name="lesson3_parag_4">We are forgiven to forgive and it starts by letting go of the person who has hurt us the most. You may say it\'s unfair! You\'re right. Forgiveness isn\'t fair. It wasn\'t fair when God forgave you, and it\'s unfair for you to forgive someone else.\n\nGod doesn\'t give us what we deserve, He gives us what we need.</string>
+    <string name="lesson3_parag_5">\nThe Bible says God is just. One day He\'ll settle the score.\nIn the meantime, we must let God fill our hearts with peace and Grace.\n</string>
+    <string name="lesson3_parag_6">The first step to forgiveness is to commit not to take justice into your own hands.\nLet go and Let God.\n</string>
+    <string name="lesson3_parag_7">The truth is forgiveness is not for them it\'s for us. We are the ones who suffer most when we choose not to forgive but when we do forgive, the Lord sets our hearts free from the anger, bitterness, resentment and hurt that previously improsoned us.\n</string>
+    <string name="lesson3_parag_8">When we forgive, you set a prisoner free, but you discover that the real prisoner is yourself.\n</string>
+    <string name="lesson3_parag_9">Would you allow the Lord to take away your stony and stubnorn heart and give you a new heart today?</string>
+    <string name="lesson3_parag_title_3">FORGIVE YOURSELF AND RECEIVE A TENDER AND RESPONSIVE HEART</string>
+    <string name="lesson3_parag_10">There is one more person you need to forgive and I believe the most important one, that\'s YOU.\n</string>
+    <string name="lesson3_parag_11">Sometimes your own self is the hardest to forgive, you can\'t easily let go of the past and you live in pain and regret. If you do this, you will lose your self worth and will have a wrong image of yourself. You will have a hardtime trusting people, trusting yourself and above all trusting God.\nWho you are is affected on the condition of your heart.\n</string>
+    <string name="lesson3_parag_12">But you can change all that, by reversing the way you see yourself and start seeing the way God sees. If God has forgiven you, you must start forgiving yourself.\nYou are not greater than God that you cannot forgive yourself.\n</string>
+    <string name="lesson3_parag_13">Forgiving yourself brings healing to your self-image and changes your heart into a tender and responsive heart to follow His will.</string>
+    <string name="lesson3_app1">• Have you received God\'s forgiveness in your life?</string>
+    <string name="lesson3_app2">• Are there pains in your heart that were caused by people or yourself that you are carrying right now?</string>
+    <string name="lesson3_app3">• Do you want to be a free and release a prayer of forgiveness to them and to yourself?</string>
+
+    <!-- Lesson 4 -->
+    <string name="lesson4_parag_1">A lot of people only see Jesus as religion but never experienced a personal relationship with Him.\nI believe it\'s about time to change. It\'s time to change religion into RELATION, because Jesus is not interested in our religion.\nHe is interested in our relationship with Him.</string>
+    <string name="lesson4_parag_2">\nThe Moment you accepted Jesus as your personal Lord and Savior, you begun a relationship that will continue to last forever.</string>
+    <string name="lesson4_parag_3">\nHow\'s your Relationship with God?</string>
+    <string name="lesson4_parag_title_1">BE ROOTED - LORDSHIP IS MAKING HIM NUMBER ONE</string>
+    <string name="lesson4_parag_4">In order to contine following Jesus you must let your roots grow down into Him by acknowledging His Lordship over your lives. Like a tree that depends its life on the roots, so as salvation begins by confessing that  Jesus is Lord.\n</string>
+    <string name="lesson4_romans_10_9">That if you confess with your mouth, \"Jesus is Lord,\" and believe and your heart that God raised Him from the dead, you will be saved.\n</string>
+    <string name="lesson4_parag_5">Lordship simply means \"Number One\". Confessing Him as your Lord is making Him the number one and top priority of your life. It\'s all about coming into a complete surrender and security taht He knows what\'s best for you.</string>
+    <string name="lesson4_parag_6">\nA tree without roots is a tree without Life. Jesus must become root of our life, for without Him we are nothing.</string>
+    <string name="lesson4_parag_title_2">BE BUILT ON HIM - LORDSHIP IS LIVING A LIFE OF OBEDIENCE</string>
+    <string name="lesson4_parag_7">Salvation is what Christ has done for us but Lordship is what we can do for Him. Apostle Paul taught us that the next thing we must do is to let your lives be built on Him. We can do this by living a life of obedience to His Word.\n</string>
+    <string name="lesson4_matthew_7_24">Therefore everyone who hears these words of mine and puts them into practice is like a wise man who built his house on the rock.\n</string>
+    <string name="lesson4_parag_8">Lordship demands our obedience, Christ must be the supreme authority of our lives to the point that it\'s not our will but His will be done. As we do this we are building our lives on unshakeable foundation, no storms and waves of this life can destroy us because we are founded on the solid rock.</string>
+    <string name="lesson4_parag_title_3">BE FAITHFUL - HIS LORDSHIP IN YOUR LIFE WILL BE TESTED, STAY FAITHFUL</string>
+    <string name="lesson4_parag_9">When we follow God\'s will, it comes being faithful (then your faith will grow strong in the truth v.7b)... our faith will always be be tested. Temptation and distractions may come but when you know who the ruler of your life is, it\'s easy to stay faithful. It\'s easy to know that this is just a test. If you know that you belong to God you will have confidence that He knows what\'s best and will remain faithful to Him.\n</string>
+    <string name="lesson4_psalms_18_25">To the faithful you show yourself faithful;\n</string>
+    <string name="lesson4_parag_10">But if you don\'t stay and faithful and follow the distraction, that path will lead you to a world of fear and unbelief. All because you have allowed something else to rule you. In doing that, you are not living God\s will for your life and you will not reap the benefits of His blessings.\n</string>
+    <string name="lesson4_prov_28_28">Many are the blessings of a faithful man and an evil one will not be spared in His evil.\n</string>
+    <string name="lesson4_parag_11">Blessings are waiting for the faithful ones and it can be yours too.</string>
+    <string name="lesson4_parag_title_4">BE THANKFUL - LORDSHIP STARTS FROM OUR THANKFUL HEART</string>
+    <string name="lesson4_parag_12">Lordship can bring us a sense of security and joy that will result to (overflow with thankfulness v.7b). This is the difference between religion and relationship. We follow Jesus, not because we have to but because we want to. It\'s willingness of the heart and not about folling as a set of religion and traditional it\'s a personal thing that starts from our thankful heart.\n</string>
+    <string name="lesson4_psamls_86_12">I give thanks to you, O Lord my God, with my whole heart, and I will glorify your name forever.\n</string>
+    <string name="lesson4_parag_13">Serving God is never boring; It\'s full of fun and surprises. The greatest decision you have made in your life is the time you have fully surrendered and submitted to His Lordship.</string>
+    <string name="lesson4_app1">• Are there areas in your Life that you need to submit to His Lordship?</string>
+    <string name="lesson4_app2">• Are you willing to make Him the number one in your Life?</string>
+    <string name="lesson4_app3">• Are you willing to lay down your will and let His will be done in your life through prayer?</string>
+
+    <!-- Lesson 5 -->
+    <string name="lesson5_parag_1"> God is excited about His wonderful plan for your life. But before you can experience that there should be a change in us. In the bible Jesus chose ordinary men and changed them into world changers. How exciting it is to know that God\'s plan is not just to change us but to change others through us -- Changed to Change others!\n</string>
+    <string name="lesson5_parag_2"> Change requires devotion. As the early believers devoted themselves to PRAYER, SHARING, FELLOWSHIP, and TEACHING, making these as their lifestyle it resulted to changed lives and changing the world.\n</string>
+    <string name="lesson5_parag_3"> God will use these four things to developed us by changing our lives.</string>
+    <string name="lesson5_parag_title_1">DEVOTIONAL LIFE - Prayer</string>
+    <string name="lesson5_parag_4"> Just as good friends talk to each other, so God your heavenly Father, wants you to talk to Him. And while you may not understand it right now, you\'ll find that He \"talks\" to you through His word -- the Bible. \n\nYou can pray to God about anything and everything. He wants to hear from you.\n</string>
+    <string name="lesson5_phillip_4_6">Don\'t worry about anything; instead, pray about everything. Tell God what you need, and thank Him for all he has done.\n</string>
+    <string name="lesson5_parag_5">Pick a time of the day where you can just be with God in prayer and reading His Word. You will discover how He loves you so much and His plans and purpose for your life. </string>
+    <string name="lesson5_parag_title_2">LIFE GROUP - Sharing</string>
+    <string name="lesson5_parag_6">God doesn\'t want us to take this journey of life alone that is why He gives us family and friends to be there for us. \n</string>
+    <string name="lesson5_parag_7">Life Group is your spiritual family where you can receive encouragement, acceptance and love. Just like family, there is someone that will become your spiritual parents to give you care, guidance ad would bring out the best in you. </string>
+    <string name="lesson5_parag_title_3">CHURCH - Fellowship</string>
+    <string name="lesson5_parag_8">Church is not a building as we think it is, but the Bible tells us that it\'s a group people that loves God. Church is not a place you go to but a family you belong to. You belong to this greatest family when you became a Christian; you have joined a family -- sometimes called \"the body of Christ\", which means you are now "related" to Christian all over the world!\n</string>
+    <string name="lesson5_parag_9">You need to join a portion of that famiy by beginning to attend a local church, You need a church to help you continue to grow and for you to fulfill your purpose in life.\n</string>
+    <string name="lesson5_hebrews_10_25">And let us not neglect our meeting together, as some people do, but encourage one another, especially now that the day of his return is drawing near.</string>
+    <string name="lesson5_parag_title_4">EQUIPPING -Teaching</string>
+    <string name="lesson5_parag_10">Finally, we need to be trained and equipped for us to become effective on what God wants us to do.\n</string>
+    <string name="lesson5_parag_11">God wants to use you to change many lives but He has to start that change within you. Because if you change everything changes. He wants to bring out the best in you by allowing you to go through the equipping process.\n</string>
+    <string name="lesson5_parag_12">In this process you will experience FIRE, FREEDOM AND FOCUS! You will encounter God in a way that you will have never experience before. \n</string>
+    <string name="lesson5_parag_13">Encounter is a 3 days retreat that will lead you to discover everything that God has for you.\n</string>
+    <string name="lesson5_parag_14">There is so much in you that you need to discover, if you would allow God and me to help you, it would be my greatest joy to accept you as one of my disciples.</string>
+    <string name="lesson5_app1">•Would you allow me to teach you how to establish your prayer life?</string>
+    <string name="lesson5_app2">•Would you be willing to be part of a life group?</string>
+    <string name="lesson5_app3">•Would you be willing to join the retreat in the next schedule?</string>
+    <string name="lesson5_app4">•Can you make a short and simple prayer to Jesus thanking Him for bringing a change in you and to help you see the things that  to be changed in your life.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="cat_names">
+        <item>George</item>
+        <item>Zubin</item>
+        <item>Carlos</item>
+        <item>Frank</item>
+        <item>Charles</item>
+        <item>Simon</item>
+        <item>Fezra</item>
+        <item>Henry</item>
+        <item>Schuster</item>
+    </string-array>
+    <string name="title_activity_lesson__one">Lesson_One</string>
+    <string name="title_activity_lesson__two">Lesson_Two</string>
+    <string name="title_activity_lesson__three">Lesson_Three</string>
+    <string name="title_activity_lesson__four">Lesson_Four</string>
+    <string name="title_activity_lesson__five">Lesson_Five</string>
+    <string name="title_activity_registration__module">Registration_Module</string>
+    <string name="title_activity_add__disciple__module">Add_Disciple_Module</string>
+    <string name="title_activity_profile__change__module">Profile_Change_Module</string>
+    <string name="title_activity_view__disciples__module">View_Disciples_Module</string>
+    <string name="title_activity_my__profile__module">My_Profile_Module</string>
+    <string name="title_activity_add__consolidates__module">Add_Consolidates_Module</string>
+    <string name="title_activity_add__calendar_sched">Add_CalendarSched</string>
+    <string name="title_activity_bar_layout">bar_layout</string>
+    <string name="title_activity_bar__layout">Bar_Layout</string>
+    <string name="title_activity_send__sms">Send_SMS</string>
+    <string name="title_activity_view__consolidates__module">View_Consolidates_Module</string>
+    <string name="title_activity_consolidates__profile">Consolidates_Profile</string>
+    <string name="title_activity_praktis">Praktis</string>
+    <string name="title_activity_disciples__profile">Disciples_Profile</string>
+    <string name="title_activity_view_results">ViewResults</string>
+
+</resources>

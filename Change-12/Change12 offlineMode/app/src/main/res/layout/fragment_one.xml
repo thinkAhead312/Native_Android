@@ -1,0 +1,23 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="-60dp"
+    android:background="@drawable/into_background"
+    android:screenOrientation="portrait"
+     tools:context=".MainActivity">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView"
+        android:src="@drawable/joel"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="-60dp"
+        android:layout_gravity="center|center_horizontal"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:padding="1dp"/>
+
+
+</RelativeLayout>

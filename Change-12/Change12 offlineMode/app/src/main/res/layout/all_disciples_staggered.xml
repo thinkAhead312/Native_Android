@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card="http://schemas.android.com/tools"
+    android:padding="0dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/card"
+        android:padding="0dp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardMaxElevation="0dp"
+        app:cardUseCompatPadding="true"
+
+        >
+
+        <RelativeLayout
+            android:padding="0dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <ImageView
+                android:padding="0dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="165dp"
+                android:id="@+id/imgNetworkBack"
+                android:scaleType="fitXY"
+                />
+
+            <ImageView
+                android:padding="0dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/gray_overlay"
+                android:id="@+id/imgGrayOverLay"
+                android:scaleType="fitXY"
+
+                android:layout_alignBottom="@+id/imgNetworkBack"
+                />
+
+
+            <TextView
+                android:id="@+id/textViewName"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+
+                android:textSize="20dp"
+                android:textColor="#fff"
+                android:layout_alignBottom="@+id/imgNetworkBack"
+
+                />
+
+
+
+            <TextView
+
+                android:paddingRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtUserId"
+                android:visibility="gone"
+                />
+
+            <TextView
+
+                android:paddingRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtConsolidateFlag"
+                android:visibility="gone"
+                />
+            <TextView
+
+                android:paddingRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtPhotoFlag"
+                android:visibility="gone"
+                />
+
+
+
+
+
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>

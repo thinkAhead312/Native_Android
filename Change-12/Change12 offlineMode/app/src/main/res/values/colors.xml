@@ -1,0 +1,12 @@
+<resources>
+    <color name="primary">#636363</color>
+    <color name="primary_dark">#2ff584</color>
+    <color name="accent">#e30f1b</color>
+    <color name="colorPrimary">#125688</color>
+    <color name="colorPrimaryDark">#125688</color>
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
+    <color name="colorAccent">#c8e8ff</color>
+
+</resources>

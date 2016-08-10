@@ -1,0 +1,112 @@
+
+<android.support.design.widget.CoordinatorLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/into_background_flip"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+    android:screenOrientation="portrait"
+    android:id="@+id/popup_element"
+
+    >
+
+
+
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/imageView2"
+            android:layout_marginTop="0dp"
+            android:src="@drawable/content"
+            />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+
+<android.support.v4.widget.NestedScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+       >
+
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="0dp"
+
+            android:layout_marginBottom="60px"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="125dp"
+                android:id="@+id/btnLesson1"
+                android:padding="5dp"
+                android:src="@drawable/content_lesson_one"
+                android:scaleType="fitCenter" />
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="125dp"
+                android:id="@+id/btnLesson2"
+                android:padding="5dp"
+                android:src="@drawable/content_lesson_two"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="-2dp"/>
+
+            <ImageButton
+                android:id="@+id/btnLesson3"
+                android:layout_width="match_parent"
+                android:layout_height="125dp"
+                android:padding="5dp"
+                android:src="@drawable/content_lesson_three"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="-2dp"/>
+
+            <ImageButton
+                android:id="@+id/btnLesson4"
+                android:layout_width="match_parent"
+                android:layout_height="125dp"
+                android:padding="5dp"
+                android:src="@drawable/content_lesson_four"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="-2dp"/>
+            <ImageButton
+                android:id="@+id/btnLesson5"
+                android:layout_width="match_parent"
+                android:layout_height="125dp"
+                android:padding="5dp"
+                android:src="@drawable/content_lessonfive"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="-2dp"/>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

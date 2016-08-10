@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card="http://schemas.android.com/tools"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/card"
+        android:padding="3dp"
+        android:paddingLeft="5dp"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:clickable="true"
+        >
+
+        <RelativeLayout
+            android:padding="0dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <ImageView
+                android:padding="3dp"
+                android:orientation="vertical"
+                android:layout_width="90dp"
+                android:layout_height="80dp"
+                android:id="@+id/imgNetworkBack"
+                android:scaleType="fitXY"
+
+                />
+
+            <TextView
+
+                android:paddingRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtUserId"
+                android:visibility="gone"
+                />
+            <TextView
+
+                android:paddingRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtConsolidateFlag"
+                android:visibility="gone"
+                />
+            <TextView
+
+                android:paddingRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtPhotoFlag"
+                android:visibility="gone"
+                />
+
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tableLayout"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="0dp"
+                android:layout_toRightOf="@id/imgNetworkBack"
+                >
+
+                <TableRow>
+
+
+
+                    <TextView
+                        android:text="Name:"
+                        android:paddingRight="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView2"
+
+                        android:textSize="15dp"
+                        android:textColor="#000"
+                        android:layout_column="5" />
+                    <TextView
+                        android:id="@+id/textViewName"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tag="hello"
+                        android:textSize="17dp"
+                        android:textColor="#000"
+
+                        />
+                </TableRow>
+            </TableLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/imgNetworkBack"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="5dp">
+                <TableRow>
+                    <TextView
+                        android:text="Contact:"
+                        android:paddingRight="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:layout_below="@+id/txtUserId"
+                        android:layout_toRightOf="@+id/linearBack"
+                        android:layout_toEndOf="@+id/linearBack"
+                        android:textSize="15dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/txtViewContactNum"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="6"
+                        android:textSize="17dp"
+                        android:textColor="#000"
+                        android:layout_alignTop="@+id/textView2"
+                        android:layout_toRightOf="@+id/textView2"
+                        android:layout_toEndOf="@+id/textView2" />
+                </TableRow>
+            </TableLayout>
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/imgNetworkBack"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="5dp">
+                <TableRow>
+                    <TextView
+                        android:text="Affiliation:"
+                        android:paddingRight="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:layout_below="@+id/txtUserId"
+                        android:layout_toRightOf="@+id/linearBack"
+                        android:layout_toEndOf="@+id/linearBack"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textSize="15dp"
+                        />
+
+
+                </TableRow>
+            </TableLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/imgNetworkBack"
+                android:layout_marginTop="60dp"
+                android:layout_marginLeft="5dp">
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/txtViewAffiliation"
+                        android:textStyle="bold"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="6"
+                        android:textSize="17dp"
+                        android:textColor="#000"
+                        android:ellipsize="none"
+                        android:singleLine="false"
+                        android:text="asdfasdfasdffafaffasfafafafafasdfasfsfsfsafasfasfasfasfdfasfaf"
+
+                        android:layout_alignTop="@+id/textView2"
+                        android:layout_toRightOf="@+id/textView2"
+                        android:layout_toEndOf="@+id/textView2" />
+                </TableRow>
+            </TableLayout>
+
+
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>
