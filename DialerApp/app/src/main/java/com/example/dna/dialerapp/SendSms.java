@@ -10,10 +10,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.telephony.SmsManager;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.dna.dialerapp.model.Constants;
+import com.example.dna.dialerapp.settings.SipSettings;
 
 public class SendSms extends AppCompatActivity {
 
@@ -22,19 +27,18 @@ public class SendSms extends AppCompatActivity {
     Button btnSendSMS;
     EditText txtPhoneNo;
     EditText txtMessage;
-
+    private SipAndroid sipAndroid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_sms);
-
+        sipAndroid = SipAndroid.getInstance();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnSendSMS = (Button) findViewById(R.id.btnSendSMS);
         txtPhoneNo = (EditText) findViewById(R.id.txtPhoneNo);
         txtMessage = (EditText) findViewById(R.id.txtMessage);
-
         btnSendSMS.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v)
@@ -49,9 +53,7 @@ public class SendSms extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
             }
         });
-
     }
-
 
     private void sendSMS(String phoneNumber, String message)
     {
@@ -117,4 +119,50 @@ public class SendSms extends AppCompatActivity {
         SmsManager sms = SmsManager.getDefault();
         sms.sendTextMessage(phoneNumber, null, message, sentPI, deliveredPI);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+
+        menu.add(0, Constants.SET_AUTH_INFO, 0, "Edit your SIP Info.");
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            finish();
+        }
+
+        switch (item.getItemId()) {
+            case Constants.SET_AUTH_INFO:
+                updatePreferences();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+    public void updatePreferences() {
+        Intent settingsActivity = new Intent(getBaseContext(),
+                SipSettings.class);
+        startActivity(settingsActivity);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // When we get back from the preference setting Activity, assume
+        // settings have changed, and re-login with new auth info.
+        sipAndroid = SipAndroid.getInstance();
+        sipAndroid.SipAndroidInitialize(this);
+    }
+
 }

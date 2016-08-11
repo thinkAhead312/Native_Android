@@ -5,31 +5,7 @@
         android:id="@+id/lesson_1"
 
 
-        android:title="Change Destination"
-        />
-    <item
-        android:id="@+id/lesson_2"
-
-
-        android:title="Change Direction"
-        />
-
-    <item
-        android:id="@+id/lesson_3"
-
-
-        android:title="Change Heart"
-        />
-    <item
-        android:id="@+id/lesson_4"
-
-        android:title="Change Relationship"
-        />
-
-    <item
-        android:id="@+id/lesson_5"
-
-        android:title="Change Lifestyle"
+        android:title="Settings"
         />
 
 

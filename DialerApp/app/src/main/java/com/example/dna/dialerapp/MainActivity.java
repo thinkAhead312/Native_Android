@@ -20,11 +20,15 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.telephony.SmsManager;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.dna.dialerapp.fragment.*;
 import com.example.dna.dialerapp.fragment.CallLogs;
+import com.example.dna.dialerapp.model.Constants;
+import com.example.dna.dialerapp.settings.SipSettings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,24 +39,25 @@ public class MainActivity extends AppCompatActivity {
         private Toolbar toolbar;
         private TabLayout tabLayout;
         private ViewPager viewPager;
-
+        SipAndroid sipAndroid;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
-
-            toolbar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
-
-            //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            viewPager = (ViewPager) findViewById(R.id.viewpager);
-            setupViewPager(viewPager);
-
-            tabLayout = (TabLayout) findViewById(R.id.tabs);
-            tabLayout.setupWithViewPager(viewPager);
-
-
+            sipAndroid = SipAndroid.getInstance();
+            sipAndroid.SipAndroidInitialize(this);
+            init();
         }
+
+    private void init() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+    }
 
     private void setDefault() {
         final String myPackageName = getPackageName();
@@ -82,13 +87,9 @@ public class MainActivity extends AppCompatActivity {
             adapter.addFragment(new ContactList(), "Contact");
             adapter.addFragment(new SmsList(), "Sms Inbox ");
             adapter.addFragment(new CallLogs(), "Call Logs");
-
-
             viewPager.setOffscreenPageLimit(2);
             viewPager.setAdapter(adapter);
         }
-
-
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
             private final List<Fragment> mFragmentList = new ArrayList<>();
@@ -112,13 +113,60 @@ public class MainActivity extends AppCompatActivity {
                 mFragmentList.add(fragment);
                 mFragmentTitleList.add(title);
             }
-
             @Override
             public CharSequence getPageTitle(int position) {
                 return mFragmentTitleList.get(position);
             }
-        }
+    }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        // When we get back from the preference setting Activity, assume
+        // settings have changed, and re-login with new auth info.
+        sipAndroid = SipAndroid.getInstance();
+        sipAndroid.SipAndroidInitialize(this);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add(0, Constants.SET_AUTH_INFO, 0, "Edit your SIP Info.");
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case Constants.SET_AUTH_INFO:
+                updatePreferences();
+                break;
+        }
+        return true;
+    }
+    public void updatePreferences() {
+        Intent settingsActivity = new Intent(getBaseContext(),
+                SipSettings.class);
+        startActivity(settingsActivity);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (sipAndroid.call != null) {
+
+            sipAndroid.call.close();
+        }
+        try {
+
+            if (sipAndroid.me != null) {
+                sipAndroid.call.endCall();
+                sipAndroid.manager.close(sipAndroid.me.getUriString());
+            }
+        } catch (Exception ee) {
+            //
+        }
+        if (sipAndroid.callReceiver != null) {
+            unregisterReceiver(sipAndroid.callReceiver);
+        }
+    }
 
 
 }

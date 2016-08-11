@@ -108,6 +108,7 @@ public class ContactList extends Fragment  {
                 while (c.moveToNext()) {
                     final String contactName = c.getString(c.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
                     final String phNumber = c.getString(c.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+
                     if(!contactMap.containsKey(contactName)) {//check if item already duplicated
                         Contact item = new Contact(contactName, PhoneNumberFormatter.phoneNumberFormat(phNumber));
                         contactMap.put(contactName,item);

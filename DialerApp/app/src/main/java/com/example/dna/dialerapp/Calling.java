@@ -3,11 +3,14 @@ package com.example.dna.dialerapp;
 import android.Manifest;
 import android.accessibilityservice.AccessibilityService;
 import android.annotation.TargetApi;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
+import android.net.sip.SipException;
 import android.os.Binder;
 import android.os.Build;
 import android.os.IBinder;
@@ -18,36 +21,47 @@ import android.telecom.Call;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dna.dialerapp.helper.TelephonyActions;
+import com.example.dna.dialerapp.model.Constants;
 import com.example.dna.dialerapp.receivers.IncomingCall;
+import com.example.dna.dialerapp.receivers.IncomingSipCallReceiver;
+import com.example.dna.dialerapp.settings.SipSettings;
 
 import java.lang.reflect.Method;
 
 public class Calling extends AppCompatActivity {
     private FloatingActionButton fab;
-    private TextView txtContact;
+    private TextView textView;
 
-    private static Calling activity;
-    public static Calling instance() {
-        return activity;
-    }
-    private ITelephony telephonyService;
-    String callingState ="Incoming_Call";
+    private String callingState = "";
+    private  SipAndroid sipAndroid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calling);
+        sipAndroid = SipAndroid.getInstance();
         initializeWidgets();
+        registerReceiver(abcd, new IntentFilter("kill")); //register receiver
 
-        //callingState = getIntent().getExtras().getString("STATE");
-        Toast.makeText(Calling.this, callingState, Toast.LENGTH_SHORT).show();
+        callingState = getIntent().getExtras().getString(Constants.Call_State);
 
-        if(callingState.equals("Incoming_Call")) {
+
+        if(callingState.equals(Constants.Sip_Incoming) || callingState.equals(Constants.Telephony_Incoming)) {
             changeFabButtonImage();
+            String useName = sipAndroid.call.getPeerProfile().getDisplayName();
+            textView.setText("Incoming Call From: " + useName);
         }
+
+        if(callingState.equals(Constants.Sip_Outgoing)) {
+            textView.setText("Dialing Contact to: " +  sipAndroid.rec.getUriString());
+        }
+
         catchOutGoindCallInstance();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -58,62 +72,58 @@ public class Calling extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-                if(callingState.equals("Incoming_Call")) {
-                   //inst.answerCall();
-                    if(calling[0] == false) {
+                if (callingState.equals(Constants.Telephony_Incoming)) {
+                    //inst.answerCall();
+                    if (calling[0] == false) {
                         Intent i = new Intent(Intent.ACTION_MEDIA_BUTTON);
                         i.putExtra(Intent.EXTRA_KEY_EVENT,
                                 new KeyEvent(KeyEvent.ACTION_UP,
                                         KeyEvent.KEYCODE_HEADSETHOOK));
                         sendOrderedBroadcast(i, null);
-
                         calling[0] = true;
 
-
-                    } else if (calling[0]){
-                        try {
-
-                            String serviceManagerName = "android.os.ServiceManager";
-                            String serviceManagerNativeName = "android.os.ServiceManagerNative";
-                            String telephonyName = "com.android.internal.telephony.ITelephony";
-                            Class<?> telephonyClass;
-                            Class<?> telephonyStubClass;
-                            Class<?> serviceManagerClass;
-                            Class<?> serviceManagerNativeClass;
-                            Method telephonyEndCall;
-                            Object telephonyObject;
-                            Object serviceManagerObject;
-                            telephonyClass = Class.forName(telephonyName);
-                            telephonyStubClass = telephonyClass.getClasses()[0];
-                            serviceManagerClass = Class.forName(serviceManagerName);
-                            serviceManagerNativeClass = Class.forName(serviceManagerNativeName);
-                            Method getService = // getDefaults[29];
-                                    serviceManagerClass.getMethod("getService", String.class);
-                            Method tempInterfaceMethod = serviceManagerNativeClass.getMethod("asInterface", IBinder.class);
-                            Binder tmpBinder = new Binder();
-                            tmpBinder.attachInterface(null, "fake");
-                            serviceManagerObject = tempInterfaceMethod.invoke(null, tmpBinder);
-                            IBinder retbinder = (IBinder) getService.invoke(serviceManagerObject, "phone");
-                            Method serviceMethod = telephonyStubClass.getMethod("asInterface", IBinder.class);
-                            telephonyObject = serviceMethod.invoke(null, retbinder);
-                            telephonyEndCall = telephonyClass.getMethod("endCall");
-                            telephonyEndCall.invoke(telephonyObject);
-
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            Log.e(String.valueOf(Calling.this),"FATAL ERROR: could not connect to telephony subsystem");
-                            Log.e(String.valueOf(Calling.this), "Exception object: " + e);
-                        }
+                    } else if (calling[0]) {
+                        TelephonyActions.EndCall();
                     }
+                }
 
-               }
+                if (callingState.equals(Constants.Sip_Incoming)) {
 
+                    if (calling[0] == false) {
+                        try {
+                            sipAndroid.call.answerCall(30);
+                            sipAndroid.call.startAudio();
+                            calling[0] = true;
+                        } catch (SipException e) {
+                            e.printStackTrace();
+                        }
+                    } else if (calling[0]) {
+                        endSipCall();
+                    }
+                }
+
+                if (callingState.equals(Constants.Sip_Outgoing)) {
+                     if(sipAndroid.call.isInCall()) {
+                        Toast.makeText(Calling.this, "End Calling", Toast.LENGTH_SHORT).show();
+                        endSipCall();
+                     }
+                }
+
+                if (callingState.equals(Constants.Telephony_Outgoing)) {
+                    TelephonyActions.EndCall();
+                }
             }
         });
     }
 
+    private void endSipCall() {
+        try {
+            sipAndroid.call.endCall();
 
+        } catch (SipException e) {
+            Log.e("END THIS CALL PLEASE", "END NOW");
+        }
+    }
 
     private void changeFabButtonImage() {
         fab.setBackgroundColor(Color.parseColor("#03A9F4"));
@@ -124,6 +134,7 @@ public class Calling extends AppCompatActivity {
         }
     }
 
+
     private void catchOutGoindCallInstance() {
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
@@ -133,18 +144,67 @@ public class Calling extends AppCompatActivity {
 
     private void initializeWidgets() {
         fab = (FloatingActionButton) findViewById(R.id.fab);
-        txtContact = (TextView) findViewById(R.id.txtContact);
+        textView = (TextView) findViewById(R.id.txtContact);
     }
 
     public int checkSelfPermission(String callPhone) {
         return 0;
     }
 
-    public void closeActivity(){
-        Toast.makeText(Calling.this, "Closing", Toast.LENGTH_SHORT).show();
+    private void outBound(String outbound_number) {
+        //Toast.makeText(Calling.this, "OUTBOUND ^_^" +outbound_number, Toast.LENGTH_SHORT).show();
     }
 
-    private void outBound(String outbound_number) {
-        Toast.makeText(Calling.this, "OUTBOUND ^_^" +outbound_number, Toast.LENGTH_SHORT).show();
+    private final BroadcastReceiver abcd = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            finish();
+        }
+    };
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(abcd);
+        if (sipAndroid.call != null) {
+            sipAndroid.call.close();
+        }
+        try {
+            if (sipAndroid.me != null) {
+                sipAndroid.manager.close(sipAndroid.me.getUriString());
+            }
+        } catch (Exception ee) {
+            //
+        }
+
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add(0, Constants.SET_AUTH_INFO, 0, "Edit your SIP Info.");
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case Constants.SET_AUTH_INFO:
+                updatePreferences();
+                break;
+        }
+        return true;
+    }
+    public void updatePreferences() {
+        Intent settingsActivity = new Intent(getBaseContext(),
+                SipSettings.class);
+        startActivity(settingsActivity);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // When we get back from the preference setting Activity, assume
+        // settings have changed, and re-login with new auth info.
+        sipAndroid = SipAndroid.getInstance();
+        sipAndroid.SipAndroidInitialize(this);
     }
 }

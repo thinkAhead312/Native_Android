@@ -45,7 +45,7 @@ public class SmsReceiver extends BroadcastReceiver{
     int MESSAGE_IS_SEEN = 1;
     // Change the password here or give a user possibility to change it
     final byte[] PASSWORD = new byte[]{ 0x20, 0x32, 0x34, 0x47, (byte) 0x84, 0x33, 0x58 };
-
+    private boolean saving = false;
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -76,7 +76,7 @@ public class SmsReceiver extends BroadcastReceiver{
                 } // end for loop.
 
                 Intent resultIntent = new Intent(context, ViewSms.class);
-                resultIntent.putExtra("Users_ID", phoneNumber);
+                resultIntent.putExtra(ViewSms.intentString, phoneNumber);
                 PendingIntent resultPendingIntent =
                         PendingIntent.getActivity(
                                 context,
@@ -115,6 +115,9 @@ public class SmsReceiver extends BroadcastReceiver{
         values.put( BODY, sms.getMessageBody() );
         String encryptedPassword = null;
         // Push row into the SMS table
-        contentResolver.insert( Uri.parse(SMS_URI), values );
+        if(!saving) {
+            contentResolver.insert( Uri.parse(SMS_URI), values );
+            saving = true;
+        }
     }
 }

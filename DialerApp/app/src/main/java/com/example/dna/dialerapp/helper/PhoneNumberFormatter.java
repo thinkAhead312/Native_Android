@@ -12,8 +12,7 @@ public class PhoneNumberFormatter {
             phNumber = phNumber.substring(1);
             phNumber = "+63" + phNumber;
         }
+
         return phNumber;
-
-
     }
 }

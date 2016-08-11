@@ -15,6 +15,8 @@ import com.example.dna.dialerapp.Calling;
 import com.example.dna.dialerapp.MainActivity;
 import com.example.dna.dialerapp.R;
 import com.example.dna.dialerapp.ViewSms;
+import com.example.dna.dialerapp.helper.IntentStartActivity;
+import com.example.dna.dialerapp.model.Constants;
 
 /**
  * Created by dna on 7/25/16.
@@ -72,26 +74,16 @@ public class IncomingCall extends BroadcastReceiver {
                     notificationManager.notify(notiId, builder.build());
                     Toast.makeText(context, "received", Toast.LENGTH_SHORT).show();
                     // end for loop
-
-                    Intent intentActivity = new Intent(context.getApplicationContext(),
-                            Calling.class);
-                    intentActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    intent.putExtra("STATE", "Incoming_Call");
-                    context.startActivity(intentActivity);
-
-                    //answerCall();
+                    IntentStartActivity.intentCallingActivity(context, Constants.Call_State, Constants.Telephony_Incoming);
                 }
                 else if (intent.getStringExtra(TelephonyManager.EXTRA_STATE).equals( TelephonyManager.EXTRA_STATE_IDLE))
                 {
-                    // This code will execute when the call is disconnected
-                    Toast.makeText(context, "Device call state: No activity.t", Toast.LENGTH_LONG).show();
-                    Calling inst = Calling.instance();
+                    context.sendBroadcast(new Intent("kill"));
                     //inst.closeActivity();
                 } else if(intent.getStringExtra(TelephonyManager.EXTRA_STATE).equals(TelephonyManager.EXTRA_STATE_OFFHOOK))
                 {
                     Toast.makeText(context, "Device call state: Ringing. A new call arrived and is ringing or waiting. In the latter case, another call is already active.", Toast.LENGTH_LONG).show();
                 }
-
             }
     }
     public void answerCall() {
