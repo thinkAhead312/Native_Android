@@ -16,8 +16,10 @@ import com.example.dna.sipdroid.SipAndroid;
  * Created by dna on 7/28/16.
  */
 public class IncomingCallReceiver extends BroadcastReceiver {
+
     @Override
     public void onReceive(final Context context, Intent intent) {
+
         SipAudioCall incomingCall = null;
         final MainActivity wtActivity = (MainActivity) context;
         try {
@@ -41,6 +43,7 @@ public class IncomingCallReceiver extends BroadcastReceiver {
                 }
             };
             SipAndroid sipAndroid = SipAndroid.getInstance();
+            sipAndroid.SipAndroidInitialize(context);
             incomingCall = sipAndroid.manager.takeAudioCall(intent, null);
             incomingCall.setListener(listener, true);
             incomingCall.answerCall(30);

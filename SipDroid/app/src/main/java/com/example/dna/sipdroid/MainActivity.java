@@ -14,12 +14,15 @@ import android.net.sip.SipRegistrationListener;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dna.sipdroid.receivers.IncomingCallReceiver;
+import com.example.dna.sipdroid.settings.SipSettings;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         sipAndroid = SipAndroid.getInstance();
         sipAndroid.SipAndroidInitialize(this);
+
         makeOutGoing();
     }
 
@@ -55,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         if(useName == null) {
             useName = call.getPeerProfile().getUserName();
         }
-        //updateStatus(useName + "@" + call.getPeerProfile().getSipDomain());
     }
 
     public void updateStatus(final String status) {
@@ -67,6 +70,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // When we get back from the preference setting Activity, assume
+        // settings have changed, and re-login with new auth info.
+        sipAndroid = SipAndroid.getInstance();
+        sipAndroid.SipAndroidInitialize(this);
+    }
+
 
     @Override
     public void onDestroy() {
@@ -84,5 +97,23 @@ public class MainActivity extends AppCompatActivity {
         if (sipAndroid.callReceiver != null) {
             unregisterReceiver(sipAndroid.callReceiver);
         }
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add(0, Constants.SET_AUTH_INFO, 0, "Edit your SIP Info.");
+        return true;
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case Constants.SET_AUTH_INFO:
+                updatePreferences();
+                break;
+        }
+        return true;
+    }
+    public void updatePreferences() {
+        Intent settingsActivity = new Intent(getBaseContext(),
+                SipSettings.class);
+        startActivity(settingsActivity);
     }
 }

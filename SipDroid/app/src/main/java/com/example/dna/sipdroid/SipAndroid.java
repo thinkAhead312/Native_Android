@@ -4,12 +4,14 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.net.ParseException;
 import android.net.sip.SipAudioCall;
 import android.net.sip.SipException;
 import android.net.sip.SipManager;
 import android.net.sip.SipProfile;
 import android.net.sip.SipRegistrationListener;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,24 +49,32 @@ public class SipAndroid {
         if (SipManager.isVoipSupported(context) && SipManager.isApiSupported(context)){
             // Good to go!
             initializeManager();
-            Toast.makeText(context, "Available and Supported", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Available and Supported", Toast.LENGTH_SHORT).show();
         }
         else {
-            Toast.makeText(context, " not Available and Supported", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, " not Available and Supported", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     private void initializeManager() {
         if(manager == null) {
             manager = SipManager.newInstance(context);
         }
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        Constants.username = prefs.getString("namePref", "");
+        Constants.domain = prefs.getString("domainPref", "");
+        Constants.password = prefs.getString("passPref", "");
+
         if (Constants.username.length() == 0 || Constants.domain.length() == 0 || Constants.password.length() == 0) {
             Toast.makeText(context, "Please input Details", Toast.LENGTH_SHORT).show();
             return;
         }
+
+
         try {
             //Build the SIP profile
+            Log.i("SipAndroid.class", Constants.username + Constants.domain + Constants.password);
             SipProfile.Builder builder =  new SipProfile.Builder(Constants.username, Constants.domain);
             builder.setPassword(Constants.password);
             builder.setPort(5060);
@@ -84,18 +94,37 @@ public class SipAndroid {
                 @Override
                 public void onRegistering(String s) {
                     mainActivity.updateStatus("Registering with SIP Server...");
+                    Log.i("SipAndroid.class", "Registering with SIP Server...");
                 }
+
                 @Override
                 public void onRegistrationDone(String s, long l) {
                     mainActivity.updateStatus("Ready");
+                    Log.i("SipAndroid.class", "Ready");
                 }
 
                 @Override
                 public void onRegistrationFailed(String s, int i, String s1) {
                     mainActivity.updateStatus("Registration failed.  Please check settings.");
                     Log.e("ERROR REGISTER", s + ":" + s1);
+
+
+                   try {
+                       Log.i("SipAndroid.class", "Registration failed.  Please check settings." + s + " " + s1);
+                       manager.close(me.getUriString());
+                    } catch (SipException e) {
+                        e.printStackTrace();
+                    }
+                    context.unregisterReceiver(callReceiver);
+
+
+
+
+                    initializeManager();
                 }
             });
+
+
             // showMessage("Disciple", messageBuilder.toString()); //show Message
         } catch (ParseException pe) {
             messageBuilder.append("Connection Errror" +"\n");
@@ -129,6 +158,7 @@ public class SipAndroid {
                     mainActivity.updateStatus("Ready.");
                 }
             };
+
             Toast.makeText(context, me.getUriString() + rec.getUriString(), Toast.LENGTH_SHORT).show();
             call = manager.makeAudioCall(me.getUriString(), rec.getUriString(), null, 30);
             call.setListener(listener);
