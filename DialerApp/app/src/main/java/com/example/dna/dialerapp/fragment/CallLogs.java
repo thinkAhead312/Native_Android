@@ -137,6 +137,7 @@ public class CallLogs extends Fragment {
             // TODO Auto-generated method stub
             super.onPostExecute(contacts);
             pd.cancel();
+
             adapter = new CallLogsAdapter(context,0 ,callLogsItem);
             list.setAdapter((ListAdapter) adapter);
         }

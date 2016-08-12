@@ -22,7 +22,6 @@ public class LaunchAppBroadcast extends BroadcastReceiver {
         Intent serviceIntent = new Intent(context, UtilityService.class);
         // Start service
         context.startService(serviceIntent);
-        Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
         Log.i("Device Re-started", "Device Re-started");
     }
 }

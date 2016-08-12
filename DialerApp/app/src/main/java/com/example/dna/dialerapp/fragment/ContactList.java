@@ -127,6 +127,7 @@ public class ContactList extends Fragment  {
             newList = new ArrayList(contactItem);
             Collections.sort(newList, Contact.ContactNameComparator);
             adapter = new ContactAdapter(context,0 ,newList);
+
             list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> arg0, View arg1, int position,

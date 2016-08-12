@@ -2,20 +2,6 @@
 <items version="2" >
 
     <item
-        jar="/Users/dna/Documents/Native_Android/DialerApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/libs/internal_impl-23.4.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
-        <dex dex="/Users/dna/Documents/Native_Android/DialerApp/app/build/intermediates/pre-dexed/debug/internal_impl-23.4.0-d89004ca439d1b3b0b71493441269fd4f3860f0b.jar" />
-    </item>
-    <item
-        jar="/Users/dna/Documents/Native_Android/DialerApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
-        <dex dex="/Users/dna/Documents/Native_Android/DialerApp/app/build/intermediates/pre-dexed/debug/classes-4edc2a4487df7f666debf3e9a0f8e2b85f81a447.jar" />
-    </item>
-    <item
         jar="/Users/dna/Documents/Native_Android/DialerApp/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
@@ -23,18 +9,11 @@
         <dex dex="/Users/dna/Documents/Native_Android/DialerApp/app/build/intermediates/pre-dexed/debug/classes-d325149442ac2556cc7921764b80ff3efd02ca7a.jar" />
     </item>
     <item
-        jar="/Users/dna/Documents/Native_Android/DialerApp/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/jars/classes.jar"
+        jar="/Users/dna/Documents/Native_Android/DialerApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/libs/internal_impl-23.4.0.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
-        <dex dex="/Users/dna/Documents/Native_Android/DialerApp/app/build/intermediates/pre-dexed/debug/classes-d026e888dda960d124cfb425a4fdb277079d494e.jar" />
-    </item>
-    <item
-        jar="/Users/dna/Documents/Native_Android/DialerApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
-        <dex dex="/Users/dna/Documents/Native_Android/DialerApp/app/build/intermediates/pre-dexed/debug/classes-923de45293d689d080767847c045d4e4297f32bb.jar" />
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="/Users/dna/Documents/Native_Android/DialerApp/app/build/intermediates/pre-dexed/debug/internal_impl-23.4.0-d89004ca439d1b3b0b71493441269fd4f3860f0b.jar" />
     </item>
     <item
         jar="/Users/dna/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.4.0/support-annotations-23.4.0.jar"
@@ -56,6 +35,34 @@
         revision="23.0.2"
         sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
         <dex dex="/Users/dna/Documents/Native_Android/DialerApp/app/build/intermediates/pre-dexed/debug/classes-1600409fa271a01bb70b6939bbdd1638b93b041d.jar" />
+    </item>
+    <item
+        jar="/Users/dna/Documents/Native_Android/DialerApp/app/build/intermediates/exploded-aar/net.hockeyapp.android/HockeySDK/4.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="de63f5e5393ab9eaa9c7f2d572d06edbc8bf9af0">
+        <dex dex="/Users/dna/Documents/Native_Android/DialerApp/app/build/intermediates/pre-dexed/debug/classes-436ae4709440e603d9794bf482452847864d2fc7.jar" />
+    </item>
+    <item
+        jar="/Users/dna/Documents/Native_Android/DialerApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="/Users/dna/Documents/Native_Android/DialerApp/app/build/intermediates/pre-dexed/debug/classes-923de45293d689d080767847c045d4e4297f32bb.jar" />
+    </item>
+    <item
+        jar="/Users/dna/Documents/Native_Android/DialerApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="/Users/dna/Documents/Native_Android/DialerApp/app/build/intermediates/pre-dexed/debug/classes-4edc2a4487df7f666debf3e9a0f8e2b85f81a447.jar" />
+    </item>
+    <item
+        jar="/Users/dna/Documents/Native_Android/DialerApp/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="/Users/dna/Documents/Native_Android/DialerApp/app/build/intermediates/pre-dexed/debug/classes-d026e888dda960d124cfb425a4fdb277079d494e.jar" />
     </item>
 
 </items>

@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.net.sip.SipException;
+import android.net.sip.SipSession;
 import android.os.Binder;
 import android.os.Build;
 import android.os.IBinder;
@@ -59,7 +60,9 @@ public class Calling extends AppCompatActivity {
         }
 
         if(callingState.equals(Constants.Sip_Outgoing)) {
-            textView.setText("Dialing Contact to: " +  sipAndroid.rec.getUriString());
+            try {
+                textView.setText("Dialing Contact to: " +  sipAndroid.rec.getUriString());
+            } catch (Exception e) {}
         }
 
         catchOutGoindCallInstance();
@@ -68,52 +71,56 @@ public class Calling extends AppCompatActivity {
 
         final Boolean[] calling = {false};
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if (fab != null) {
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                if (callingState.equals(Constants.Telephony_Incoming)) {
-                    //inst.answerCall();
-                    if (calling[0] == false) {
-                        Intent i = new Intent(Intent.ACTION_MEDIA_BUTTON);
-                        i.putExtra(Intent.EXTRA_KEY_EVENT,
-                                new KeyEvent(KeyEvent.ACTION_UP,
-                                        KeyEvent.KEYCODE_HEADSETHOOK));
-                        sendOrderedBroadcast(i, null);
-                        calling[0] = true;
+                    if (callingState.equals(Constants.Telephony_Incoming)) {
+                        //inst.answerCall();
+                        if (calling[0] == false) {
+                            Intent i = new Intent(Intent.ACTION_MEDIA_BUTTON);
+                            i.putExtra(Intent.EXTRA_KEY_EVENT,
+                                    new KeyEvent(KeyEvent.ACTION_UP,
+                                            KeyEvent.KEYCODE_HEADSETHOOK));
+                            sendOrderedBroadcast(i, null);
+                            calling[0] = true;
 
-                    } else if (calling[0]) {
+                        } else if (calling[0]) {
+                            TelephonyActions.EndCall();
+                        }
+                    }
+
+                    else if (callingState.equals(Constants.Sip_Incoming)) {
+
+                        if (calling[0] == false) {
+                            try {
+                                sipAndroid.call.answerCall(30);
+                                sipAndroid.call.startAudio();
+                                calling[0] = true;
+                            } catch (SipException e) {
+                                e.printStackTrace();
+                            }
+                        } else if (calling[0]) {
+                            endSipCall();
+                        }
+                    }
+
+                    else if (callingState.equals(Constants.Sip_Outgoing)) {
+                         if(sipAndroid.call.isInCall()) {
+                            Toast.makeText(Calling.this, "End Calling", Toast.LENGTH_SHORT).show();
+                            endSipCall();
+                         }
+                    }
+
+                    else if (callingState.equals(Constants.Telephony_Outgoing)) {
                         TelephonyActions.EndCall();
                     }
-                }
 
-                if (callingState.equals(Constants.Sip_Incoming)) {
 
-                    if (calling[0] == false) {
-                        try {
-                            sipAndroid.call.answerCall(30);
-                            sipAndroid.call.startAudio();
-                            calling[0] = true;
-                        } catch (SipException e) {
-                            e.printStackTrace();
-                        }
-                    } else if (calling[0]) {
-                        endSipCall();
-                    }
                 }
-
-                if (callingState.equals(Constants.Sip_Outgoing)) {
-                     if(sipAndroid.call.isInCall()) {
-                        Toast.makeText(Calling.this, "End Calling", Toast.LENGTH_SHORT).show();
-                        endSipCall();
-                     }
-                }
-
-                if (callingState.equals(Constants.Telephony_Outgoing)) {
-                    TelephonyActions.EndCall();
-                }
-            }
-        });
+            });
+        }
     }
 
     private void endSipCall() {
@@ -167,17 +174,6 @@ public class Calling extends AppCompatActivity {
     public void onDestroy() {
         super.onDestroy();
         unregisterReceiver(abcd);
-        if (sipAndroid.call != null) {
-            sipAndroid.call.close();
-        }
-        try {
-            if (sipAndroid.me != null) {
-                sipAndroid.manager.close(sipAndroid.me.getUriString());
-            }
-        } catch (Exception ee) {
-            //
-        }
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -204,7 +200,5 @@ public class Calling extends AppCompatActivity {
         super.onStart();
         // When we get back from the preference setting Activity, assume
         // settings have changed, and re-login with new auth info.
-        sipAndroid = SipAndroid.getInstance();
-        sipAndroid.SipAndroidInitialize(this);
     }
 }

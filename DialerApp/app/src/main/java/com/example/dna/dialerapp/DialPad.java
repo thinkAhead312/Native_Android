@@ -7,9 +7,11 @@ import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -148,8 +150,24 @@ public class DialPad extends AppCompatActivity implements View.OnClickListener {
     private void sipCall() {
         Toast.makeText(DialPad.this, "Sip", Toast.LENGTH_SHORT).show();
         sipAndroid.OutBoundCall(screen.getText().toString().trim(), this);
-        IntentStartActivity.intentCallingActivity(DialPad.this,Constants.Call_State,Constants.Sip_Outgoing);
+
+        checkPrerenceManager();
+        IntentStartActivity.intentCallingActivity(DialPad.this, Constants.Call_State, Constants.Sip_Outgoing);
     }
+
+    private void checkPrerenceManager() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        Constants.username = prefs.getString("namePref", "");
+        Constants.domain = prefs.getString("domainPref", "");
+        Constants.password = prefs.getString("passPref", "");
+
+        if (Constants.username.length() == 0 || Constants.domain.length() == 0 || Constants.password.length() == 0) {
+            Toast.makeText(DialPad.this, "You Need To Register to Sip First", Toast.LENGTH_SHORT).show();
+            IntentStartActivity.updatePreferences(DialPad.this);
+            return;
+        }
+    }
+
 
     private void telephonyCall() {
         Toast.makeText(DialPad.this, "Telephony", Toast.LENGTH_SHORT).show();

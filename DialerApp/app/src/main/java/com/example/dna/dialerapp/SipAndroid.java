@@ -11,6 +11,7 @@ import android.net.sip.SipException;
 import android.net.sip.SipManager;
 import android.net.sip.SipProfile;
 import android.net.sip.SipRegistrationListener;
+import android.net.sip.SipSession;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -30,7 +31,6 @@ public class SipAndroid {
     StringBuilder messageBuilder = new StringBuilder();
     Context context = null;
 
-    MainActivity mainActivity = new MainActivity();
     public static SipAndroid sipAndroid;
     private SipAndroid() {}
     public static SipAndroid getInstance() {
@@ -40,14 +40,14 @@ public class SipAndroid {
         return sipAndroid;
     }
 
-    public void SipAndroidInitialize(Context context) {
+    public void SipAndroidInitialize(Context context)  {
+
         this.context=context;
         IntentFilter filter = new IntentFilter();
         filter.addAction("android.SipDemo.INCOMING_CALL");
         callReceiver = new IncomingSipCallReceiver();
-        if(callReceiver == null) {
-            context.registerReceiver(callReceiver, filter);
-        }
+        context.registerReceiver(callReceiver, filter);
+
         if (SipManager.isVoipSupported(context) && SipManager.isApiSupported(context)){
             // Good to go!
             initializeManager();
@@ -59,6 +59,7 @@ public class SipAndroid {
     }
 
     private void initializeManager() {
+
         if(manager == null) {
             manager = SipManager.newInstance(context);
         }
@@ -69,10 +70,9 @@ public class SipAndroid {
         Constants.password = prefs.getString("passPref", "");
 
         if (Constants.username.length() == 0 || Constants.domain.length() == 0 || Constants.password.length() == 0) {
-            Toast.makeText(context, "Please input Details", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Please input Details", Toast.LENGTH_SHORT).show();
             return;
         }
-
         try {
             //Build the SIP profile
             Log.i("SipAndroid.class", Constants.username + Constants.domain + Constants.password);
@@ -107,21 +107,20 @@ public class SipAndroid {
                     //mainActivity.updateStatus("Registration failed.  Please check settings.");
                     Log.e("ERROR REGISTER", s + ":" + s1);
                     Log.i("SipAndroid.class", "Registration failed.  Please check settings." + s + " " + s1);
-                    manager = null;
-                    me = null;
+                    //initializeManager();
                 }
             });
             // showMessage("Disciple", messageBuilder.toString()); //show Message
         } catch (ParseException pe) {
             messageBuilder.append("Connection Errror" +"\n");
+            Log.e("ERROR REGISTER", String.valueOf(pe));
         } catch (SipException se) {
             messageBuilder.append(se.getMessage() +"\n");
+            Log.e("ERROR REGISTER Sip", String.valueOf(se));
         } catch (java.text.ParseException e) {
             e.printStackTrace();
         }
     }
-
-
 
     public void OutBoundCall(String outbound_number, final Context context) {
         //mainActivity.updateStatus(outbound_number);
@@ -129,6 +128,8 @@ public class SipAndroid {
             SipProfile.Builder builder = new SipProfile.Builder(outbound_number, me.getSipDomain());
             builder.setAutoRegistration(false);
             rec = builder.build();
+
+
 
             SipAudioCall.Listener listener = new SipAudioCall.Listener() {
                 // Much of the client's interaction with the SIP Stack will
@@ -150,6 +151,7 @@ public class SipAndroid {
                 public void onCallEnded(SipAudioCall call) {
                     //mainActivity.updateStatus("Ready.");
                     context.sendBroadcast(new Intent("kill"));
+
                 }
             };
             Toast.makeText(context, me.getUriString() + rec.getUriString(), Toast.LENGTH_SHORT).show();

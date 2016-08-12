@@ -126,13 +126,6 @@ public class ViewSms extends AppCompatActivity {
         startActivity(settingsActivity);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        // When we get back from the preference setting Activity, assume
-        // settings have changed, and re-login with new auth info.
-        sipAndroid = SipAndroid.getInstance();
-        sipAndroid.SipAndroidInitialize(this);
-    }
+
 
 }

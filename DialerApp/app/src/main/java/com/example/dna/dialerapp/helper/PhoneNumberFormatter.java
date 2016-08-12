@@ -8,10 +8,10 @@ public class PhoneNumberFormatter {
 
     public static String phoneNumberFormat(String phNumber) {
         phNumber = phNumber.replace(" ", "");
-        if (phNumber.charAt(0)=='0') {
+        /*if (phNumber.charAt(0)=='0') {
             phNumber = phNumber.substring(1);
             phNumber = "+63" + phNumber;
-        }
+        }*/
 
         return phNumber;
     }

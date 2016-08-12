@@ -24,7 +24,6 @@ public class UtilityService extends Service {
         SipAndroid sipAndroid = SipAndroid.getInstance();
         sipAndroid.SipAndroidInitialize(this);
         Log.i("Device Re-started", "Sip Re-started");
-
         return START_STICKY;
     }
     @Override

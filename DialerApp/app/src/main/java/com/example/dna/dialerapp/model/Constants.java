@@ -6,9 +6,9 @@ package com.example.dna.dialerapp.model;
 public class Constants {
     public void Contants() { }
 
-    public static  String username = "4212";
-    public static String domain = "10.1.1.11";
-    public static String password = "f5eacba564a3d90129e7d5f284d8688d";
+    public static  String username = "";//"4212";
+    public static String domain = "";//"10.1.1.11";
+    public static String password = "";//"f5eacba564a3d90129e7d5f284d8688d";
     public static final int SET_AUTH_INFO = 2;
 
     public static String Telephony_Incoming ="Incoming_Call";

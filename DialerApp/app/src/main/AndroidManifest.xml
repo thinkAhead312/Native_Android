@@ -154,18 +154,19 @@
         -->
         <!-- //////////////////////////// SIP RECEIVERS   ////////////////////////// -->
 
-
         <receiver android:name=".receivers.LaunchAppBroadcast"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
-
         <service android:name=".service.UtilityService" />
+
 
         <activity android:name=".Calling" > </activity>
         <activity android:name=".settings.SipSettings" android:label="set_preferences"/>
+        <meta-data android:name="net.hockeyapp.android.appIdentifier" android:value="${HOCKEYAPP_APP_ID}" />
+
     </application>
 
 </manifest>

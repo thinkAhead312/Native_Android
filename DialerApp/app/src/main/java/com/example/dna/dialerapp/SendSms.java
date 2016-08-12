@@ -33,6 +33,7 @@ public class SendSms extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_sms);
         sipAndroid = SipAndroid.getInstance();
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -156,13 +157,5 @@ public class SendSms extends AppCompatActivity {
         startActivity(settingsActivity);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        // When we get back from the preference setting Activity, assume
-        // settings have changed, and re-login with new auth info.
-        sipAndroid = SipAndroid.getInstance();
-        sipAndroid.SipAndroidInitialize(this);
-    }
 
 }

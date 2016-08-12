@@ -1,34 +1,28 @@
 package com.example.dna.dialerapp;
 
-import android.app.NotificationManager;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
+import android.content.SharedPreferences;
 import android.os.Build;
-import android.provider.ContactsContract;
+import android.preference.PreferenceManager;
 import android.provider.Telephony;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.telephony.SmsManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-
+import android.widget.Toast;
 import com.example.dna.dialerapp.fragment.*;
 import com.example.dna.dialerapp.fragment.CallLogs;
+import com.example.dna.dialerapp.helper.IntentStartActivity;
 import com.example.dna.dialerapp.model.Constants;
-import com.example.dna.dialerapp.settings.SipSettings;
+
+import net.hockeyapp.android.CrashManager;
+import net.hockeyapp.android.UpdateManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,23 +30,46 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
 
-        private Toolbar toolbar;
-        private TabLayout tabLayout;
-        private ViewPager viewPager;
-        SipAndroid sipAndroid;
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-            sipAndroid = SipAndroid.getInstance();
-            sipAndroid.SipAndroidInitialize(this);
-            init();
+    private Toolbar toolbar;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    SipAndroid sipAndroid;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        checkForCrashes();
+        sipAndroid = SipAndroid.getInstance();
+        //checkSipStatus();
+        init();
+        //checkPrerenceManager();
+
+    }
+
+    private void checkForCrashes() {
+        CrashManager.register(this, "e69ee2e473ee48a19a013292006df233", new MyCustomCrashManagerListener());
+    }
+
+    private void checkSipStatus() {
+        sipAndroid.SipAndroidInitialize(this);
+}
+
+    private void checkPrerenceManager() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        Constants.username = prefs.getString("namePref", "");
+        Constants.domain = prefs.getString("domainPref", "");
+        Constants.password = prefs.getString("passPref", "");
+
+        if (Constants.username.length() == 0 || Constants.domain.length() == 0 || Constants.password.length() == 0) {
+            Toast.makeText(MainActivity.this, "You Need To Register to Sip First", Toast.LENGTH_SHORT).show();
+            IntentStartActivity.updatePreferences(MainActivity.this);
+            return;
         }
+    }
 
     private void init() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
@@ -66,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
                 // App is not default.
                 // Show the "not currently set as the default SMS app" interface
                 // Set up a button that allows the user to change the default SMS app
-
                         Intent intent =
                                 new Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT);
                         intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME,
@@ -119,13 +135,15 @@ public class MainActivity extends AppCompatActivity {
             }
     }
 
+
     @Override
     public void onStart() {
         super.onStart();
         // When we get back from the preference setting Activity, assume
         // settings have changed, and re-login with new auth info.
         sipAndroid = SipAndroid.getInstance();
-        sipAndroid.SipAndroidInitialize(this);
+        checkSipStatus();
+        checkPrerenceManager();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -136,37 +154,51 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case Constants.SET_AUTH_INFO:
-                updatePreferences();
+                IntentStartActivity.updatePreferences(MainActivity.this);
                 break;
         }
         return true;
-    }
-    public void updatePreferences() {
-        Intent settingsActivity = new Intent(getBaseContext(),
-                SipSettings.class);
-        startActivity(settingsActivity);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         if (sipAndroid.call != null) {
-
             sipAndroid.call.close();
         }
         try {
-
             if (sipAndroid.me != null) {
                 sipAndroid.call.endCall();
                 sipAndroid.manager.close(sipAndroid.me.getUriString());
             }
         } catch (Exception ee) {
-            //
         }
+        unregisterManagers();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
         if (sipAndroid.callReceiver != null) {
             unregisterReceiver(sipAndroid.callReceiver);
         }
+        unregisterManagers();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkForCrashes();
+        checkForUpdates();
+    }
+
+    private void checkForUpdates() {
+        // Remove this for store builds!
+        UpdateManager.register(this);
+    }
+
+    private void unregisterManagers() {
+        UpdateManager.unregister();
+    }
 
 }

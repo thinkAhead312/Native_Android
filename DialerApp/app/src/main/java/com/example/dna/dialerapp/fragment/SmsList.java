@@ -136,6 +136,7 @@ public class SmsList extends Fragment {
                         sms.setName(contact.getName());
                     }
                 }
+
                 if(!smsMap.containsKey(sms.getNumber())) {
                     smsMap.put(sms.getNumber(), sms);
                     smsItem.add(sms);

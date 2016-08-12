@@ -8,6 +8,7 @@ import com.example.dna.dialerapp.Calling;
 import com.example.dna.dialerapp.DialPad;
 import com.example.dna.dialerapp.SendSms;
 import com.example.dna.dialerapp.ViewSms;
+import com.example.dna.dialerapp.settings.SipSettings;
 
 /**
  * Created by dna on 8/4/16.
@@ -39,6 +40,12 @@ public class IntentStartActivity {
         intentActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intentActivity.putExtra(KEY, STRING_EXTRA);
         context.startActivity(intentActivity);
+    }
+
+    public static void updatePreferences(Context context) {
+        Intent settingsActivity = new Intent(context.getApplicationContext(),
+                SipSettings.class);
+        context.startActivity(settingsActivity);
     }
 
 
