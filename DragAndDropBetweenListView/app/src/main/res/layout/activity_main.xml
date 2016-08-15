@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="4dp"
+    android:id="@+id/linearLayout"
+    tools:context="com.example.dna.draganddropbetweenlistview.MainActivity">
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:autoLink="web"
+        android:text="http://android-er.blogspot.com/"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:background="@android:color/background_dark"
+        android:orientation="horizontal" >
+
+        <com.example.dna.draganddropbetweenlistview.LinearLayoutListView
+            android:id="@+id/pane1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:background="@android:color/background_light"
+            android:orientation="vertical" >
+
+            <ListView
+                android:id="@+id/listview1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.example.dna.draganddropbetweenlistview.LinearLayoutListView>
+
+        <com.example.dna.draganddropbetweenlistview.LinearLayoutListView
+            android:id="@+id/pane2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:background="@android:color/background_light"
+            android:orientation="vertical" >
+
+            <ListView
+                android:id="@+id/listview2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.example.dna.draganddropbetweenlistview.LinearLayoutListView>
+
+        <com.example.dna.draganddropbetweenlistview.LinearLayoutListView
+            android:id="@+id/pane3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:background="@android:color/background_light"
+            android:orientation="vertical" >
+
+            <ListView
+                android:id="@+id/listview3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.example.dna.draganddropbetweenlistview.LinearLayoutListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:id="@+id/linear"
+        >
+
+        <TextView
+            android:id="@+id/prompt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/black"
+            android:gravity="bottom"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
