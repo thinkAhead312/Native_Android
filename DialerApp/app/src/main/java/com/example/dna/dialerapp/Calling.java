@@ -65,13 +65,9 @@ public class Calling extends AppCompatActivity {
             } catch (Exception e) {}
         }
 
-        catchOutGoindCallInstance();
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-
         final Boolean[] calling = {false};
 
-        if (fab != null) {
+
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -120,9 +116,7 @@ public class Calling extends AppCompatActivity {
 
                 }
             });
-        }
     }
-
     private void endSipCall() {
         try {
             sipAndroid.call.endCall();
@@ -131,7 +125,6 @@ public class Calling extends AppCompatActivity {
             Log.e("END THIS CALL PLEASE", "END NOW");
         }
     }
-
     private void changeFabButtonImage() {
         fab.setBackgroundColor(Color.parseColor("#03A9F4"));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -140,28 +133,10 @@ public class Calling extends AppCompatActivity {
             fab.setImageDrawable(getResources().getDrawable(R.drawable.answer_call));
         }
     }
-
-
-    private void catchOutGoindCallInstance() {
-        Bundle extras = getIntent().getExtras();
-        if(extras != null) {
-            outBound(extras.getString("OUTBOUND_NUMBER"));
-        }
-    }
-
     private void initializeWidgets() {
         fab = (FloatingActionButton) findViewById(R.id.fab);
         textView = (TextView) findViewById(R.id.txtContact);
     }
-
-    public int checkSelfPermission(String callPhone) {
-        return 0;
-    }
-
-    private void outBound(String outbound_number) {
-        //Toast.makeText(Calling.this, "OUTBOUND ^_^" +outbound_number, Toast.LENGTH_SHORT).show();
-    }
-
     private final BroadcastReceiver abcd = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -170,11 +145,6 @@ public class Calling extends AppCompatActivity {
     };
 
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        unregisterReceiver(abcd);
-    }
 
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(0, Constants.SET_AUTH_INFO, 0, "Edit your SIP Info.");
@@ -189,6 +159,7 @@ public class Calling extends AppCompatActivity {
         }
         return true;
     }
+
     public void updatePreferences() {
         Intent settingsActivity = new Intent(getBaseContext(),
                 SipSettings.class);
@@ -196,9 +167,8 @@ public class Calling extends AppCompatActivity {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        // When we get back from the preference setting Activity, assume
-        // settings have changed, and re-login with new auth info.
+    public void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(abcd);
     }
 }

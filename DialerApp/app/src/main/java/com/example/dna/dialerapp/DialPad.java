@@ -200,7 +200,6 @@ public class DialPad extends AppCompatActivity implements View.OnClickListener {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-
         menu.add(0, Constants.SET_AUTH_INFO, 0, "Edit your SIP Info.");
         return true;
     }
