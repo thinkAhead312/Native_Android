@@ -236,7 +236,6 @@ public  class ForeCastFragment extends Fragment {
                 Log.d(LOG_TAG, "Unit type not found: " + unitType);
             }
 
-
             long roundedHigh = Math.round(high);
             long roundedLow = Math.round(low);
 
