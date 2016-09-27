@@ -1,10 +1,14 @@
 package com.example.dna.geoquiz;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,6 +51,25 @@ public class CheatActivity extends AppCompatActivity {
                     mAnswerTextView.setText(R.string.false_button);
                 }
                 setAnswerShownResult(true);
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    int cx = mShowAnswserButton.getWidth() / 2;
+                    int cy = mShowAnswserButton.getWidth() / 2;
+                    float radius = mShowAnswserButton.getWidth();
+                    Animator anim = ViewAnimationUtils.createCircularReveal(mShowAnswserButton, cx, cy, radius, 0);
+                    anim.addListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            mAnswerTextView.setVisibility(View.VISIBLE);
+                            mShowAnswserButton.setVisibility(View.INVISIBLE);
+                        }
+                    });
+                    anim.start();
+                } else {
+                    mAnswerTextView.setVisibility(View.VISIBLE);
+                    mShowAnswserButton.setVisibility(View.INVISIBLE);
+                }
             }
         });
 
