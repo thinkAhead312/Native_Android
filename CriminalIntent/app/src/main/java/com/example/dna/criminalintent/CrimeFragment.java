@@ -31,7 +31,6 @@ public class CrimeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mCrime = new Crime();
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat mdformat = new SimpleDateFormat("yyyy / MM / dd ");
         mCrime.setDate(calendar.getTime());
     }
 
