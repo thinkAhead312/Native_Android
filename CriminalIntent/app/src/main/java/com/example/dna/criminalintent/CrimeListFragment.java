@@ -1,5 +1,7 @@
 package com.example.dna.criminalintent;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,11 +18,14 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by dna on 9/27/16.
  */
 public class CrimeListFragment extends Fragment {
+
+
 
     private RecyclerView mCrimeRecyclerView;
     private CrimeAdapter mAdapter;
@@ -36,13 +41,27 @@ public class CrimeListFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
+    }
+
     private void updateUI() {
         CrimeLab crimeLab = CrimeLab.get(getActivity());
         List<Crime> crimes  = crimeLab.getCrimes();
-        mAdapter = new CrimeAdapter(crimes);
-        mCrimeRecyclerView.setAdapter(mAdapter);
+
+        if(mAdapter == null) {
+            mAdapter = new CrimeAdapter(crimes);
+            mCrimeRecyclerView.setAdapter(mAdapter);
+        } else {
+            mAdapter.notifyDataSetChanged();
+        }
+
     }
 
+
+    private static final int REQUEST_CRIME = 1;
 
     private class CrimeHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private Crime mCrime;
@@ -72,9 +91,22 @@ public class CrimeListFragment extends Fragment {
 //            Toast.makeText(getActivity(),
 //                    mCrime.getTitle() + " clicked!", Toast.LENGTH_SHORT)
 //                    .show();
-            Intent intent = new Intent(getActivity(), CrimeActivity.class);
+//            Intent intent = new Intent(getActivity(), CrimeActivity.class);
+//            Intent intent = CrimeActivity.newIntent(getActivity(),mCrime.getId());
+            Intent intent = CrimePagerActivity.newIntent(getActivity(), mCrime.getId());
             startActivity(intent);
         }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CRIME) {
+            // Handle result
+        }
+    }
+
+    public void returnResult() {
+        getActivity().setResult(Activity.RESULT_OK, null);
     }
 
     private class CrimeAdapter extends RecyclerView.Adapter<CrimeHolder> {

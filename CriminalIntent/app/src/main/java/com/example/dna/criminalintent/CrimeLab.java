@@ -1,6 +1,7 @@
 package com.example.dna.criminalintent;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.UUID;
  * Created by dna on 9/27/16.
  */
 public class CrimeLab {
+    private String TAG = "CrimeLab";
     private static CrimeLab sCrimeLab;
     private List<Crime> mCrimes;
 
@@ -42,6 +44,7 @@ public class CrimeLab {
     public Crime getCrime(UUID id) {
         for(Crime crime : mCrimes) {
             if (crime.getId().equals(id)) {
+                Log.i(TAG, String.valueOf(crime.getTitle()));
                 return crime;
             }
         }
