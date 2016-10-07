@@ -11,10 +11,16 @@ public class Crime {
     private String mTitle;
     private Date mDate;
     private boolean mSolved;
+    private String mSuspect;
 
     public Crime() {
         //generate unique identifier
         mId = UUID.randomUUID();
+    }
+
+    public Crime(UUID id) {
+        mId = id;
+        mDate = new Date();
     }
 
     public Date getDate() {
@@ -43,5 +49,13 @@ public class Crime {
 
     public UUID getId() {
         return mId;
+    }
+
+    public String getSuspect() {
+        return mSuspect;
+    }
+
+    public void setSuspect(String suspect) {
+        mSuspect = suspect;
     }
 }

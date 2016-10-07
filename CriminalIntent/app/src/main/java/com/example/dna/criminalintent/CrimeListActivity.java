@@ -14,6 +14,7 @@ public class CrimeListActivity extends  SingleFragmentActivity{
 
     public static Intent newIntent(Context packageContext) {
         Intent intent = new Intent(packageContext, CrimeListActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         return intent;
     }
 
