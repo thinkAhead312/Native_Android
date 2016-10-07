@@ -3,8 +3,13 @@ package com.example.dna.criminalintent;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -21,7 +26,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.example.dna.criminalintent.utils.PictureUtils;
+
+import java.io.File;
 import java.util.Date;
 import java.util.UUID;
 
@@ -34,13 +45,17 @@ public class CrimeFragment extends Fragment {
 
     private static final int REQUEST_DATE = 0;
     private static final int REQUEST_CONTACT  = 1;
+    private static final int REQUEST_PHOTO = 2;
 
     private Crime mCrime;
+    private File mPhotoFile;
     private EditText mTitleField;
     private Button mDateButton;
     private CheckBox mSolvedCheckBox;
     private Button mReportButton;
     private Button mSuspectButton;
+    private ImageButton mPhotoButton;
+    private ImageView mPhotoView;
 
 
     public  static CrimeFragment newInstance(UUID crimeId) {
@@ -57,6 +72,7 @@ public class CrimeFragment extends Fragment {
         setHasOptionsMenu(true);
         UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
         mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);
+        mPhotoFile = CrimeLab.get(getActivity()).getPhotoFile(mCrime);
     }
 
     @Nullable
@@ -129,6 +145,34 @@ public class CrimeFragment extends Fragment {
             }
         });
 
+
+        PackageManager packageManager = getActivity().getPackageManager();
+        if (packageManager.resolveActivity(pickContact, PackageManager.MATCH_DEFAULT_ONLY) == null) {
+            mSuspectButton.setEnabled(false);
+        }
+
+        mPhotoButton = (ImageButton) v.findViewById(R.id.crime_camera);
+        final Intent captureImage = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        boolean cantakePhoto = mPhotoFile != null && captureImage.resolveActivity(packageManager) != null;
+        //mPhotoButton.setEnabled(cantakePhoto);
+
+        if(cantakePhoto) {
+            Uri uri = Uri.fromFile(mPhotoFile);
+            captureImage.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+        }
+
+        mPhotoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(captureImage, REQUEST_PHOTO);
+            }
+        });
+
+        mPhotoView = (ImageView) v.findViewById(R.id.crime_photo);
+        updatePhotoView();
+
+
         return v;
     }
    private void  updateTitle() {
@@ -161,8 +205,19 @@ public class CrimeFragment extends Fragment {
 
         String report  = getString(R.string.crime_report, mCrime.getTitle(), dateString, solvedString, suspect);
 
+        return report;
+    }
 
-        return null;
+    private void updatePhotoView() {
+        if(mPhotoFile == null || !mPhotoFile.exists()) {
+
+            Toast.makeText(getActivity(), "null?", Toast.LENGTH_SHORT).show();
+            mPhotoView.setImageDrawable(null);
+        }
+        else {
+            Bitmap bitmap = PictureUtils.getScaledBitmap(mPhotoFile.getPath(), getActivity());
+            mPhotoView.setImageBitmap(bitmap);
+        }
     }
 
     @Override
@@ -174,6 +229,31 @@ public class CrimeFragment extends Fragment {
             Date date = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
             mCrime.setDate(date);
             updateDate();
+        } else if(requestCode == REQUEST_CONTACT && data != null) {
+            Uri contactUri = data.getData();
+            //Specify which fields you want your query to return values for
+            String[] queryFields = new String[] {ContactsContract.Contacts.DISPLAY_NAME};
+            //Perform your Query --the contactUri like a "where" caluse here
+
+            Cursor c = getActivity().getContentResolver().query(contactUri, queryFields, null, null, null);
+
+            try {
+                //Double-check that you actually got results
+                if(c.getCount() == 0) {
+                    return;
+                }
+                // pull out the first column of the first row of the data == that is your suspect's name
+                c.moveToNext();
+                String suspect = c.getString(0);
+                mCrime.setSuspect(suspect);
+                mSuspectButton.setText(suspect);
+            }
+            finally {
+                c.close();
+            }
+        }
+        else if (requestCode == REQUEST_PHOTO) {
+            updatePhotoView();
         }
     }
 
