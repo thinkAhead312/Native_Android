@@ -40,8 +40,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.bt_go})
+    @OnClick({R.id.bt_go, R.id.fab})
     public void onClick(View view) {
+        ActivityOptionsCompat oc2 = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
+
         switch (view.getId()) {
             case R.id.bt_go:
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -50,10 +52,12 @@ public class MainActivity extends AppCompatActivity {
                     getWindow().setExitTransition(explode);
                     getWindow().setEnterTransition(explode);
                 }
-
-                ActivityOptionsCompat oc2 = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
                 Intent i2 = new Intent(this,Change12ManualActivity.class);
                 startActivity(i2, oc2.toBundle());
+                break;
+            case R.id.fab:
+                Intent i3 = new Intent(this,Change12ManualActivity.class);
+                startActivity(i3, oc2.toBundle());
                 break;
         }
     }
