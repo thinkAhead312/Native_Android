@@ -44,12 +44,12 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_go:
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//                    Explode explode = new Explode();
-//                    explode.setDuration(500);
-//                    getWindow().setExitTransition(explode);
-//                    getWindow().setEnterTransition(explode);
-//                }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    Explode explode = new Explode();
+                    explode.setDuration(500);
+                    getWindow().setExitTransition(explode);
+                    getWindow().setEnterTransition(explode);
+                }
 
                 ActivityOptionsCompat oc2 = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
                 Intent i2 = new Intent(this,Change12ManualActivity.class);

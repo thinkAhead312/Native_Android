@@ -18,7 +18,6 @@
         <activity android:name=".Change12ManualActivity"></activity>
 
 
-        <activity android:name=".LoginSuccessActivity"></activity>
     </application>
 
 </manifest>

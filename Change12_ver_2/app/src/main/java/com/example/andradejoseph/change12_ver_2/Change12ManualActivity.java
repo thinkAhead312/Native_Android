@@ -24,12 +24,12 @@ public class Change12ManualActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change12_manual);
 
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            Explode explode = new Explode();
-//            explode.setDuration(500);
-//            getWindow().setExitTransition(explode);
-//            getWindow().setEnterTransition(explode);
-//        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Explode explode = new Explode();
+            explode.setDuration(500);
+            getWindow().setExitTransition(explode);
+            getWindow().setEnterTransition(explode);
+        }
 
         /**
          * Add Fragment you want to dsiplay in list
