@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.andradejoseph.bluetoothconnect.adapter.ItemAdapter;
 import com.example.andradejoseph.bluetoothconnect.model.BluetoothModel;
 import com.fenjuly.mylibrary.FloorListView;
 
@@ -25,8 +26,9 @@ import java.util.Set;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    FloorListView mListView;
+
     ArrayList myList = new ArrayList();
+    FloorListView mListView;
     Toolbar toolbar;
 
     //Adapter for bluetooth paired list
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pairedDevicesList();
+                updateAdapterDeviceList();
             }
         });
 
@@ -104,11 +106,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(getApplicationContext(), "No Paired BluetoothModel Devices Found.", Toast.LENGTH_LONG).show();
         }
         Log.d("BLuetoothDevices", String.valueOf(myList));
-        adapter = new ItemAdapter(this, myList);
         mListView = (FloorListView) findViewById(R.id.recyclerview);
+        mListView.setEmptyView(findViewById(R.id.content_main_empty_list));
+        adapter = new ItemAdapter(this, myList);
         mListView.setMode(FloorListView.ABOVE);
         mListView.setrHeight(2);
         mListView.setAdapter(adapter);
+
     }
 
 
@@ -125,15 +129,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Log.d("BLuetoothDevices", bluetoothModel.getmBlueToothName() + " " + bluetoothModel.getmBlueToothAddress() + "\n");
                 myList.add(bluetoothModel);
             }
+            if(myList.size() > 0) {
+                adapter = new ItemAdapter(this, myList);
+            }
+            adapter.updateAdapter(myList);
         }
         else
         {
             Toast.makeText(getApplicationContext(), "No Paired BluetoothModel Devices Found.", Toast.LENGTH_LONG).show();
+
         }
-
-//        adapter = new ItemAdapter(this, myList);
-
-        adapter.updateAdapter(myList);
 
     }
 

@@ -1,6 +1,7 @@
-package com.example.andradejoseph.bluetoothconnect;
+package com.example.andradejoseph.bluetoothconnect.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.swipe.SwipeLayout;
+import com.example.andradejoseph.bluetoothconnect.LedControl;
+import com.example.andradejoseph.bluetoothconnect.R;
 import com.example.andradejoseph.bluetoothconnect.model.BluetoothModel;
 
 import java.util.ArrayList;
@@ -59,7 +62,7 @@ public class ItemAdapter  extends BaseAdapter {
             }
         });
 
-        BluetoothModel bluetoothModel = getItem(position);
+        final BluetoothModel bluetoothModel = getItem(position);
 
         final View view = convertView;
         TextView textView = (TextView) convertView.findViewById(R.id.textview);
@@ -69,7 +72,8 @@ public class ItemAdapter  extends BaseAdapter {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "Connect to this bluetooth: " + text, Toast.LENGTH_SHORT).show();
+                Intent i = LedControl.newIntent(mContext, bluetoothModel.getmBlueToothAddress());
+                mContext.startActivity(i);
             }
         });
         SwipeLayout swipeLayout = (SwipeLayout) convertView.findViewById(R.id.swipe);
