@@ -63,7 +63,7 @@ public class LedControl extends AppCompatActivity implements View.OnTouchListene
 
         text1.setText("Tap a color!");
 
-         seek = (SeekBar) findViewById(R.id.seekBar1);
+        seek = (SeekBar) findViewById(R.id.seekBar1);
         seek.setProgress(blueStart);
         seek.setMax(255);
         seek.setOnSeekBarChangeListener(this);

@@ -116,31 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    private void pairedDevicesList()
-    {
-        pairedDevices = myBluetooth.getBondedDevices();
-        myList = new ArrayList();
 
-        if (pairedDevices.size()>0)
-        {
-            for(BluetoothDevice bt : pairedDevices)
-            {
-                BluetoothModel bluetoothModel = new BluetoothModel(bt.getName(), bt.getAddress());
-                Log.d("BLuetoothDevices", bluetoothModel.getmBlueToothName() + " " + bluetoothModel.getmBlueToothAddress() + "\n");
-                myList.add(bluetoothModel);
-            }
-            if(myList.size() > 0) {
-                adapter = new ItemAdapter(this, myList);
-            }
-            adapter.updateAdapter(myList);
-        }
-        else
-        {
-            Toast.makeText(getApplicationContext(), "No Paired BluetoothModel Devices Found.", Toast.LENGTH_LONG).show();
-
-        }
-
-    }
 
 
     @Override
