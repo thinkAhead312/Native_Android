@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,15 +43,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         init(); //init widgets; link resources
         enableBLueTooth(); //enable bluetooth; if bluetooth is off
 
-
-
-        mListView.setAdapter(adapter);
-
+        updateAdapterDeviceList();
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                pairedDevicesList();
             }
         });
 
@@ -67,12 +65,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void init() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        mListView = (FloorListView) findViewById(R.id.recyclerview);
-        mListView.setMode(FloorListView.ABOVE);
-        mListView.setrHeight(2);
-
-
     }
 
     private void enableBLueTooth() {
@@ -94,17 +86,43 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-
-    private void pairedDevicesList()
-    {
+    private void updateAdapterDeviceList() {
         pairedDevices = myBluetooth.getBondedDevices();
-
+        myList = new ArrayList();
 
         if (pairedDevices.size()>0)
         {
             for(BluetoothDevice bt : pairedDevices)
             {
                 BluetoothModel bluetoothModel = new BluetoothModel(bt.getName(), bt.getAddress());
+                Log.d("BLuetoothDevices", bluetoothModel.getmBlueToothName() + " " + bluetoothModel.getmBlueToothAddress() + "\n");
+                myList.add(bluetoothModel);
+            }
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), "No Paired BluetoothModel Devices Found.", Toast.LENGTH_LONG).show();
+        }
+        Log.d("BLuetoothDevices", String.valueOf(myList));
+        adapter = new ItemAdapter(this, myList);
+        mListView = (FloorListView) findViewById(R.id.recyclerview);
+        mListView.setMode(FloorListView.ABOVE);
+        mListView.setrHeight(2);
+        mListView.setAdapter(adapter);
+    }
+
+
+    private void pairedDevicesList()
+    {
+        pairedDevices = myBluetooth.getBondedDevices();
+        myList = new ArrayList();
+
+        if (pairedDevices.size()>0)
+        {
+            for(BluetoothDevice bt : pairedDevices)
+            {
+                BluetoothModel bluetoothModel = new BluetoothModel(bt.getName(), bt.getAddress());
+                Log.d("BLuetoothDevices", bluetoothModel.getmBlueToothName() + " " + bluetoothModel.getmBlueToothAddress() + "\n");
                 myList.add(bluetoothModel);
             }
         }
@@ -113,10 +131,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(getApplicationContext(), "No Paired BluetoothModel Devices Found.", Toast.LENGTH_LONG).show();
         }
 
-        adapter = new ItemAdapter(this, myList);
-        mListView.setAdapter(adapter);
-//        devicelist.setAdapter(adapter);
-//        devicelist.setOnItemClickListener(myListClickListener); //Method called when the device from the list is clicked
+//        adapter = new ItemAdapter(this, myList);
+
+        adapter.updateAdapter(myList);
 
     }
 

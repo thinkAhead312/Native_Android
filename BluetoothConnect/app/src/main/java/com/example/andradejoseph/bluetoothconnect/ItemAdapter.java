@@ -23,7 +23,7 @@ import java.util.ArrayList;
  */
 public class ItemAdapter  extends BaseAdapter {
     Context mContext;
-    ArrayList list = new ArrayList();;
+    ArrayList<BluetoothModel> list = new ArrayList();;
 
     public ItemAdapter(Context context, ArrayList list) {
         mContext = context;
@@ -38,7 +38,7 @@ public class ItemAdapter  extends BaseAdapter {
     @Override
     public BluetoothModel getItem(int position) {
 
-        return (BluetoothModel) list.get(position);
+        return list.get(position);
     }
 
     @Override
@@ -122,4 +122,12 @@ public class ItemAdapter  extends BaseAdapter {
         final float scale = mContext.getResources().getDisplayMetrics().density;
         return dp * scale + 0.5f;
     }
+
+    public void updateAdapter(ArrayList list) {
+
+        this.list = list;
+        notifyDataSetChanged();
+    }
+
+
 }
