@@ -14,25 +14,31 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.swipe.SwipeLayout;
+import com.example.andradejoseph.bluetoothconnect.model.BluetoothModel;
+
+import java.util.ArrayList;
 
 /**
  * Created by ANDRADEJOSEPH on 1/11/2017.
  */
 public class ItemAdapter  extends BaseAdapter {
     Context mContext;
+    ArrayList list = new ArrayList();;
 
-    public ItemAdapter(Context context) {
+    public ItemAdapter(Context context, ArrayList list) {
         mContext = context;
+        this.list = list;
     }
 
     @Override
     public int getCount() {
-        return 100;
+        return list.size();
     }
 
     @Override
-    public Object getItem(int position) {
-        return null;
+    public BluetoothModel getItem(int position) {
+
+        return (BluetoothModel) list.get(position);
     }
 
     @Override
@@ -52,11 +58,14 @@ public class ItemAdapter  extends BaseAdapter {
                 return false;
             }
         });
+
+        BluetoothModel bluetoothModel = getItem(position);
+
         final View view = convertView;
         TextView textView = (TextView) convertView.findViewById(R.id.textview);
         ImageView imageView = (ImageView) convertView.findViewById(R.id.item_image_view);
         final String text = "I Am Number " + position;
-        textView.setText(text );
+        textView.setText(bluetoothModel.getmBlueToothName() );
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

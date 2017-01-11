@@ -1,9 +1,10 @@
 package com.example.andradejoseph.bluetoothconnect;
 
-import android.support.annotation.NonNull;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,33 +14,43 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import com.example.andradejoseph.bluetoothconnect.model.BluetoothModel;
 import com.fenjuly.mylibrary.FloorListView;
+
+import java.util.ArrayList;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     FloorListView mListView;
+    ArrayList myList = new ArrayList();
+    Toolbar toolbar;
+
+    //Adapter for bluetooth paired list
+    ItemAdapter adapter;
+
+    //BluetoothModel
+    private BluetoothAdapter myBluetooth = null;
+    private Set<BluetoothDevice> pairedDevices;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        init(); //init widgets; link resources
+        enableBLueTooth(); //enable bluetooth; if bluetooth is off
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        mListView = (FloorListView) findViewById(R.id.recyclerview);
-        mListView.setMode(FloorListView.ABOVE);
-        mListView.setrHeight(2);
-        ItemAdapter adapter = new ItemAdapter(this);
+
         mListView.setAdapter(adapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
             }
         });
 
@@ -52,6 +63,63 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
+    private void init() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        mListView = (FloorListView) findViewById(R.id.recyclerview);
+        mListView.setMode(FloorListView.ABOVE);
+        mListView.setrHeight(2);
+
+
+    }
+
+    private void enableBLueTooth() {
+        myBluetooth = BluetoothAdapter.getDefaultAdapter();
+
+        if(myBluetooth == null)
+        {
+            //Show a mensag. that the device has no bluetooth adapter
+            Toast.makeText(getApplicationContext(), "BluetoothModel Device Not Available", Toast.LENGTH_LONG).show();
+
+            //finish apk
+            finish();
+        }
+        else if(!myBluetooth.isEnabled())
+        {
+            //Ask to the user turn the bluetooth on
+            Intent turnBTon = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(turnBTon,1);
+        }
+    }
+
+
+    private void pairedDevicesList()
+    {
+        pairedDevices = myBluetooth.getBondedDevices();
+
+
+        if (pairedDevices.size()>0)
+        {
+            for(BluetoothDevice bt : pairedDevices)
+            {
+                BluetoothModel bluetoothModel = new BluetoothModel(bt.getName(), bt.getAddress());
+                myList.add(bluetoothModel);
+            }
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), "No Paired BluetoothModel Devices Found.", Toast.LENGTH_LONG).show();
+        }
+
+        adapter = new ItemAdapter(this, myList);
+        mListView.setAdapter(adapter);
+//        devicelist.setAdapter(adapter);
+//        devicelist.setOnItemClickListener(myListClickListener); //Method called when the device from the list is clicked
+
+    }
+
 
     @Override
     public void onBackPressed() {
