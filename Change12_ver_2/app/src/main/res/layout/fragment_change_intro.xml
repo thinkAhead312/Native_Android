@@ -3,17 +3,18 @@
     android:id="@+id/fragment_change_intro_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/intro_background"
     tools:context=".fragment.ChangeIntroFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ImageView
         android:id="@+id/fragment_change_intro_image_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:scaleType="fitXY"
-        />
-
-
+        android:foregroundGravity="center"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

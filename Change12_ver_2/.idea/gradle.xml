@@ -10,6 +10,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/app-debug" />
+            <option value="$PROJECT_DIR$/article_detail" />
+            <option value="$PROJECT_DIR$/multiselection" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

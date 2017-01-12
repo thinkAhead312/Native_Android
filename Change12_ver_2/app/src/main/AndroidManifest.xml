@@ -17,6 +17,19 @@
         </activity>
         <activity android:name=".Change12ManualActivity"></activity>
 
+        <activity android:name="com.example.josephandrade.article_detail_transition.ArticleListActivity">
+
+        </activity>
+        <activity
+            android:name="com.example.josephandrade.article_detail_transition.DetailsActivity"
+            android:label="@string/title_activity_detail"
+            android:parentActivityName="com.example.josephandrade.article_detail_transition.ArticleListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.josephandrade.article_detail_transition.ArticleListActivity" />
+        </activity>
+
 
     </application>
 

@@ -29,7 +29,7 @@ public class ChangeIntroFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_change_intro, container, false);
         imageView = (ImageView) v.findViewById(R.id.fragment_change_intro_image_view);
         relativeLayout = (RelativeLayout) v.findViewById(R.id.fragment_change_intro_container);
-        Picasso.with(getActivity()).load(R.drawable.intro_background).into(imageView);
+        Picasso.with(getActivity()).load(R.drawable.joel).into(imageView);
         return v;
     }
 

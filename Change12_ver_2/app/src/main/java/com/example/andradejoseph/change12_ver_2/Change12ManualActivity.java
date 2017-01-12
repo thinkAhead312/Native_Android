@@ -1,5 +1,8 @@
 package com.example.andradejoseph.change12_ver_2;
 
+import android.app.ListActivity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -11,6 +14,9 @@ import android.widget.Toast;
 
 import com.example.andradejoseph.change12_ver_2.fragment.ChangeIntroFragment;
 import com.example.andradejoseph.change12_ver_2.fragment.FragmentB;
+import com.example.josephandrade.article_detail_transition.ArticleListActivity;
+import com.example.josephandrade.article_detail_transition.DetailsActivity;
+import com.example.josephandrade.article_detail_transition.model.Article;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +24,16 @@ import java.util.List;
 import eu.long1.spacetablayout.SpaceTabLayout;
 
 public class Change12ManualActivity extends AppCompatActivity {
+
+
     private SpaceTabLayout tabLayout;
+
+    public static Intent newIntent(Context packageContext) {
+        Intent i = new Intent(packageContext, Change12ManualActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        return i;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +61,8 @@ public class Change12ManualActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(Change12ManualActivity.this, "karen", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(Change12ManualActivity.this, ArticleListActivity.class);
+                startActivity(i);
             }
         });
         //we need the saveInstanceState to retrieve the position
