@@ -6,6 +6,9 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Log;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by ANDRADEJOSEPH on 2/8/2017.
  */
@@ -34,6 +37,26 @@ public class SessionManager {
         editor.commit();
 
         Log.d(TAG, "User login Session is Modified");
+    }
+
+    public void setUserData(JSONObject jsonUserData) {
+
+        try {
+            editor.putString(Constants.USER_ID, jsonUserData.getString(Constants.USER_ID));
+            editor.putString(Constants.USER_FIRST_NAME, jsonUserData.getString(Constants.USER_FIRST_NAME));
+            editor.putString(Constants.USER_LAST_NAME, jsonUserData.getString(Constants.USER_LAST_NAME));
+            editor.putString(Constants.USER_NICK_NAME, jsonUserData.getString(Constants.USER_NICK_NAME));
+            editor.putString(Constants.USER_MIDDLE_NAME, jsonUserData.getString(Constants.USER_MIDDLE_NAME));
+            editor.putString(Constants.USER_FULL_NAME, jsonUserData.getString(Constants.USER_FULL_NAME));
+            editor.putString(Constants.USER_USERNAME, jsonUserData.getString(Constants.USER_USERNAME));
+            editor.putString(Constants.USER_IS_ADMIN, jsonUserData.getString(Constants.USER_IS_ADMIN));
+            //commit changes
+            editor.commit();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Log.d(TAG, "User Data Session is Modified");
     }
 
     public boolean isLoggedIn() {

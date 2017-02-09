@@ -4,7 +4,10 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,18 +18,24 @@ import android.widget.Toast;
 import com.example.andradejoseph.change12_ver_2.fragment.ChangeIntroFragment;
 import com.example.andradejoseph.change12_ver_2.fragment.FragmentB;
 import com.example.josephandrade.article_detail_transition.ArticleListActivity;
-import com.example.josephandrade.article_detail_transition.DetailsActivity;
-import com.example.josephandrade.article_detail_transition.model.Article;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-import eu.long1.spacetablayout.SpaceTabLayout;
+import it.sephiroth.android.library.bottomnavigation.BottomNavigation;
+
 
 public class Change12ManualActivity extends AppCompatActivity {
 
+    private Fragment fragment;
+    private FragmentManager fragmentManager;
+    private FragmentTransaction transaction;
 
-    private SpaceTabLayout tabLayout;
+    private BottomNavigation mBottomNavigation;
+    int pos = 0;// bottombar position
+
+
 
     public static Intent newIntent(Context packageContext) {
         Intent i = new Intent(packageContext, Change12ManualActivity.class);
@@ -38,6 +47,7 @@ public class Change12ManualActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change12_manual);
+        initWidgets();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Explode explode = new Explode();
@@ -46,34 +56,61 @@ public class Change12ManualActivity extends AppCompatActivity {
             getWindow().setEnterTransition(explode);
         }
 
+
+        mBottomNavigation.setSelectedIndex(pos,true);
+        if (null != mBottomNavigation) {
+            mBottomNavigation.setOnMenuItemClickListener(new BottomNavigation.OnMenuItemSelectionListener() {
+                @Override
+                public void onMenuItemSelect(@IdRes int i, int i1, boolean b) {
+                    switch (i) {
+                        case R.id.action_new:
+                            fragment = new ChangeIntroFragment();
+                            break;
+
+                        case R.id.action_project:
+                            fragment = new  FragmentB();
+                            break;
+
+                        case R.id.action_data:
+                            fragment = new FragmentB();
+                            break;
+                    }
+                    final FragmentTransaction transaction = fragmentManager.beginTransaction();
+                    transaction.replace(R.id.frame, fragment).commit();
+                }
+
+                @Override
+                public void onMenuItemReselect(@IdRes int i, int i1, boolean b) {
+
+                }
+            });
+        }
+
+
         /**
          * Add Fragment you want to dsiplay in list
          */
-        List<Fragment> fragmentList = new ArrayList<>();
-        fragmentList.add(new ChangeIntroFragment());
-        fragmentList.add(new FragmentB());
-        fragmentList.add(new FragmentB());
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
-        tabLayout = (SpaceTabLayout) findViewById(R.id.spaceTabLayout);
+//        List<Fragment> fragmentList = new ArrayList<>();
+//        fragmentList.add(new ChangeIntroFragment());
+//        fragmentList.add(new FragmentB());
+//        fragmentList.add(new FragmentB());
 
-        tabLayout.getButton();
-        tabLayout.setTabOneOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(Change12ManualActivity.this, "karen", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(Change12ManualActivity.this, ArticleListActivity.class);
-                startActivity(i);
-            }
-        });
-        //we need the saveInstanceState to retrieve the position
-        tabLayout.initialize(viewPager, getSupportFragmentManager(), fragmentList, savedInstanceState);
+    }
+
+    private void initWidgets() {
+        mBottomNavigation = (BottomNavigation) findViewById(R.id.BottomNavigation);
+        fragmentManager = getSupportFragmentManager();
+        fragment = new ChangeIntroFragment(); //default
+
+        transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.frame, fragment).commit();
+
     }
 
     //we need the outState to memorize the position
     @Override
     protected void onSaveInstanceState(Bundle outState) {
 
-        tabLayout.saveState(outState);
         super.onSaveInstanceState(outState);
     }
 }

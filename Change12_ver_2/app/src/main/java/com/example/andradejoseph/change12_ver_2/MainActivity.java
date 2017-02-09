@@ -1,49 +1,51 @@
 package com.example.andradejoseph.change12_ver_2;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.os.Build;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.CardView;
-import android.transition.Explode;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+        import android.app.ProgressDialog;
+        import android.content.Intent;
+        import android.os.Build;
+        import android.support.design.widget.FloatingActionButton;
+        import android.support.design.widget.Snackbar;
+        import android.support.v4.app.ActivityOptionsCompat;
+        import android.support.v7.app.AppCompatActivity;
+        import android.os.Bundle;
+        import android.support.v7.widget.CardView;
+        import android.transition.Explode;
+        import android.util.Log;
+        import android.view.View;
+        import android.widget.Button;
+        import android.widget.EditText;
+        import android.widget.RelativeLayout;
+        import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.example.andradejoseph.change12_ver_2.utils.Change12Api;
-import com.android.volley.Request.Method;
-import com.example.andradejoseph.change12_ver_2.utils.Constants;
-import com.example.andradejoseph.change12_ver_2.utils.SessionManager;
+        import com.android.volley.AuthFailureError;
+        import com.android.volley.Request;
+        import com.android.volley.Response;
+        import com.android.volley.VolleyError;
+        import com.android.volley.VolleyLog;
+        import com.android.volley.toolbox.JsonObjectRequest;
+        import com.android.volley.toolbox.StringRequest;
+        import com.example.andradejoseph.change12_ver_2.utils.Change12Api;
+        import com.android.volley.Request.Method;
+        import com.example.andradejoseph.change12_ver_2.utils.Constants;
+        import com.example.andradejoseph.change12_ver_2.utils.SessionManager;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+        import org.json.JSONException;
+        import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
+        import java.util.HashMap;
+        import java.util.Map;
 
-import butterknife.OnClick;
+        import butterknife.OnClick;
 
-import static com.example.andradejoseph.change12_ver_2.utils.Change12Api.*;
+        import static com.example.andradejoseph.change12_ver_2.utils.Change12Api.*;
 
 public class MainActivity extends AppCompatActivity {
     private static String TAG = MainActivity.class.getSimpleName();
-
-    EditText mEditTextUsername;
-    EditText mEditTextPassword;
-    Button mButtonLogin;
-    FloatingActionButton fab;
+    private RelativeLayout mRelativeLayout;
+    private EditText mEditTextUsername;
+    private EditText mEditTextPassword;
+    private Button mButtonLogin;
+    private FloatingActionButton fab;
 
     private ProgressDialog pDialog;
     private SessionManager session;
@@ -53,12 +55,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initWidgets();
 
-        mEditTextUsername = (EditText) findViewById(R.id.et_username);
-        mEditTextPassword =(EditText) findViewById(R.id.et_password);
-        mButtonLogin =(Button) findViewById(R.id.bt_go);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        final ActivityOptionsCompat oc2 = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
 
         // Session manager
         session = new SessionManager(getApplicationContext());
@@ -69,19 +67,25 @@ public class MainActivity extends AppCompatActivity {
         mButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                makeLogInRequest();
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//                    Explode explode = new Explode();
-//                    explode.setDuration(500);
-//                    getWindow().setExitTransition(explode);
-//                    getWindow().setEnterTransition(explode);
-//                }
-//                Intent i2 = Change12ManualActivity.newIntent(MainActivity.this);
-//                startActivity(i2, oc2.toBundle());
-//                finish();
+//                makeLogInRequest();
+//
+                goToChange12Module();
             }
         });
 
+    }
+
+    private void initWidgets() {
+        mEditTextUsername = (EditText) findViewById(R.id.et_username);
+        mEditTextPassword =(EditText) findViewById(R.id.et_password);
+        mButtonLogin =(Button) findViewById(R.id.bt_go);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        mRelativeLayout = (RelativeLayout) findViewById(R.id.activity_main_relative_layout_id);
+    }
+
+    private void displaySnackbar(String message) {
+        Snackbar snackbar = Snackbar.make(mRelativeLayout, message, Snackbar.LENGTH_LONG);
+        snackbar.show();
     }
 
     private void makeLogInRequest() {
@@ -89,6 +93,12 @@ public class MainActivity extends AppCompatActivity {
         //getting values from inputted edit text
         final String username = mEditTextUsername.getText().toString().trim();
         final String password = mEditTextPassword.getText().toString();
+
+        if(username.equals("") || password.equals("")){
+            displaySnackbar("Please input username or password");
+            return;
+        }
+
         //show processdialog
         showpDialog();
         //Creating a string request
@@ -102,17 +112,15 @@ public class MainActivity extends AppCompatActivity {
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-//                   Toast.makeText(MainActivity.this, String.valueOf(jsonUserData), Toast.LENGTH_SHORT).show();
 
                     boolean error = jsonObject.getBoolean(Constants.KEY_ERROR);
                     if (!error) {
-                        session.setLogin(true);
-                        String id = jsonObject.getString(Constants.USER_ID);
-                        String first_name = jsonObject.getString(Constants.USER_FIRST_NAME);
-                        String last_name = jsonObject.getString(Constants.USER_LAST_NAME);
-                        Toast.makeText(MainActivity.this,id +": "+ first_name + " " + last_name, Toast.LENGTH_SHORT).show();
+                        session.setLogin(true); //set session to true
+                        JSONObject jsonUserData  = jsonObject.getJSONObject(Constants.KEY_USER);
+                        session.setUserData(jsonUserData);
+                        goToChange12Module();
                     } else {
-
+                        displaySnackbar("Incorrect username or password");
                     }
 
                 } catch (JSONException e) {
@@ -128,17 +136,14 @@ public class MainActivity extends AppCompatActivity {
                 hidepDialog();
             }
         }) {
-
             @Override
             protected Map<String, String> getParams() {
                 // Posting parameters to login url
                 Map<String, String> params = new HashMap<String, String>();
                 params.put(Constants.KEY_USERNAME, username);
                 params.put(Constants.KEY_PASSWORD, password);
-
                 return params;
             }
-
         };
 //
         AppController.getInstance().addToRequestQueue(strReq);
@@ -154,9 +159,26 @@ public class MainActivity extends AppCompatActivity {
             pDialog.dismiss();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(session.isLoggedIn()) {
+            goToChange12Module();
+        }
+    }
+
+    private void goToChange12Module() {
+
+        final ActivityOptionsCompat oc2 = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Explode explode = new Explode();
+            explode.setDuration(500);
+            getWindow().setExitTransition(explode);
+            getWindow().setEnterTransition(explode);
+        }
+        Intent i2 = Change12ManualActivity.newIntent(MainActivity.this);
+        startActivity(i2, oc2.toBundle());
+        finish();
+    }
 }
-
-
-
-//        // Adding request to request queue
-//        AppController.getmInstance().addToRequestQueue(jsonObjReq);
