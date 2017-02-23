@@ -1,10 +1,12 @@
-package com.example.andradejoseph.javaprimers.chapter2_classes;
+package com.example.andradejoseph.javaprimers.chapter2_2_classes;
+
+import com.example.andradejoseph.javaprimers.chapter2_3_abstract_class.AbstractProgression;
 
 /**
  * Created by ANDRADEJOSEPH on 2/23/2017.
  */
 
-public class ArithmeticProgression extends Progression {
+public class ArithmeticProgression extends AbstractProgression {
     protected long increment;
 
     /**
@@ -34,6 +36,6 @@ public class ArithmeticProgression extends Progression {
 
     @Override
     protected void advance() {
-        current += increment;
+        mCurrent += increment;
     }
 }

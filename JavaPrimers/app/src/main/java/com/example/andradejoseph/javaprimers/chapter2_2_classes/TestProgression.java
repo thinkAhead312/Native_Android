@@ -1,4 +1,6 @@
-package com.example.andradejoseph.javaprimers.chapter2_classes;
+package com.example.andradejoseph.javaprimers.chapter2_2_classes;
+
+import com.example.andradejoseph.javaprimers.chapter2_3_abstract_class.AbstractProgression;
 
 /**
  * Created by ANDRADEJOSEPH on 2/23/2017.
@@ -8,7 +10,7 @@ public class TestProgression {
 
 
     public TestProgression() {
-        Progression prog;
+        AbstractProgression prog;
 
         //test Arithmetic Progression
         System.out.println("Arithmetic progression with default increment: ");

@@ -1,10 +1,12 @@
-package com.example.andradejoseph.javaprimers.chapter2_classes;
+package com.example.andradejoseph.javaprimers.chapter2_2_classes;
+
+import com.example.andradejoseph.javaprimers.chapter2_3_abstract_class.AbstractProgression;
 
 /**
  * Created by ANDRADEJOSEPH on 2/23/2017.
  */
 
-public class GeometricProgression extends Progression {
+public class GeometricProgression extends AbstractProgression {
     protected long base;
 
     /** Constructs progression 1, 2, 4, 8, 16, ... */
@@ -22,6 +24,6 @@ public class GeometricProgression extends Progression {
     /** Multiplies the current value by the geometric base. */
     @Override
     protected void advance() {
-        current *= base;        //multiply current vt the geometric base
+        mCurrent *= base;        //multiply current vt the geometric base
     }
 }

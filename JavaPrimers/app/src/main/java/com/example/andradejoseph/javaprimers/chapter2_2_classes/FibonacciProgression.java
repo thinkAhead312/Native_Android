@@ -1,10 +1,12 @@
-package com.example.andradejoseph.javaprimers.chapter2_classes;
+package com.example.andradejoseph.javaprimers.chapter2_2_classes;
+
+import com.example.andradejoseph.javaprimers.chapter2_3_abstract_class.AbstractProgression;
 
 /**
  * Created by ANDRADEJOSEPH on 2/23/2017.
  */
 
-public class FibonacciProgression extends Progression {
+public class FibonacciProgression extends AbstractProgression {
 
     protected long prev;
 
@@ -24,8 +26,8 @@ public class FibonacciProgression extends Progression {
     @Override
     protected void advance() {
         long temp = prev;
-        prev = current;
-        current += temp;
+        prev = mCurrent;
+        mCurrent += temp;
 
     }
 }

@@ -1,4 +1,4 @@
-package com.example.andradejoseph.javaprimers.chapter2_classes;
+package com.example.andradejoseph.javaprimers.chapter2_2_classes;
 
 /**
  * Created by ANDRADEJOSEPH on 2/23/2017.

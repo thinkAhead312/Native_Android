@@ -3,8 +3,8 @@ package com.example.andradejoseph.javaprimers;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.andradejoseph.javaprimers.chapter1_7_classes.CreditCard;
-import com.example.andradejoseph.javaprimers.chapter2_classes.TestProgression;
+import com.example.andradejoseph.javaprimers.chapter2_2_classes.TestProgression;
+import com.example.andradejoseph.javaprimers.chapter2_3_interface.TestChapter2_3_interfaces;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
 //        }
 
 
-       new TestProgression();
+        new TestProgression();
+        new TestChapter2_3_interfaces();
 
     }
 }
