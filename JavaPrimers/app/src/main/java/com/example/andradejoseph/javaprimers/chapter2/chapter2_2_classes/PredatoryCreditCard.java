@@ -1,4 +1,4 @@
-package com.example.andradejoseph.javaprimers.chapter2_2_classes;
+package com.example.andradejoseph.javaprimers.chapter2.chapter2_2_classes;
 
 import com.example.andradejoseph.javaprimers.chapter1_7_classes.CreditCard;
 

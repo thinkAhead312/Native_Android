@@ -56,20 +56,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initWidgets();
-
-
         // Session manager
         session = new SessionManager(getApplicationContext());
-
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("Please wait...");
         pDialog.setCancelable(false);
         mButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                makeLogInRequest();
-//
-                goToChange12Module();
+                makeLogInRequest();
             }
         });
 

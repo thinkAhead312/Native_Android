@@ -1,4 +1,4 @@
-package com.example.andradejoseph.javaprimers.chapter2_3_interface;
+package com.example.andradejoseph.javaprimers.chapter2.chapter2_3_interface;
 
 /**
  * Created by ANDRADEJOSEPH on 2/23/2017.

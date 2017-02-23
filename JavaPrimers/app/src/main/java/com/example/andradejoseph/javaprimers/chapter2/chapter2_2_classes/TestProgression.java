@@ -1,6 +1,6 @@
-package com.example.andradejoseph.javaprimers.chapter2_2_classes;
+package com.example.andradejoseph.javaprimers.chapter2.chapter2_2_classes;
 
-import com.example.andradejoseph.javaprimers.chapter2_3_abstract_class.AbstractProgression;
+import com.example.andradejoseph.javaprimers.chapter2.chapter2_3_abstract_class.AbstractProgression;
 
 /**
  * Created by ANDRADEJOSEPH on 2/23/2017.

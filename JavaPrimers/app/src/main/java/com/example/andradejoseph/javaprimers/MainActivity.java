@@ -3,8 +3,8 @@ package com.example.andradejoseph.javaprimers;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.andradejoseph.javaprimers.chapter2_2_classes.TestProgression;
-import com.example.andradejoseph.javaprimers.chapter2_3_interface.TestChapter2_3_interfaces;
+import com.example.andradejoseph.javaprimers.chapter2.chapter2_2_classes.TestProgression;
+import com.example.andradejoseph.javaprimers.chapter2.chapter2_3_interface.TestChapter2_3_interfaces;
 
 public class MainActivity extends AppCompatActivity {
 

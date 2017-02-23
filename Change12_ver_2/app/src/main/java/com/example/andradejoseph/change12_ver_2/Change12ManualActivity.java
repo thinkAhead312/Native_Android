@@ -1,6 +1,6 @@
 package com.example.andradejoseph.change12_ver_2;
 
-import android.app.ListActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -8,20 +8,13 @@ import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Explode;
-import android.view.View;
-import android.widget.Toast;
+
 
 import com.example.andradejoseph.change12_ver_2.fragment.ChangeIntroFragment;
 import com.example.andradejoseph.change12_ver_2.fragment.FragmentB;
-import com.example.josephandrade.article_detail_transition.ArticleListActivity;
-
-
-import java.util.ArrayList;
-import java.util.List;
 
 import it.sephiroth.android.library.bottomnavigation.BottomNavigation;
 
@@ -34,8 +27,6 @@ public class Change12ManualActivity extends AppCompatActivity {
 
     private BottomNavigation mBottomNavigation;
     int pos = 0;// bottombar position
-
-
 
     public static Intent newIntent(Context packageContext) {
         Intent i = new Intent(packageContext, Change12ManualActivity.class);
@@ -78,14 +69,12 @@ public class Change12ManualActivity extends AppCompatActivity {
                     final FragmentTransaction transaction = fragmentManager.beginTransaction();
                     transaction.replace(R.id.frame, fragment).commit();
                 }
-
                 @Override
                 public void onMenuItemReselect(@IdRes int i, int i1, boolean b) {
 
                 }
             });
         }
-
 
         /**
          * Add Fragment you want to dsiplay in list

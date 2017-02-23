@@ -1,10 +1,13 @@
-package com.example.andradejoseph.javaprimers.chapter2_3_interface;
+package com.example.andradejoseph.javaprimers.chapter2.chapter2_3_interface;
 
 /**
  * Created by ANDRADEJOSEPH on 2/23/2017.
  */
 
-public class BoxedItem2 implements Insurable{
+/**
+ * Class for objects that can be sold, packed, and shipped
+ */
+public class BoxedItem implements Sellable, Transportable{
 
     private String mDescript;       //description of this item
     private int mPrice;             //list price in cents
@@ -14,6 +17,7 @@ public class BoxedItem2 implements Insurable{
     private int mWidth;             //box width in centi
     private int mDepth;             //box depth in centi
 
+
     /**
      * Constructor
      * @param desc
@@ -21,19 +25,13 @@ public class BoxedItem2 implements Insurable{
      * @param w
      * @param h
      */
-    public BoxedItem2(String desc, int p, int w, boolean h) {
+    public BoxedItem(String desc, int p, int w, boolean h) {
         mDescript = desc;
         mPrice = p;
         mWeight = w;
         mHaz  = h;
     }
 
-
-
-    @Override
-    public int insuredValue() {
-        return mPrice * 2;
-    }
 
     @Override
     public String description() {
@@ -58,6 +56,10 @@ public class BoxedItem2 implements Insurable{
     @Override
     public boolean isHazardous() {
         return mHaz;
+    }
+
+    public int insuredValue() {
+        return mPrice * 2;
     }
 
     /**
