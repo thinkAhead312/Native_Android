@@ -7,11 +7,13 @@
 
     <color name="accent">#DF4A32</color>
 
-    <color name="primary">#83CF1C</color>
-    <color name="primary_dark">#5AB831</color>
-    <color name="primary_light">#DCEDC8</color>
+    <color name="primary">#00a651</color>
+    <color name="primary_dark">#008641</color>
+    <color name="primary_light">#00c25f</color>
 
     <color name="light_black">#747474</color>
     <color name="black">#616161</color>
     <color name="google">#C6412C</color>
+
+
 </resources>

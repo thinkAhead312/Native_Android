@@ -4,29 +4,32 @@ package com.example.andradejoseph.change12_ver_2;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.support.annotation.IdRes;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.transition.Explode;
+import android.view.MenuItem;
+import android.view.View;
 
 
-import com.example.andradejoseph.change12_ver_2.fragment.ChangeIntroFragment;
-import com.example.andradejoseph.change12_ver_2.fragment.FragmentB;
+import com.example.andradejoseph.change12_ver_2.ui.ChangeIntroFragment;
+import com.example.andradejoseph.change12_ver_2.ui.LessonsFragment;
+import com.example.andradejoseph.change12_ver_2.utils.DrawerActivity;
 
-import it.sephiroth.android.library.bottomnavigation.BottomNavigation;
+import java.util.ArrayList;
+import java.util.List;
 
 
-public class Change12ManualActivity extends AppCompatActivity {
-
-    private Fragment fragment;
-    private FragmentManager fragmentManager;
-    private FragmentTransaction transaction;
-
-    private BottomNavigation mBottomNavigation;
-    int pos = 0;// bottombar position
+public class Change12ManualActivity extends AppCompatActivity{
+    private static final int REQUEST_CODE = 1;
+    private TabLayout tabLayout; //TabLayout
+    private ViewPager viewPager; //Viewpager
 
     public static Intent newIntent(Context packageContext) {
         Intent i = new Intent(packageContext, Change12ManualActivity.class);
@@ -38,7 +41,9 @@ public class Change12ManualActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change12_manual);
-        initWidgets();
+        DrawerActivity.getInstance().DrawerInit(Change12ManualActivity.this);
+        init();
+        tabbar();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Explode explode = new Explode();
@@ -47,59 +52,74 @@ public class Change12ManualActivity extends AppCompatActivity {
             getWindow().setEnterTransition(explode);
         }
 
+    }
 
-        mBottomNavigation.setSelectedIndex(pos,true);
-        if (null != mBottomNavigation) {
-            mBottomNavigation.setOnMenuItemClickListener(new BottomNavigation.OnMenuItemSelectionListener() {
-                @Override
-                public void onMenuItemSelect(@IdRes int i, int i1, boolean b) {
-                    switch (i) {
-                        case R.id.action_new:
-                            fragment = new ChangeIntroFragment();
-                            break;
+    private void tabbar() {
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
 
-                        case R.id.action_project:
-                            fragment = new  FragmentB();
-                            break;
 
-                        case R.id.action_data:
-                            fragment = new FragmentB();
-                            break;
-                    }
-                    final FragmentTransaction transaction = fragmentManager.beginTransaction();
-                    transaction.replace(R.id.frame, fragment).commit();
-                }
-                @Override
-                public void onMenuItemReselect(@IdRes int i, int i1, boolean b) {
+    }
 
-                }
-            });
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+
+        adapter.addFragment(new ChangeIntroFragment(), "Introduction");
+        adapter.addFragment(new LessonsFragment(), "Lessons");
+
+        viewPager.setAdapter(adapter);
+
+    }
+
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
         }
-
-        /**
-         * Add Fragment you want to dsiplay in list
-         */
-//        List<Fragment> fragmentList = new ArrayList<>();
-//        fragmentList.add(new ChangeIntroFragment());
-//        fragmentList.add(new FragmentB());
-//        fragmentList.add(new FragmentB());
-
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
     }
 
-    private void initWidgets() {
-        mBottomNavigation = (BottomNavigation) findViewById(R.id.BottomNavigation);
-        fragmentManager = getSupportFragmentManager();
-        fragment = new ChangeIntroFragment(); //default
-
-        transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.frame, fragment).commit();
-
+    private void init() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Change12 Manual");
     }
+
 
     //we need the outState to memorize the position
     @Override
     protected void onSaveInstanceState(Bundle outState) {
 
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            DrawerActivity.getInstance().openDrawer();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

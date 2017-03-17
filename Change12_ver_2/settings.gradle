@@ -1,1 +1,1 @@
-include ':app', ':app-debug', ':multiselection', ':article_detail'
+include ':app', ':change12_lessons'

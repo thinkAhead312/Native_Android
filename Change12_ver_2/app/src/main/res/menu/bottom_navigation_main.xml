@@ -14,12 +14,7 @@
         android:icon="@drawable/ic_heart"
         android:title="Intro"
         />
-    <item
-        android:id="@+id/action_project"
-        android:enabled="true"
-        android:icon="@drawable/ic_heart"
-        android:title="Lessons"
-        />
+
     <item
         android:id="@+id/action_data"
         android:enabled="true"
