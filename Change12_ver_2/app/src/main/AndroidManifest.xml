@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Change12ManualActivity" />
-        <activity android:name="com.example.josephandrade.article_detail_transition.ArticleListActivity"></activity>
+        <activity android:name="com.example.josephandrade.article_detail_transition.ArticleListActivity" />
         <activity
             android:name="com.example.josephandrade.article_detail_transition.LessonsDetailActivity"
             android:label="@string/title_activity_detail"
@@ -32,7 +32,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.josephandrade.article_detail_transition.ArticleListActivity" />
         </activity>
-        <activity android:name=".AfterFabAnimationActivity"></activity>
+        <activity android:name=".AfterFabAnimationActivity" />
+        <activity android:name=".ConsolidatesActivity"></activity>
     </application>
 
 </manifest>

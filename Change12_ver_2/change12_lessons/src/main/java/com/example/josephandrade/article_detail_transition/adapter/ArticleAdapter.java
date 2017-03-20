@@ -54,8 +54,8 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         Log.d("bind", "onBindViewHolder: " + item.getTitle());
 
         holder.ivThumbnail.setImageResource(item.getHeader());
-        holder.ivCoveringImage.setImageResource(item.getLessonImage());
-        holder.ivLessonImage.setImageResource(item.getLessonImage());
+//        holder.ivCoveringImage.setImageResource(item.getLessonImage());
+//        holder.ivLessonImage.setImageResource(item.getLessonImage());
         holder.rootView.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View view, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_UP){

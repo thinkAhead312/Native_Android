@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.transition.Explode;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 
 import com.example.andradejoseph.change12_ver_2.ui.ChangeIntroFragment;
@@ -26,10 +27,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Change12ManualActivity extends AppCompatActivity{
+public class Change12ManualActivity extends AppCompatActivity implements Callback{
     private static final int REQUEST_CODE = 1;
     private TabLayout tabLayout; //TabLayout
     private ViewPager viewPager; //Viewpager
+
+
 
     public static Intent newIntent(Context packageContext) {
         Intent i = new Intent(packageContext, Change12ManualActivity.class);
@@ -70,6 +73,21 @@ public class Change12ManualActivity extends AppCompatActivity{
         adapter.addFragment(new LessonsFragment(), "Lessons");
 
         viewPager.setAdapter(adapter);
+
+    }
+
+    @Override
+    public void onMethodCallback(int position) {
+//        Toast.makeText(this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+
+         switch(position) {
+             case CHANGE_12_CONSOLIDATE:
+                 Intent i2 = ConsolidatesActivity.newIntent(Change12ManualActivity.this);
+                 startActivity(i2);
+                 finish();
+                 break;
+         }
+
 
     }
 

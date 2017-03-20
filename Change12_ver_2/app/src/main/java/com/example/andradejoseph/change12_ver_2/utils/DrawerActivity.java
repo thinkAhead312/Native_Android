@@ -7,6 +7,7 @@ import android.support.v4.view.GravityCompat;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.andradejoseph.change12_ver_2.Callback;
 import com.example.andradejoseph.change12_ver_2.R;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -30,6 +31,7 @@ public class DrawerActivity extends Activity {
     Drawer result;
 
     private static DrawerActivity instance = null;
+    public Callback mAdapterCallback;
 
     private DrawerActivity() {
         // Exists only to defeat instantiation.
@@ -44,7 +46,7 @@ public class DrawerActivity extends Activity {
 
     public  void DrawerInit(Activity activity) {
 
-
+        mAdapterCallback = (Callback) activity;
         //Create account header
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(activity)
@@ -71,7 +73,11 @@ public class DrawerActivity extends Activity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-
+                        try {
+                            mAdapterCallback.onMethodCallback(position);
+                        } catch (ClassCastException exception) {
+                            exception.printStackTrace();
+                        }
                         return false;
                     }
                 })

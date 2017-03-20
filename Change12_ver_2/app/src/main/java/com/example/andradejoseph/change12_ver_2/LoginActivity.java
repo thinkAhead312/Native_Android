@@ -53,8 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         mButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToChange12Module();
-//                makeLogInRequest();
+                makeLogInRequest();
             }
         });
 
@@ -73,28 +72,47 @@ public class LoginActivity extends AppCompatActivity {
         snackbar.show();
     }
 
+    private boolean validate() {
+        boolean valid  = true;
+        final String username = mEditTextUsername.getText().toString().trim();
+        final String password = mEditTextPassword.getText().toString();
+
+        if (username.isEmpty() || username.length() < 3) {
+            mEditTextUsername.setError("at least 3 characters");
+            valid = false;
+        } else {
+            mEditTextUsername.setError(null);
+        }
+
+        if (password.isEmpty() ) {
+            mEditTextPassword.setError("between 4 and 10 alphanumeric characters");
+            valid = false;
+        } else {
+            mEditTextPassword.setError(null);
+        }
+
+        return valid;
+    }
+
     private void makeLogInRequest() {
 
         //getting values from inputted edit text
         final String username = mEditTextUsername.getText().toString().trim();
         final String password = mEditTextPassword.getText().toString();
 
-        if(username.equals("") || password.equals("")){
-            displaySnackbar("Please input username or password");
+        if(!validate()) {
+            displaySnackbar("Incorrect username or password");
             return;
         }
-
         //show processdialog
         showpDialog();
         //Creating a string request
         StringRequest strReq = new StringRequest(Method.POST,
                 Change12Api.USER_LOGIN, new Response.Listener<String>() {
-
             @Override
             public void onResponse(String response) {
                 Log.d(TAG, "Login Response: " + response.toString());
                 hidepDialog();
-
                 try {
                     JSONObject jsonObject = new JSONObject(response);
 
