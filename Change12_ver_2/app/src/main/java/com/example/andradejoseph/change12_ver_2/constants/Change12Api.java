@@ -1,4 +1,4 @@
-package com.example.andradejoseph.change12_ver_2.utils;
+package com.example.andradejoseph.change12_ver_2.constants;
 
 /**
  * Created by ANDRADEJOSEPH on 2/6/2017.

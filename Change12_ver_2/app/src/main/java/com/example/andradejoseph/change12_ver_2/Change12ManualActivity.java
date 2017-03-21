@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Toast;
 
 
+import com.example.andradejoseph.change12_ver_2.custom.BaseActivity;
 import com.example.andradejoseph.change12_ver_2.ui.ChangeIntroFragment;
 import com.example.andradejoseph.change12_ver_2.ui.LessonsFragment;
 import com.example.andradejoseph.change12_ver_2.utils.DrawerActivity;
@@ -27,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Change12ManualActivity extends AppCompatActivity implements Callback{
+public class Change12ManualActivity extends BaseActivity implements Callback{
     private static final int REQUEST_CODE = 1;
     private TabLayout tabLayout; //TabLayout
     private ViewPager viewPager; //Viewpager
@@ -45,15 +46,24 @@ public class Change12ManualActivity extends AppCompatActivity implements Callbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change12_manual);
         DrawerActivity.getInstance().DrawerInit(Change12ManualActivity.this);
+        onTransitionAnimation();
         init();
         tabbar();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Explode explode = new Explode();
-            explode.setDuration(500);
-            getWindow().setExitTransition(explode);
-            getWindow().setEnterTransition(explode);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            Explode explode = new Explode();
+//            explode.setDuration(500);
+//            getWindow().setExitTransition(explode);
+//            getWindow().setEnterTransition(explode);
+//        }
+
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        onTransitionAnimation();
 
     }
 
@@ -65,6 +75,7 @@ public class Change12ManualActivity extends AppCompatActivity implements Callbac
 
 
     }
+
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -114,15 +125,6 @@ public class Change12ManualActivity extends AppCompatActivity implements Callbac
             return mFragmentTitleList.get(position);
         }
     }
-
-    private void init() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Change12 Manual");
-    }
-
 
     //we need the outState to memorize the position
     @Override

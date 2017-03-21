@@ -1,6 +1,7 @@
 package com.example.andradejoseph.change12_ver_2.utils;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v4.view.GravityCompat;
@@ -13,6 +14,7 @@ import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.holder.BadgeStyle;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
@@ -59,8 +61,8 @@ public class DrawerActivity extends Activity {
                 .withActivity(activity)
                 .withAccountHeader(headerResult)
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withIcon(R.mipmap.logo).withName("Change12"),
-                        new PrimaryDrawerItem().withBadge("20").withName("Consolidates"),
+                        new PrimaryDrawerItem().withIdentifier(1).withIcon(R.mipmap.logo).withName("Change12"),
+                        new PrimaryDrawerItem().withIdentifier(2).withName("Consolidates").withBadge("20").withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R.color.colorPrimary)),
                         new PrimaryDrawerItem().withBadge("10").withName("Disciples"),
                         new PrimaryDrawerItem().withName("Statistics"),
                         new PrimaryDrawerItem().withName("Events"),
@@ -86,6 +88,14 @@ public class DrawerActivity extends Activity {
 
     public void openDrawer() {
         result.openDrawer();
+    }
+
+    public void closeDraweer() {
+        result.closeDrawer();
+    }
+
+    public void setSelection(long identifier) {
+        result.setSelection(identifier);
     }
 
 }

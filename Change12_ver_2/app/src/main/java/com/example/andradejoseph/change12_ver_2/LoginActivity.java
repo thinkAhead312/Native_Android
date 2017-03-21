@@ -19,7 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.andradejoseph.change12_ver_2.utils.AppController;
-import com.example.andradejoseph.change12_ver_2.utils.Change12Api;
+import com.example.andradejoseph.change12_ver_2.constants.Change12Api;
 import com.android.volley.Request.Method;
 import com.example.andradejoseph.change12_ver_2.constants.Constants;
 import com.example.andradejoseph.change12_ver_2.sessions.SessionManager;
@@ -53,7 +53,8 @@ public class LoginActivity extends AppCompatActivity {
         mButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                makeLogInRequest();
+            goToChange12Module();
+//     makeLogInRequest();
             }
         });
 
@@ -183,5 +184,11 @@ public class LoginActivity extends AppCompatActivity {
         Intent i2 = Change12ManualActivity.newIntent(LoginActivity.this);
         startActivity(i2, oc2.toBundle());
         finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
     }
 }
