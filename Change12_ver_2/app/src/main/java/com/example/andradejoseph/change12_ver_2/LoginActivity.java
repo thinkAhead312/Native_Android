@@ -53,8 +53,8 @@ public class LoginActivity extends AppCompatActivity {
         mButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            goToChange12Module();
-//     makeLogInRequest();
+//            goToChange12Module();
+              makeLogInRequest();
             }
         });
 

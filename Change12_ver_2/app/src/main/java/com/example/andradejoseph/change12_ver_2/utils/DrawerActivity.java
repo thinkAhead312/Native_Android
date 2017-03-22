@@ -10,6 +10,8 @@ import android.widget.ImageView;
 
 import com.example.andradejoseph.change12_ver_2.Callback;
 import com.example.andradejoseph.change12_ver_2.R;
+import com.example.andradejoseph.change12_ver_2.constants.Constants;
+import com.example.andradejoseph.change12_ver_2.sessions.SessionManager;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -48,14 +50,18 @@ public class DrawerActivity extends Activity {
 
     public  void DrawerInit(Activity activity) {
 
+        SessionManager sessionManager = new SessionManager(activity);
+
+        String full_name  = sessionManager.userPref.getString(Constants.USER_FULL_NAME, null);
+        String email = sessionManager.userPref.getString(Constants.USER_USERNAME, null);
+
         mAdapterCallback = (Callback) activity;
         //Create account header
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(activity)
                 .withHeaderBackground(R.drawable.mateial_bg)
-                .addProfiles(new ProfileDrawerItem().withIcon(R.drawable.joel).withName("Joseph C. Andrade II").withEmail("joseph_andrade@outlook.ph"))
+                .addProfiles(new ProfileDrawerItem().withIcon(R.drawable.joel).withName(full_name).withEmail(email))
                 .build();
-
 
         result = new DrawerBuilder()
                 .withActivity(activity)
@@ -69,8 +75,6 @@ public class DrawerActivity extends Activity {
                         new DividerDrawerItem(),
                         new PrimaryDrawerItem().withName("My Profile"),
                         new SecondaryDrawerItem().withName("Settings")
-
-
         )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override

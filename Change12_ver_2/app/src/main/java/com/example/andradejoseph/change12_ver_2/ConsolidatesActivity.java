@@ -9,11 +9,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.transition.Fade;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
 import com.example.andradejoseph.change12_ver_2.custom.BaseActivity;
+import com.example.andradejoseph.change12_ver_2.model.Crime;
+import com.example.andradejoseph.change12_ver_2.model.CrimeLab;
+import com.example.andradejoseph.change12_ver_2.model.Disciple;
+import com.example.andradejoseph.change12_ver_2.model.DiscpleLab;
+import com.example.andradejoseph.change12_ver_2.sessions.SessionManager;
 import com.example.andradejoseph.change12_ver_2.utils.DrawerActivity;
 
 
@@ -26,6 +33,11 @@ public class ConsolidatesActivity extends BaseActivity implements Callback{
     private View mHeaderView;
     private View mDimSearchViewBackground;
     private ColorDrawable mDimDrawable;
+
+
+    Crime _crime = null;
+
+    Disciple _disciple = null;
 
     private boolean mIsDarkSearchTheme = false;
 
@@ -48,20 +60,47 @@ public class ConsolidatesActivity extends BaseActivity implements Callback{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consolidates);
-
         DrawerActivity.getInstance().DrawerInit(ConsolidatesActivity.this);
         DrawerActivity.getInstance().setSelection(2);
-        onTransitionAnimation();
+//
+//        _crime = new Crime();
+//        _crime.setTitle("Hello Karen Claire <3");
+//        CrimeLab.get(this).addCrime(_crime);
+//
+//        CrimeLab crimeLab = CrimeLab.get(this);
+//        List<Crime> crimes = crimeLab.getCrimes();
+//        Toast.makeText(this, "aha", Toast.LENGTH_SHORT).show();
+//        for(Crime crime: crimes) {
+//            Log.d("HALA:  ", crime.getTitle() + " " + crime.getId());
+//        }
+
+        _disciple = new Disciple();
+        _disciple.setFirst_name("Joseph");
+        _disciple.setFull_name("Joseph C. Andrade II");
+        _disciple.setNick_name("Joseph C. Andrade II");
+        _disciple.setLast_name("Joseph C. Andrade II");
+        _disciple.setMiddle_name("Joseph C. Andrade II");
 
 
+        DiscpleLab.get(this).addDisciple(_disciple);
+
+
+        DiscpleLab discpleLab = DiscpleLab.get(this);
+        List<Disciple> disciples = discpleLab.getDiciples();
+        Toast.makeText(this, "aha", Toast.LENGTH_SHORT).show();
+        for(Disciple disciple: disciples) {
+            Log.d("HALA:  ", disciple.getFirst_name() + " " + disciple.getLast_name());
+        }
         init();
+
+
+
 
     }
 
     @Override
     public void init() {
         mSearchView = (FloatingSearchView) findViewById(R.id.floating_search_view);
-        mHeaderView = findViewById(R.id.header_view);
 
         mDimSearchViewBackground = findViewById(R.id.dim_background);
         mDimDrawable = new ColorDrawable(Color.BLACK);
@@ -85,13 +124,6 @@ public class ConsolidatesActivity extends BaseActivity implements Callback{
                 } );
     }
 
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        onTransitionAnimation();
-
-    }
 
     @Override
     public void onMethodCallback(int position) {

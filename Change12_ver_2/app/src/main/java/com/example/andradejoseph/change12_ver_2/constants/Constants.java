@@ -13,7 +13,7 @@ public class Constants {
     public static String KEY_USERNAME = "username";
     public static String KEY_PASSWORD = "password";
 
-    /*     USERS TABLE CONSTANTS   */
+    /*     USERS-LOGGED-IN INFO CONSTANTS   */
     public static final String USER_ID = "id";
     public static final String USER_FIRST_NAME = "first_name";
     public static final String USER_LAST_NAME = "last_name";
@@ -24,8 +24,16 @@ public class Constants {
     public static final String USER_IS_ADMIN = "is_admin";
 
     /*    Shared Preferences Constants      */
-    public static final String PREF_NAME = "user_login";
+    public static final String USER_PREF_NAME = "user_login";
     public static final String KEY_IS_LOGGED_IN = "isLoggedIn";
+    public static final String KEY_ON_FIRST_APP_START = "on_first_start_app";
+
+
+    /*  JSON CONSTANTS   */
+
+    public  static final String JSON_USERS = "users";
+
+
 
 
 

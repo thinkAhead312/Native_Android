@@ -139,6 +139,7 @@ public class LessonsFragment extends Fragment {
                     }
                 });
                 circularReveal.start();
+                mTransitionInformation.getCoveringView().setVisibility(View.INVISIBLE);
             }
         }
     }

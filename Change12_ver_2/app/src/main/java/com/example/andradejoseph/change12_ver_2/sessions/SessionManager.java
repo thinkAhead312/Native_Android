@@ -20,17 +20,25 @@ public class SessionManager {
     private static String TAG = SessionManager.class.getSimpleName();
 
     //shared Preferences
-    SharedPreferences pref;
+    public  SharedPreferences userPref;
     Editor editor;
     Context mContext;
 
     //Shared pref mode
     int PRIVATE_MODE = 0;
 
+
+
     public SessionManager(Context context) {
         mContext = context;
-        pref = mContext.getSharedPreferences(Constants.PREF_NAME, PRIVATE_MODE);
-        editor = pref.edit();
+        userPref = mContext.getSharedPreferences(Constants.USER_PREF_NAME, PRIVATE_MODE);
+        editor = userPref.edit();
+    }
+
+    public void setOnFirstAppStart(boolean isFirstStart) {
+        editor.putBoolean(Constants.KEY_ON_FIRST_APP_START, isFirstStart);
+        //commit changes
+        editor.commit();
     }
 
     public void setLogin(boolean isLoggedIn) {
@@ -62,8 +70,11 @@ public class SessionManager {
     }
 
     public boolean isLoggedIn() {
-        return pref.getBoolean(Constants.KEY_IS_LOGGED_IN, false);
+        return userPref.getBoolean(Constants.KEY_IS_LOGGED_IN, false);
     }
 
+    public boolean isFirstStart() {
+        return userPref.getBoolean(Constants.KEY_ON_FIRST_APP_START, false);
+    }
 
 }
