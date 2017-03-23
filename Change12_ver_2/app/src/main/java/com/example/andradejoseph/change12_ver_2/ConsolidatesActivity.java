@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.MenuItem;
 import com.example.andradejoseph.change12_ver_2.custom.SingleFragmentActivity;
 import com.example.andradejoseph.change12_ver_2.model.Change12;
+import com.example.andradejoseph.change12_ver_2.model.Changee;
 import com.example.andradejoseph.change12_ver_2.model.DiscpleLab;
+import com.example.andradejoseph.change12_ver_2.ui.Change12WaveList;
 import com.example.andradejoseph.change12_ver_2.ui.LessonsFragment;
 import com.example.andradejoseph.change12_ver_2.utils.DrawerActivity;
 
@@ -26,7 +28,7 @@ public class ConsolidatesActivity extends SingleFragmentActivity implements Call
 
     @Override
     protected Fragment createFragment() {
-        return new LessonsFragment();
+        return new Change12WaveList();
     }
 
     @Override
@@ -42,6 +44,15 @@ public class ConsolidatesActivity extends SingleFragmentActivity implements Call
         for(Change12 change12: change12s) {
             Log.d("ConsolidatesActivity: ", change12.getChange12_id() + " " + change12.getWave_num());
         }
+
+
+        List<Changee> changees = discpleLab.getChangee();
+        for(Changee changee: changees) {
+            Log.d("ConsolidatesActivity> ", changee.getChange_12() + " " + changee.getChangee());
+        }
+
+
+
     }
 
     @Override

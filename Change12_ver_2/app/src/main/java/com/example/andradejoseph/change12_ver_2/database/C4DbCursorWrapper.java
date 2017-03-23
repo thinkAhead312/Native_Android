@@ -4,9 +4,9 @@ import android.database.Cursor;
 import android.database.CursorWrapper;
 
 import com.example.andradejoseph.change12_ver_2.database.C4DbSchema.UsersTable;
+import com.example.andradejoseph.change12_ver_2.model.*;
 import com.example.andradejoseph.change12_ver_2.model.Change12;
-import com.example.andradejoseph.change12_ver_2.model.Crime;
-import com.example.andradejoseph.change12_ver_2.model.Disciple;
+import com.example.andradejoseph.change12_ver_2.model.Changee;
 
 import java.util.Date;
 import java.util.UUID;
@@ -40,6 +40,25 @@ public class C4DbCursorWrapper extends CursorWrapper{
         crime.setSolved(isSolved != 0);
         return crime;
     }
+
+    public Changee getChangee() {
+        Changee changee = new Changee();
+        changee.setChange_12(getString(getColumnIndex(C4DbSchema.Changee.Cols.CHANGE_12)).trim());
+        changee.setChangee(getString(getColumnIndex(C4DbSchema.Changee.Cols.CHANGEE)).trim());
+        changee.setChange_1_ok(getString(getColumnIndex(C4DbSchema.Changee.Cols.CHANGE_1_OK)).trim());
+        changee.setChange_1_date(getString(getColumnIndex(C4DbSchema.Changee.Cols.CHANGE_1_DATE)).trim());
+        changee.setChange_2_ok(getString(getColumnIndex(C4DbSchema.Changee.Cols.CHANGE_2_OK)).trim());
+        changee.setChange_2_date(getString(getColumnIndex(C4DbSchema.Changee.Cols.CHANGE_2_DATE)).trim());
+        changee.setChange_3_ok(getString(getColumnIndex(C4DbSchema.Changee.Cols.CHANGE_3_OK)).trim());
+        changee.setChange_3_date(getString(getColumnIndex(C4DbSchema.Changee.Cols.CHANGE_3_DATE)).trim());
+        changee.setChange_4_ok(getString(getColumnIndex(C4DbSchema.Changee.Cols.CHANGE_4_OK)).trim());
+        changee.setChange_4_date(getString(getColumnIndex(C4DbSchema.Changee.Cols.CHANGE_4_DATE)).trim());
+        changee.setChange_5_ok(getString(getColumnIndex(C4DbSchema.Changee.Cols.CHANGE_5_OK)).trim());
+        changee.setChange_5_date(getString(getColumnIndex(C4DbSchema.Changee.Cols.CHANGE_5_DATE)).trim());
+        return  changee;
+    }
+
+
 
 
     public Change12 getChange12() {

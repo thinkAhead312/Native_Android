@@ -62,6 +62,24 @@ public class C4DbBaseHelper extends SQLiteOpenHelper{
                 C4DbSchema.Change12.Cols.END_DATE +
                 ")"
         );
+
+
+        db.execSQL("create table " + C4DbSchema.Changee.NAME + "(" +
+                " _id integer primary key autoincrement, " +
+                C4DbSchema.Changee.Cols.CHANGE_12 + ", " +
+                C4DbSchema.Changee.Cols.CHANGEE + ", " +
+                C4DbSchema.Changee.Cols.CHANGE_1_OK + ", " +
+                C4DbSchema.Changee.Cols.CHANGE_1_DATE + ", " +
+                C4DbSchema.Changee.Cols.CHANGE_2_OK + ", " +
+                C4DbSchema.Changee.Cols.CHANGE_2_DATE + ", " +
+                C4DbSchema.Changee.Cols.CHANGE_3_OK + ", " +
+                C4DbSchema.Changee.Cols.CHANGE_3_DATE + ", " +
+                C4DbSchema.Changee.Cols.CHANGE_4_OK + ", " +
+                C4DbSchema.Changee.Cols.CHANGE_4_DATE + ", " +
+                C4DbSchema.Changee.Cols.CHANGE_5_OK + ", " +
+                C4DbSchema.Changee.Cols.CHANGE_5_DATE +
+                ")"
+        );
     }
 
     @Override

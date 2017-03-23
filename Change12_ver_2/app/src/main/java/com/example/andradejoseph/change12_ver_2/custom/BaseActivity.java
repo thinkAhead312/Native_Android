@@ -133,7 +133,6 @@ public class BaseActivity extends AppCompatActivity{
                         for(int i = 0; i < changeeArray.length(); i++) {
                             JSONObject jsonChangee = changeeArray.getJSONObject(i);
                             Changee changee = new Changee();
-
                             changee.setChange_12(jsonChangee.getString(C4DbSchema.Changee.Cols.CHANGE_12));
                             changee.setChangee(jsonChangee.getString(C4DbSchema.Changee.Cols.CHANGEE));
                             changee.setChange_1_ok(jsonChangee.getString(C4DbSchema.Changee.Cols.CHANGE_1_OK));
@@ -146,8 +145,7 @@ public class BaseActivity extends AppCompatActivity{
                             changee.setChange_4_date(jsonChangee.getString(C4DbSchema.Changee.Cols.CHANGE_4_DATE));
                             changee.setChange_5_ok(jsonChangee.getString(C4DbSchema.Changee.Cols.CHANGE_5_OK));
                             changee.setChange_5_date(jsonChangee.getString(C4DbSchema.Changee.Cols.CHANGE_5_DATE));
-
-//                            DiscpleLab.get(BaseActivity.this).addChange12(change12);
+                            DiscpleLab.get(BaseActivity.this).addChangee(changee);
                         }
 
 

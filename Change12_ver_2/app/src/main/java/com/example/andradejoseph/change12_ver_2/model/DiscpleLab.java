@@ -3,6 +3,7 @@ package com.example.andradejoseph.change12_ver_2.model;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.CursorWrapper;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -68,7 +69,7 @@ public class DiscpleLab {
     private static ContentValues getContentValues(Changee changee) {
         ContentValues values = new ContentValues();
         values.put(C4DbSchema.Changee.Cols.CHANGE_12, changee.getChange_12());
-        values.put(C4DbSchema.Changee.Cols.CHANGEE, changee.getChange_12());
+        values.put(C4DbSchema.Changee.Cols.CHANGEE, changee.getChangee());
         values.put(C4DbSchema.Changee.Cols.CHANGE_1_OK, changee.getChange_1_ok());
         values.put(C4DbSchema.Changee.Cols.CHANGE_1_DATE, changee.getChange_1_date());
         values.put(C4DbSchema.Changee.Cols.CHANGE_2_OK, changee.getChange_2_ok());
@@ -92,7 +93,6 @@ public class DiscpleLab {
         values.put(END_DATE,change12.getEnd_date());
         return values;
     }
-
 
 
     private static ContentValues getContentValues(Disciple disciple) {
@@ -125,6 +125,36 @@ public class DiscpleLab {
         values.put(Cols.PASSWORD,disciple.getPassword());
         values.put(Cols.ROLES,disciple.getRoles());
         return values;
+    }
+
+    public List<Changee> getChangee() {
+        List<Changee> changees = new ArrayList<>();
+        C4DbCursorWrapper cursor = queryChangee(null, null);
+
+        try{
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                changees.add(cursor.getChangee());
+                cursor.moveToNext();
+            }
+        } finally {
+            cursor.close();
+        }
+        return changees;
+    }
+
+    private C4DbCursorWrapper queryChangee(String whereClause, String[] whereArgs) {
+        Cursor cursor = mDatabase.query(
+                C4DbSchema.Changee.NAME,
+                null, //columns  = null select all columns
+                whereClause,
+                whereArgs,
+                null, //groupby
+                null, //having
+                null //orderby
+        );
+
+        return new C4DbCursorWrapper(cursor);
     }
 
     public List<Change12> getChange12() {
