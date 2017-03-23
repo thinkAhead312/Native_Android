@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -15,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.transition.Explode;
+import android.transition.Slide;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -66,58 +68,40 @@ public class Change12ManualActivity extends BaseActivity implements Callback{
 
         session = new SessionManager(getApplicationContext());
 
-
-
         DrawerActivity.getInstance().DrawerInit(Change12ManualActivity.this);
-        onTransitionAnimation();
         init();
         tabbar();
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Explode explode = new Explode();
-            explode.setDuration(500);
-            getWindow().setExitTransition(explode);
-            getWindow().setEnterTransition(explode);
-        }
+//        setupWindowAnimations();
 
         if(!session.isFirstStart()) {
-
-
             progressDoalog = new ProgressDialog(this);
-            progressDoalog.setMessage("Its loading....");
-            progressDoalog.setTitle("ProgressDialog bar example");
-            progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDoalog.setMessage("Please wait...");
+            progressDoalog.setCancelable(false);
             progressDoalog.show();
-            fetchUserTable();
+            fetchDB();
         }
-
-
-        DiscpleLab discpleLab = DiscpleLab.get(this);
-        List<Disciple> disciples = discpleLab.getDiciples();
-        Toast.makeText(this, "aha", Toast.LENGTH_SHORT).show();
-        for(Disciple disciple: disciples) {
-            Log.d("nono:  ", disciple.getFirst_name() + " " + disciple.getLast_name());
-        }
-
     }
 
+    private void setupWindowAnimations() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Slide slide = new Slide();
+            slide.setDuration(1000);
+            getWindow().setExitTransition(slide);
+        }
+    }
 
     private void tabbar() {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-
-
     }
-
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         adapter.addFragment(new ChangeIntroFragment(), "Introduction");
         adapter.addFragment(new LessonsFragment(), "Lessons");
-
         viewPager.setAdapter(adapter);
 
     }
@@ -128,8 +112,14 @@ public class Change12ManualActivity extends BaseActivity implements Callback{
 
          switch(position) {
              case CHANGE_12_CONSOLIDATE:
+                 final ActivityOptionsCompat oc2 = ActivityOptionsCompat.makeSceneTransitionAnimation(Change12ManualActivity.this);
+                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                     Slide slide = new Slide();
+                     slide.setDuration(1000);
+                     getWindow().setExitTransition(slide);
+                 }
                  Intent i2 = ConsolidatesActivity.newIntent(Change12ManualActivity.this);
-                 startActivity(i2);
+                 startActivity(i2, oc2.toBundle());
                  finish();
                  break;
          }

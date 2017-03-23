@@ -12,4 +12,10 @@ public class Change12Api {
 
     public  static String USERS= "http://10.10.11.205/my_api/change12Api/v1/users";
 
+
+    public  static String CHANGE12 = "http://10.10.11.205/my_api/change12Api/v1/change12";
+
+
+
+
 }

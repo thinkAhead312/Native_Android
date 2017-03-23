@@ -4,21 +4,19 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.andradejoseph.change12_ver_2.database.C4_DbSchema.UsersTable;
-
-import static com.example.andradejoseph.change12_ver_2.database.CrimeDbSchema.*;
+import com.example.andradejoseph.change12_ver_2.database.C4DbSchema.UsersTable;
 
 /**
  * Created by ANDRADEJOSEPH on 3/22/2017.
  */
 
-public class C4_DB_BaseHelper extends SQLiteOpenHelper{
+public class C4DbBaseHelper extends SQLiteOpenHelper{
 
     private static final int VERSION = 1;
     private static final String DATABASE_NAME = "c4_db.db";
 
 
-    public C4_DB_BaseHelper(Context context) {
+    public C4DbBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, VERSION);
     }
 
@@ -53,6 +51,15 @@ public class C4_DB_BaseHelper extends SQLiteOpenHelper{
                 UsersTable.Cols.USER_NAME + ", " +
                 UsersTable.Cols.PASSWORD + ", " +
                 UsersTable.Cols.ROLES +
+                ")"
+        );
+
+        db.execSQL("create table " + C4DbSchema.Change12.NAME + "(" +
+                " _id integer primary key autoincrement, " +
+                C4DbSchema.Change12.Cols.Change12_ID + ", " +
+                C4DbSchema.Change12.Cols.WAVE_NUM + ", " +
+                C4DbSchema.Change12.Cols.START_DATE + ", " +
+                C4DbSchema.Change12.Cols.END_DATE +
                 ")"
         );
     }

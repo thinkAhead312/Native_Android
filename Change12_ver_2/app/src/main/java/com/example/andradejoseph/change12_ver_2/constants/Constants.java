@@ -14,7 +14,7 @@ public class Constants {
     public static String KEY_PASSWORD = "password";
 
     /*     USERS-LOGGED-IN INFO CONSTANTS   */
-    public static final String USER_ID = "id";
+    public static final String USER_ID = "disciple_id";
     public static final String USER_FIRST_NAME = "first_name";
     public static final String USER_LAST_NAME = "last_name";
     public static final String USER_NICK_NAME = "nick_name";
@@ -32,6 +32,9 @@ public class Constants {
     /*  JSON CONSTANTS   */
 
     public  static final String JSON_USERS = "users";
+    public  static final String JSON_CHANGE12 = "change12";
+    public  static final String JSON_CHANGEES = "changees";
+
 
 
 

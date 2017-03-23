@@ -4,7 +4,7 @@ package com.example.andradejoseph.change12_ver_2.database;
  * Created by ANDRADEJOSEPH on 3/22/2017.
  */
 
-public class C4_DbSchema {
+public class C4DbSchema {
 
     public static final class UsersTable {
         public static String NAME = "users";
@@ -33,16 +33,41 @@ public class C4_DbSchema {
             public static final String DISCIPLER = "discipler";
             public static final String INVITED_BY = "invited_by";
             public static final String HEALTH_STATUS = "health_status";
-            public static final String USER_NAME = "user_name";
+            public static final String USER_NAME = "username";
             public static final String PASSWORD = "password";
             public static final String ROLES = "roles";
-
-
-
-
-
         }
-
-
     }
+
+   public static final class Change12 {
+       public static String NAME = "change12";
+
+       public static final class Cols {
+           public static final String Change12_ID = "id";
+           public static final String WAVE_NUM = "wave_num";
+           public static final String START_DATE = "start_date";
+           public static final String END_DATE = "end_date";
+       }
+   }
+
+
+    public static final class Changee {
+        public static String NAME = "changees";
+
+        public static final class Cols {
+            public static final String CHANGE_12 = "change_12";
+            public static final String CHANGEE = "changee";
+            public static final String CHANGE_1_OK = "change_1_ok";
+            public static final String CHANGE_1_DATE = "change_1_date";
+            public static final String CHANGE_2_OK = "change_2_ok";
+            public static final String CHANGE_2_DATE = "change_2_date";
+            public static final String CHANGE_3_OK = "change_3_ok";
+            public static final String CHANGE_3_DATE = "change_3_date";
+            public static final String CHANGE_4_OK = "change_4_ok";
+            public static final String CHANGE_4_DATE = "change_4_date";
+            public static final String CHANGE_5_OK = "change_5_ok";
+            public static final String CHANGE_5_DATE = "change_5_date";
+        }
+    }
+
 }

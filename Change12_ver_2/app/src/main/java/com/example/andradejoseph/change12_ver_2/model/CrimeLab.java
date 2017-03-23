@@ -4,11 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.example.andradejoseph.change12_ver_2.database.CrimeBaseHelper;
-import com.example.andradejoseph.change12_ver_2.database.CrimeCursorWrapper;
-import com.example.andradejoseph.change12_ver_2.database.CrimeDbSchema;
+import com.example.andradejoseph.change12_ver_2.database.C4DbCursorWrapper;
 import com.example.andradejoseph.change12_ver_2.database.CrimeDbSchema.CrimeTable;
 
 import java.util.ArrayList;
@@ -51,7 +49,7 @@ public class CrimeLab {
     public List<Crime> getCrimes() {
         List<Crime> crimes = new ArrayList<>();
 
-        CrimeCursorWrapper cursor = queryCrimes(null, null);
+        C4DbCursorWrapper cursor = queryCrimes(null, null);
 
         try {
             cursor.moveToFirst();
@@ -68,7 +66,7 @@ public class CrimeLab {
     }
 
     public Crime getCrime(UUID id) {
-        CrimeCursorWrapper cursor = queryCrimes(
+        C4DbCursorWrapper cursor = queryCrimes(
           CrimeTable.Cols.UUID + " = ?",
           new String[] {id.toString()}
         );
@@ -104,7 +102,7 @@ public class CrimeLab {
         return values;
     }
 
-   private CrimeCursorWrapper queryCrimes(String whereClause, String[] whereArgs) {
+   private C4DbCursorWrapper queryCrimes(String whereClause, String[] whereArgs) {
         Cursor cursor = mDatabase.query(
                 CrimeTable.NAME,
                 null, //columns  = null select all columns
@@ -115,7 +113,7 @@ public class CrimeLab {
                 null //orderby
         );
 
-        return new CrimeCursorWrapper(cursor);
+        return new C4DbCursorWrapper(cursor);
     }
 
 

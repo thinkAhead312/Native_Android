@@ -10,6 +10,7 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Explode;
+import android.transition.Slide;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -63,6 +64,10 @@ public class LoginActivity extends AppCompatActivity {
     private void initWidgets() {
         mEditTextUsername = (EditText) findViewById(R.id.et_username);
         mEditTextPassword =(EditText) findViewById(R.id.et_password);
+
+        mEditTextUsername.setText("andradeii.j");
+        mEditTextPassword.setText("Slacker_probe1");
+
         mButtonLogin =(Button) findViewById(R.id.bt_go);
         fab = (FloatingActionButton) findViewById(R.id.fab);
         mRelativeLayout = (RelativeLayout) findViewById(R.id.activity_main_relative_layout_id);
@@ -174,15 +179,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private void goToChange12Module() {
 
-        final ActivityOptionsCompat oc2 = ActivityOptionsCompat.makeSceneTransitionAnimation(LoginActivity.this);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Explode explode = new Explode();
-            explode.setDuration(500);
-            getWindow().setExitTransition(explode);
-            getWindow().setEnterTransition(explode);
-        }
+//        final ActivityOptionsCompat oc2 = ActivityOptionsCompat.makeSceneTransitionAnimation(LoginActivity.this);
+
         Intent i2 = Change12ManualActivity.newIntent(LoginActivity.this);
-        startActivity(i2, oc2.toBundle());
+        startActivity(i2);//, oc2.toBundle());
         finish();
     }
 

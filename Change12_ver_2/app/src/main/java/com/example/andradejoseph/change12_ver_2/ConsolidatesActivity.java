@@ -2,47 +2,21 @@ package com.example.andradejoseph.change12_ver_2;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.support.v4.app.Fragment;
 import android.transition.Fade;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
-
-import com.arlib.floatingsearchview.FloatingSearchView;
-import com.example.andradejoseph.change12_ver_2.custom.BaseActivity;
-import com.example.andradejoseph.change12_ver_2.model.Crime;
-import com.example.andradejoseph.change12_ver_2.model.CrimeLab;
-import com.example.andradejoseph.change12_ver_2.model.Disciple;
+import com.example.andradejoseph.change12_ver_2.custom.SingleFragmentActivity;
+import com.example.andradejoseph.change12_ver_2.model.Change12;
 import com.example.andradejoseph.change12_ver_2.model.DiscpleLab;
-import com.example.andradejoseph.change12_ver_2.sessions.SessionManager;
+import com.example.andradejoseph.change12_ver_2.ui.LessonsFragment;
 import com.example.andradejoseph.change12_ver_2.utils.DrawerActivity;
 
-
-
+import java.util.ArrayList;
 import java.util.List;
 
-public class ConsolidatesActivity extends BaseActivity implements Callback{
-
-    private FloatingSearchView mSearchView;
-    private View mHeaderView;
-    private View mDimSearchViewBackground;
-    private ColorDrawable mDimDrawable;
-
-
-    Crime _crime = null;
-
-    Disciple _disciple = null;
-
-    private boolean mIsDarkSearchTheme = false;
-
-    private String mLastQuery = "";
-
+public class ConsolidatesActivity extends SingleFragmentActivity implements Callback{
 
     public static Intent newIntent(Context packageContext) {
         Intent i = new Intent(packageContext, ConsolidatesActivity.class);
@@ -50,80 +24,25 @@ public class ConsolidatesActivity extends BaseActivity implements Callback{
         return i;
     }
 
-    public ConsolidatesActivity() {
-        // Required empty public constructor
+    @Override
+    protected Fragment createFragment() {
+        return new LessonsFragment();
     }
 
-
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_consolidates);
+    protected void onStart() {
+        super.onStart();
+        init();
+        getSupportActionBar().setTitle("Consolidates");
         DrawerActivity.getInstance().DrawerInit(ConsolidatesActivity.this);
         DrawerActivity.getInstance().setSelection(2);
-//
-//        _crime = new Crime();
-//        _crime.setTitle("Hello Karen Claire <3");
-//        CrimeLab.get(this).addCrime(_crime);
-//
-//        CrimeLab crimeLab = CrimeLab.get(this);
-//        List<Crime> crimes = crimeLab.getCrimes();
-//        Toast.makeText(this, "aha", Toast.LENGTH_SHORT).show();
-//        for(Crime crime: crimes) {
-//            Log.d("HALA:  ", crime.getTitle() + " " + crime.getId());
-//        }
 
-        _disciple = new Disciple();
-        _disciple.setFirst_name("Joseph");
-        _disciple.setFull_name("Joseph C. Andrade II");
-        _disciple.setNick_name("Joseph C. Andrade II");
-        _disciple.setLast_name("Joseph C. Andrade II");
-        _disciple.setMiddle_name("Joseph C. Andrade II");
-
-
-        DiscpleLab.get(this).addDisciple(_disciple);
-
-
-        DiscpleLab discpleLab = DiscpleLab.get(this);
-        List<Disciple> disciples = discpleLab.getDiciples();
-        Toast.makeText(this, "aha", Toast.LENGTH_SHORT).show();
-        for(Disciple disciple: disciples) {
-            Log.d("HALA:  ", disciple.getFirst_name() + " " + disciple.getLast_name());
+        DiscpleLab discpleLab = DiscpleLab.get(getApplicationContext());
+        List<Change12> change12s = discpleLab.getChange12();
+        for(Change12 change12: change12s) {
+            Log.d("ConsolidatesActivity: ", change12.getChange12_id() + " " + change12.getWave_num());
         }
-        init();
-
-
-
-
     }
-
-    @Override
-    public void init() {
-        mSearchView = (FloatingSearchView) findViewById(R.id.floating_search_view);
-
-        mDimSearchViewBackground = findViewById(R.id.dim_background);
-        mDimDrawable = new ColorDrawable(Color.BLACK);
-        mDimDrawable.setAlpha(0);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            mDimSearchViewBackground.setBackground(mDimDrawable);
-        }else {
-            mDimSearchViewBackground.setBackgroundDrawable(mDimDrawable);
-        }
-
-        mSearchView.setOnLeftMenuClickListener(
-                new FloatingSearchView.OnLeftMenuClickListener() {
-                    @Override
-                    public void onMenuOpened() {
-                        DrawerActivity.getInstance().openDrawer();
-                    }
-                    @Override
-                    public void onMenuClosed() {
-                        DrawerActivity.getInstance().closeDraweer();
-                    }
-                } );
-    }
-
 
     @Override
     public void onMethodCallback(int position) {
@@ -134,9 +53,7 @@ public class ConsolidatesActivity extends BaseActivity implements Callback{
                 finish();
                 break;
         }
-
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
