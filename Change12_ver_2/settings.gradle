@@ -1,1 +1,1 @@
-include ':app', ':change12_lessons'
+include ':app', ':change12_lessons', ':progressviewslib'

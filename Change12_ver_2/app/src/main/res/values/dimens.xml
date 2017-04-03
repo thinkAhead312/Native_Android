@@ -30,4 +30,8 @@
     <dimen name="search_view_inset">5dp</dimen>
 
 
+    <dimen name="card_margin">8dp</dimen>
+
+
+
 </resources>

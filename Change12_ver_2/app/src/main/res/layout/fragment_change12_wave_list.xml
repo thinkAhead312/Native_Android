@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
     card_view:cardCornerRadius="4dp"
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/activity_horizontal_margin"
+        android:padding="@dimen/card_margin"
         >
         <RelativeLayout
             android:layout_width="match_parent"
@@ -20,13 +20,60 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Joseph"
+                android:text="Text"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/btn_shopping_height"
+                android:textStyle="bold"
                 />
 
         </RelativeLayout>
 
-       </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="2dp"
+            >
+
+            <com.natasa.progressviews.CircleProgressBar
+                android:id="@+id/circle_progress"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_weight = "1"
+                app:bar_width="12dp"
+                app:bar_color="#b5b6b9"
+                app:progress="55"
+                app:progress_color="#d3f115"
+                app:progress_width="10dp"
+                />
+
+            <com.natasa.progressviews.CircleProgressBar
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:bar_width="12dp"
+                app:bar_color="#b5b6b9"
+                app:progress="55"
+                app:progress_color="#d3f115"
+                app:progress_width="10dp"
+                android:layout_weight = "1"
+                />
+
+
+            <com.natasa.progressviews.CircleProgressBar
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:bar_width="12dp"
+                app:bar_color="#b5b6b9"
+                app:progress="55"
+                app:progress_color="#d3f115"
+                app:progress_width="10dp"
+                android:layout_weight = "2"
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 </android.support.v7.widget.CardView>

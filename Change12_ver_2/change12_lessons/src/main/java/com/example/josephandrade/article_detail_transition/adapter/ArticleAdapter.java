@@ -1,22 +1,18 @@
 package com.example.josephandrade.article_detail_transition.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Build;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.josephandrade.article_detail_transition.R;
 import com.example.josephandrade.article_detail_transition.model.Article;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -45,7 +41,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
 
     @Override
     public ArticleAdapter.ViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
-        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.article, parent, false);
+        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_lessons, parent, false);
         mContext = parent.getContext();
         return new ViewHolder(view);
     }
@@ -89,7 +85,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
     }
 
     /**
-     * Sets on article clicked listener.
+     * Sets on card_lessons clicked listener.
      *
      * @param onArticleClickedListener Article clicked listener.
      */

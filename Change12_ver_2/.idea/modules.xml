@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Change12_ver_2.iml" filepath="$PROJECT_DIR$/Change12_ver_2.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/change12_lessons/change12_lessons.iml" filepath="$PROJECT_DIR$/change12_lessons/change12_lessons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/progressviewslib/progressviewslib.iml" filepath="$PROJECT_DIR$/progressviewslib/progressviewslib.iml" />
     </modules>
   </component>
 </project>

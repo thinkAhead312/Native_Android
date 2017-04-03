@@ -26,9 +26,9 @@ public class LessonsDetailActivity extends AppCompatActivity {
      *  Current Transition Information
      */
     /**
-     * Extra key for article.
+     * Extra key for card_lessons.
      */
-    public static final String EXTRA_ARTICLE = "article";
+    public static final String EXTRA_ARTICLE = "card_lessons";
     Toolbar mToolbar;
     TextView mTitle;
     TextView mDate;
@@ -111,7 +111,7 @@ public class LessonsDetailActivity extends AppCompatActivity {
     }
 
     /**
-     * Binds article datas.
+     * Binds card_lessons datas.
      */
 
 
