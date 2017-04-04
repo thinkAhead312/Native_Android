@@ -15,6 +15,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -22,8 +23,14 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.example.andradejoseph.change12_ver_2.R;
+import com.example.andradejoseph.change12_ver_2.model.Change12;
+import com.example.andradejoseph.change12_ver_2.model.Changee;
+import com.example.andradejoseph.change12_ver_2.model.Disciple;
+import com.example.andradejoseph.change12_ver_2.model.DiscpleLab;
 import com.example.josephandrade.article_detail_transition.Introduction;
 import com.example.josephandrade.article_detail_transition.LessonsDetailActivity;
 import com.example.josephandrade.article_detail_transition.adapter.ArticleAdapter;
@@ -55,6 +62,39 @@ public class Change12WaveList  extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_change12_wave_list, container, false);
+
+        DiscpleLab discpleLab = DiscpleLab.get(getContext());
+
+        List<Changee> changees = discpleLab.getWaveChangee("6");
+        int countTotalChangee = 0;
+        int countTotalGraduate =0;
+        int countRemainedActive = 0;
+        for(Changee changee: changees) {
+            Log.d("Change12WaveList ", changee.getChange_12() + " " + changee.getChangee());
+            countTotalChangee++;
+            if(changee.getChange_5_ok().trim().equals("on")) {
+                countTotalGraduate++;
+                if(discpleLab.getRemainedActiveConsolidates(String.valueOf(changee.getChangee()))) {
+                    countRemainedActive++;
+                }
+            }
+
+
+        }
+
+        Toast.makeText(getContext(),String.valueOf(countRemainedActive), Toast.LENGTH_SHORT).show();
+
+        RoundCornerProgressBar mTotalProgessBar = (RoundCornerProgressBar) v.findViewById(R.id.total_consolidates_progress_bar);
+        mTotalProgessBar.setMax(countTotalChangee);
+        mTotalProgessBar.setProgress(countTotalGraduate);
+
+        RoundCornerProgressBar mGraduatedProgressBar = (RoundCornerProgressBar) v.findViewById(R.id.graduated_consolidates_progress_bar);
+        mGraduatedProgressBar.setMax(countTotalChangee);
+        mGraduatedProgressBar.setProgress(countTotalGraduate);
+
+        RoundCornerProgressBar mRemainedProgressBar = (RoundCornerProgressBar) v.findViewById(R.id.remained_consolidates_progress_bar);
+        mRemainedProgressBar.setMax(countTotalGraduate);
+        mRemainedProgressBar.setProgress(countRemainedActive);
 
 
         return  v;

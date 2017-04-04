@@ -141,7 +141,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "Login Error: " + error.getMessage());
-
+                displaySnackbar("Network Error!...");
                 hidepDialog();
             }
         }) {

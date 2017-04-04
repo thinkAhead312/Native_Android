@@ -10,9 +10,11 @@ import android.util.Log;
 import com.example.andradejoseph.change12_ver_2.database.C4DbBaseHelper;
 import com.example.andradejoseph.change12_ver_2.database.C4DbCursorWrapper;
 import com.example.andradejoseph.change12_ver_2.database.C4DbSchema;
+import com.example.andradejoseph.change12_ver_2.database.CrimeDbSchema;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static com.example.andradejoseph.change12_ver_2.database.C4DbSchema.*;
 import static com.example.andradejoseph.change12_ver_2.database.C4DbSchema.Change12.Cols.Change12_ID;
@@ -127,6 +129,44 @@ public class DiscpleLab {
         return values;
     }
 
+
+    public Boolean getRemainedActiveConsolidates(String discipleId) {
+        C4DbCursorWrapper cursor = queryDisciples(
+                Cols.DISCIPLE_ID + "= ? AND " + Cols.HEALTH_STATUS + "!=?",
+                new String[] {discipleId, "HEALTH_INACTIVE"}
+        );
+
+        try {
+            if(cursor.getCount() == 0) {
+                return false;
+            }
+            cursor.moveToFirst();
+            return true;
+        } finally {
+            cursor.close();
+        }
+    }
+
+
+
+    public List<Changee> getWaveChangee(String waveNum) {
+        List<Changee> changees = new ArrayList<>();
+        String [] whereArgs = {waveNum};
+        C4DbCursorWrapper cursor = queryWaveChangee(C4DbSchema.Changee.Cols.CHANGE_12 + "=?", whereArgs);
+
+        try{
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                changees.add(cursor.getChangee());
+                cursor.moveToNext();
+            }
+        } finally {
+            cursor.close();
+        }
+        return changees;
+    }
+
+
     public List<Changee> getChangee() {
         List<Changee> changees = new ArrayList<>();
         C4DbCursorWrapper cursor = queryChangee(null, null);
@@ -154,6 +194,19 @@ public class DiscpleLab {
                 null //orderby
         );
 
+        return new C4DbCursorWrapper(cursor);
+    }
+
+    private C4DbCursorWrapper queryWaveChangee(String whereClause, String[] whereArgs) {
+        Cursor cursor = mDatabase.query(
+                C4DbSchema.Changee.NAME,
+                null, //columns  = null select all columns
+                whereClause,
+                whereArgs,
+                null, //groupby
+                null, //having
+                null //orderby
+        );
         return new C4DbCursorWrapper(cursor);
     }
 
@@ -218,6 +271,7 @@ public class DiscpleLab {
 
         return new C4DbCursorWrapper(cursor);
     }
+
 
 
 }

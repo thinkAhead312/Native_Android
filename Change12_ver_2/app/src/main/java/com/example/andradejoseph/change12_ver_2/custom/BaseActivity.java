@@ -118,6 +118,7 @@ public class BaseActivity extends AppCompatActivity{
                     JSONObject jsonObject = new JSONObject(response);
                     boolean error = jsonObject.getBoolean(Constants.KEY_ERROR);
                     if (!error) {
+
                         JSONArray change12Array  = jsonObject.getJSONArray(Constants.JSON_CHANGE12);
                         for(int i = 0; i < change12Array.length(); i++) {
                             JSONObject jsonDisciple = change12Array.getJSONObject(i);
@@ -147,7 +148,6 @@ public class BaseActivity extends AppCompatActivity{
                             changee.setChange_5_date(jsonChangee.getString(C4DbSchema.Changee.Cols.CHANGE_5_DATE));
                             DiscpleLab.get(BaseActivity.this).addChangee(changee);
                         }
-
 
                         session.setOnFirstAppStart(true);
                     }
