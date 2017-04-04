@@ -27,6 +27,7 @@ import android.widget.Toast;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.example.andradejoseph.change12_ver_2.R;
+import com.example.andradejoseph.change12_ver_2.adapter.WaveListAdapter;
 import com.example.andradejoseph.change12_ver_2.model.Change12;
 import com.example.andradejoseph.change12_ver_2.model.Changee;
 import com.example.andradejoseph.change12_ver_2.model.Disciple;
@@ -54,16 +55,48 @@ import java.util.List;
 public class Change12WaveList  extends Fragment {
     private ImageView imageView;
     static RecyclerView mRecyclerView;
-
+    WaveListAdapter mWaveListAdapter;
 
 
     private final TransitionInformation mTransitionInformation = new TransitionInformation();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_change12_wave_list, container, false);
+        View v = inflater.inflate(R.layout.recyclerview_layout, container, false);
 
+        mRecyclerView = (RecyclerView)v.findViewById(R.id.articles);
+        assert mRecyclerView != null;
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        updateWaveList();
+
+        return  v;
+    }
+
+    private void updateWaveList() {
         DiscpleLab discpleLab = DiscpleLab.get(getContext());
+        List<Change12> change12s = discpleLab.getChange12();
+
+        if(mWaveListAdapter == null) {
+            mWaveListAdapter = new WaveListAdapter(change12s,getContext());
+            mRecyclerView.setAdapter(mWaveListAdapter);
+        } else {
+            mWaveListAdapter.setChange(change12s);
+            mWaveListAdapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateWaveList();
+    }
+}
+
+/*
+
+ DiscpleLab discpleLab = DiscpleLab.get(getContext());
 
         List<Changee> changees = discpleLab.getWaveChangee("6");
         int countTotalChangee = 0;
@@ -96,10 +129,4 @@ public class Change12WaveList  extends Fragment {
         mRemainedProgressBar.setMax(countTotalGraduate);
         mRemainedProgressBar.setProgress(countRemainedActive);
 
-
-        return  v;
-    }
-
-
-
-}
+ */
