@@ -14,7 +14,9 @@ import com.example.andradejoseph.change12_ver_2.constants.Change12Api;
 import com.example.andradejoseph.change12_ver_2.constants.Constants;
 import com.example.andradejoseph.change12_ver_2.database.C4DbSchema;
 import com.example.andradejoseph.change12_ver_2.database.C4DbSchema.UsersTable;
+import com.example.andradejoseph.change12_ver_2.database.C4DbSchema.UsersTable.Cols;
 import com.example.andradejoseph.change12_ver_2.model.Change12;
+import com.example.andradejoseph.change12_ver_2.model.Change12Lab;
 import com.example.andradejoseph.change12_ver_2.model.Changee;
 import com.example.andradejoseph.change12_ver_2.model.Disciple;
 import com.example.andradejoseph.change12_ver_2.model.DiscpleLab;
@@ -61,32 +63,32 @@ public class BaseActivity extends AppCompatActivity{
                         for(int i = 0; i < disciples.length(); i++) {
                             JSONObject jsonDisciple = disciples.getJSONObject(i);
                             Disciple disciple = new Disciple();
-                            disciple.setDisciple_id(jsonDisciple.getString(UsersTable.Cols.DISCIPLE_ID));
-                            disciple.setSlug(jsonDisciple.getString(UsersTable.Cols.SLUG));
-                            disciple.setFirst_name(jsonDisciple.getString(UsersTable.Cols.FIRST_NAME));
-                            disciple.setMiddle_name(jsonDisciple.getString(UsersTable.Cols.MIDDLE_NAME));
-                            disciple.setLast_name(jsonDisciple.getString(UsersTable.Cols.LAST_NAME));
-                            disciple.setFull_name(jsonDisciple.getString(UsersTable.Cols.FULL_NAME));
-                            disciple.setNick_name(jsonDisciple.getString(UsersTable.Cols.NICK_NAME));
-                            disciple.setGender(jsonDisciple.getString(UsersTable.Cols.GENDER));
-                            disciple.setBirth_date(jsonDisciple.getString(UsersTable.Cols.BIRTH_DATE));
-                            disciple.setNationality(jsonDisciple.getString(UsersTable.Cols.NATIONALITY));
-                            disciple.setHome_address(jsonDisciple.getString(UsersTable.Cols.HOME_ADDRESS));
-                            disciple.setCity_address(jsonDisciple.getString(UsersTable.Cols.CITY_ADDRESS));
-                            disciple.setContact_number(jsonDisciple.getString(UsersTable.Cols.CONTACT_NUMBER));
-                            disciple.setEmail_address(jsonDisciple.getString(UsersTable.Cols.EMAIL_ADDRESS));
-                            disciple.setSchool(jsonDisciple.getString(UsersTable.Cols.SCHOOL));
-                            disciple.setDegree(jsonDisciple.getString(UsersTable.Cols.DEGREE));
-                            disciple.setMarital_status(jsonDisciple.getString(UsersTable.Cols.MARITAL_STATUS));
-                            disciple.setCompany(jsonDisciple.getString(UsersTable.Cols.COMPANY));
-                            disciple.setJob_position(jsonDisciple.getString(UsersTable.Cols.JOB_POSITION));
-                            disciple.setDate_won(jsonDisciple.getString(UsersTable.Cols.DATE_WON));
-                            disciple.setDiscipler(jsonDisciple.getString(UsersTable.Cols.DISCIPLER));
-                            disciple.setInvited_by(jsonDisciple.getString(UsersTable.Cols.INVITED_BY));
-                            disciple.setHealth_status(jsonDisciple.getString(UsersTable.Cols.HEALTH_STATUS));
-                            disciple.setUser_name(jsonDisciple.getString(UsersTable.Cols.USER_NAME));
-                            disciple.setPassword(jsonDisciple.getString(UsersTable.Cols.PASSWORD));
-                            disciple.setRoles(jsonDisciple.getString(UsersTable.Cols.ROLES));
+                            disciple.setDisciple_id(jsonDisciple.getString(Cols.DISCIPLE_ID));
+                            disciple.setSlug(jsonDisciple.getString(Cols.SLUG));
+                            disciple.setFirst_name(jsonDisciple.getString(Cols.FIRST_NAME));
+                            disciple.setMiddle_name(jsonDisciple.getString(Cols.MIDDLE_NAME));
+                            disciple.setLast_name(jsonDisciple.getString(Cols.LAST_NAME));
+                            disciple.setFull_name(jsonDisciple.getString(Cols.FULL_NAME));
+                            disciple.setNick_name(jsonDisciple.getString(Cols.NICK_NAME));
+                            disciple.setGender(jsonDisciple.getString(Cols.GENDER));
+                            disciple.setBirth_date(jsonDisciple.getString(Cols.BIRTH_DATE));
+                            disciple.setNationality(jsonDisciple.getString(Cols.NATIONALITY));
+                            disciple.setHome_address(jsonDisciple.getString(Cols.HOME_ADDRESS));
+                            disciple.setCity_address(jsonDisciple.getString(Cols.CITY_ADDRESS));
+                            disciple.setContact_number(jsonDisciple.getString(Cols.CONTACT_NUMBER));
+                            disciple.setEmail_address(jsonDisciple.getString(Cols.EMAIL_ADDRESS));
+                            disciple.setSchool(jsonDisciple.getString(Cols.SCHOOL));
+                            disciple.setDegree(jsonDisciple.getString(Cols.DEGREE));
+                            disciple.setMarital_status(jsonDisciple.getString(Cols.MARITAL_STATUS));
+                            disciple.setCompany(jsonDisciple.getString(Cols.COMPANY));
+                            disciple.setJob_position(jsonDisciple.getString(Cols.JOB_POSITION));
+                            disciple.setDate_won(jsonDisciple.getString(Cols.DATE_WON));
+                            disciple.setDiscipler(jsonDisciple.getString(Cols.DISCIPLER));
+                            disciple.setInvited_by(jsonDisciple.getString(Cols.INVITED_BY));
+                            disciple.setHealth_status(jsonDisciple.getString(Cols.HEALTH_STATUS));
+                            disciple.setUser_name(jsonDisciple.getString(Cols.USER_NAME));
+                            disciple.setPassword(jsonDisciple.getString(Cols.PASSWORD));
+                            disciple.setRoles(jsonDisciple.getString(Cols.ROLES));
                             DiscpleLab.get(BaseActivity.this).addDisciple(disciple);
                         }
                         fetchChange12Db();
@@ -127,7 +129,7 @@ public class BaseActivity extends AppCompatActivity{
                             change12.setWave_num(jsonDisciple.getString(C4DbSchema.Change12.Cols.WAVE_NUM));
                             change12.setStart_date(jsonDisciple.getString(C4DbSchema.Change12.Cols.START_DATE));
                             change12.setEnd_date(jsonDisciple.getString(C4DbSchema.Change12.Cols.END_DATE));
-                            DiscpleLab.get(BaseActivity.this).addChange12(change12);
+                            Change12Lab.get(BaseActivity.this).addChange12(change12);
                         }
 
                         JSONArray changeeArray  = jsonObject.getJSONArray(Constants.JSON_CHANGEES);
@@ -146,7 +148,7 @@ public class BaseActivity extends AppCompatActivity{
                             changee.setChange_4_date(jsonChangee.getString(C4DbSchema.Changee.Cols.CHANGE_4_DATE));
                             changee.setChange_5_ok(jsonChangee.getString(C4DbSchema.Changee.Cols.CHANGE_5_OK));
                             changee.setChange_5_date(jsonChangee.getString(C4DbSchema.Changee.Cols.CHANGE_5_DATE));
-                            DiscpleLab.get(BaseActivity.this).addChangee(changee);
+                            Change12Lab.get(BaseActivity.this).addChangee(changee);
                         }
 
                         session.setOnFirstAppStart(true);

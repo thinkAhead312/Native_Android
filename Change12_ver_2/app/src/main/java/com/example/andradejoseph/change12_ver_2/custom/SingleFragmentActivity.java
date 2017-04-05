@@ -20,7 +20,7 @@ public abstract class SingleFragmentActivity extends BaseActivity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consolidates);
-        setupWindowAnimations();
+//        setupWindowAnimations();
 
 
         FragmentManager fm = getSupportFragmentManager();

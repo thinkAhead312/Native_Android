@@ -14,4 +14,6 @@
     <string name="repeat_password">Repeat Password</string>
     <string name="next">NEXT</string>
     <string name="register">REGISTER</string>
+
+    <string name="fragment_wave_title_trans">wave_title_trans</string>
 </resources>

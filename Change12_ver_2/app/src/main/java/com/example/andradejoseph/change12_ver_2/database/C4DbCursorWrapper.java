@@ -93,7 +93,9 @@ public class C4DbCursorWrapper extends CursorWrapper{
         disciple.setCompany(getString(getColumnIndex(UsersTable.Cols.COMPANY)).trim());
         disciple.setJob_position(getString(getColumnIndex(UsersTable.Cols.JOB_POSITION)).trim());
         disciple.setDate_won(getString(getColumnIndex(UsersTable.Cols.DATE_WON)).trim());
-        disciple.setDiscipler(getString(getColumnIndex(String.valueOf(UsersTable.Cols.DISCIPLER))).trim());
+
+        String discipler = getString(getColumnIndex(String.valueOf(UsersTable.Cols.DISCIPLER))) == null ? "" : getString(getColumnIndex(String.valueOf(UsersTable.Cols.DISCIPLER)));
+        disciple.setDiscipler(discipler);
         disciple.setInvited_by(getString(getColumnIndex(String.valueOf(UsersTable.Cols.INVITED_BY))).trim());
         disciple.setHealth_status(getString(getColumnIndex(UsersTable.Cols.HEALTH_STATUS)).trim());
         disciple.setUser_name(getString(getColumnIndex(UsersTable.Cols.USER_NAME)).trim());

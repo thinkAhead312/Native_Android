@@ -10,4 +10,6 @@ public interface Callback {
     int CHANGE_12_CONSOLIDATE = 2;
 
     void onMethodCallback(int position);
+
+
 }

@@ -112,20 +112,22 @@ public class Change12ManualActivity extends BaseActivity implements Callback{
 
          switch(position) {
              case CHANGE_12_CONSOLIDATE:
-                 final ActivityOptionsCompat oc2 = ActivityOptionsCompat.makeSceneTransitionAnimation(Change12ManualActivity.this);
-                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                     Slide slide = new Slide();
-                     slide.setDuration(1000);
-                     getWindow().setExitTransition(slide);
-                 }
+//                 final ActivityOptionsCompat oc2 = ActivityOptionsCompat.makeSceneTransitionAnimation(Change12ManualActivity.this);
+//                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                     Slide slide = new Slide();
+//                     slide.setDuration(1000);
+//                     getWindow().setExitTransition(slide);
+//                 }
                  Intent i2 = ConsolidatesActivity.newIntent(Change12ManualActivity.this);
-                 startActivity(i2, oc2.toBundle());
+                 startActivity(i2);
                  finish();
                  break;
          }
 
 
     }
+
+
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();

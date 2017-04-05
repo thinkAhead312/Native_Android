@@ -51,9 +51,12 @@ public class DrawerActivity extends Activity {
     public  void DrawerInit(Activity activity) {
 
         SessionManager sessionManager = new SessionManager(activity);
+//        C4DbHelperFunctions c4DbHelperFunctions = new C4DbHelperFunctions(activity);
 
         String full_name  = sessionManager.userPref.getString(Constants.USER_FULL_NAME, null);
         String email = sessionManager.userPref.getString(Constants.USER_USERNAME, null);
+
+        int totalConsolidates = 20;//c4DbHelperFunctions.countMyAllConsolidates();
 
         mAdapterCallback = (Callback) activity;
         //Create account header
@@ -68,7 +71,7 @@ public class DrawerActivity extends Activity {
                 .withAccountHeader(headerResult)
                 .addDrawerItems(
                         new PrimaryDrawerItem().withIdentifier(1).withIcon(R.mipmap.logo).withName("Change12"),
-                        new PrimaryDrawerItem().withIdentifier(2).withName("Consolidates").withBadge("20").withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R.color.colorPrimary)),
+                        new PrimaryDrawerItem().withIdentifier(2).withName("Consolidates").withBadge(String.valueOf(totalConsolidates)).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R.color.colorPrimary)),
                         new PrimaryDrawerItem().withBadge("10").withName("Disciples"),
                         new PrimaryDrawerItem().withName("Statistics"),
                         new PrimaryDrawerItem().withName("Events"),
@@ -89,6 +92,8 @@ public class DrawerActivity extends Activity {
                 })
                 .build();
     }
+
+
 
     public void openDrawer() {
         result.openDrawer();

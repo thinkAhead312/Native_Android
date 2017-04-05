@@ -1,24 +1,27 @@
 package com.example.andradejoseph.change12_ver_2.adapter;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+import android.os.Build;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
-import com.example.andradejoseph.change12_ver_2.ConsolidatesActivity;
+import com.example.andradejoseph.change12_ver_2.AdapterCallback;
 import com.example.andradejoseph.change12_ver_2.R;
+import com.example.andradejoseph.change12_ver_2.utils.C4DbHelperFunctions;
 import com.example.andradejoseph.change12_ver_2.model.Change12;
+import com.example.andradejoseph.change12_ver_2.model.Change12Lab;
 import com.example.andradejoseph.change12_ver_2.model.Changee;
+import com.example.andradejoseph.change12_ver_2.model.Disciple;
 import com.example.andradejoseph.change12_ver_2.model.DiscpleLab;
-
-import org.w3c.dom.Text;
+import com.example.andradejoseph.change12_ver_2.utils.TouchEffect;
 
 import java.util.List;
 
@@ -31,22 +34,28 @@ public class WaveListAdapter extends RecyclerView.Adapter<WaveListAdapter.WaveHo
     private List<Change12> mChange12Waves;
     private Context mContext;
 
+    public AdapterCallback mAdapterCallback;
+
     public WaveListAdapter(List<Change12> change12Waves, Context context) {
         mChange12Waves = change12Waves;
         mContext = context;
+        mAdapterCallback = (AdapterCallback) mContext;
+
     }
+
+
 
     @Override
     public WaveHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
-        View view = layoutInflater.inflate(R.layout.fragment_change12_wave_list,parent, false);
+        View view = layoutInflater.inflate(R.layout.card_change12_wave_list,parent, false);
         return new WaveHolder(view);
     }
 
     @Override
     public void onBindViewHolder(WaveHolder holder, int position) {
         Change12 change12 = mChange12Waves.get(position);
-        holder.bindChange12(change12);
+        holder.bindChange12(change12, position);
     }
 
     @Override
@@ -58,67 +67,116 @@ public class WaveListAdapter extends RecyclerView.Adapter<WaveListAdapter.WaveHo
         mChange12Waves = change12Waves;
     }
 
-    public class WaveHolder extends RecyclerView.ViewHolder  {
+    public class WaveHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private Change12 mChange12;
 
         private TextView mChangeWaveNum;
         private TextView mChangeWaveDate;
+        private TextView mTotalGraduated, mTotalConsolidates, mTotalRemainedActive, mTotalConsolidates1;
         private RoundCornerProgressBar mTotalProgessBar, mGraduatedProgressBar, mRemainedProgressBar;
+        private CardView mWaveListCardView;
+        private int mItemPosition;
 
         public WaveHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
             mChangeWaveNum = (TextView) itemView.findViewById(R.id.wave_num_title_tv);
             mChangeWaveDate = (TextView) itemView.findViewById(R.id.date_tv);
+            mTotalGraduated = (TextView) itemView.findViewById(R.id.total_graduated_tv);
+            mTotalConsolidates = (TextView) itemView.findViewById(R.id.total_consolidates_tv);
+            mTotalRemainedActive = (TextView) itemView.findViewById(R.id.total_remained_active_tv);
+            mTotalConsolidates1 = (TextView) itemView.findViewById(R.id.total_consolidates1_tv);
             mTotalProgessBar = (RoundCornerProgressBar) itemView.findViewById(R.id.total_consolidates_progress_bar);
             mGraduatedProgressBar = (RoundCornerProgressBar) itemView.findViewById(R.id.graduated_consolidates_progress_bar);
             mRemainedProgressBar = (RoundCornerProgressBar) itemView.findViewById(R.id.remained_consolidates_progress_bar);
+            mWaveListCardView = (CardView) itemView.findViewById(R.id.wave_list_card_view);
+
+
+
         }
 
-        public void bindChange12(Change12 change12) {
+        public void bindChange12(Change12 change12, int position) {
+            mItemPosition = position;
             mChange12 = change12;
-            mChangeWaveNum.setText(change12.getWave_num());
+            mChangeWaveNum.setText("Change 12 Wave " + change12.getWave_num());
             mChangeWaveDate.setText(change12.getStart_date() + " - " + change12.getEnd_date());
 
-            change12WaveStatistics(change12);
-//            mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//                @Override
-//                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                    //set the crime's solved property
-//                    mCrime.setSolved(isChecked);
-//                }
-//            });
-        }
-
-        private void change12WaveStatistics(Change12 change12) {
-            DiscpleLab discpleLab = DiscpleLab.get(mContext);
-
-            List<Changee> changees = discpleLab.getWaveChangee(change12.getWave_num().toString());
-            int countTotalChangee = 0;
-            int countTotalGraduate = 0;
-            int countRemainedActive = 0;
-            for(Changee changee: changees) {
-                Log.d("Change12WaveList ", changee.getChange_12() + " " + changee.getChangee());
-                countTotalChangee++;
-                if(changee.getChange_5_ok().trim().equals("on")) {
-                    countTotalGraduate++;
-                    if(discpleLab.getRemainedActiveConsolidates(String.valueOf(changee.getChangee()))) {
-                        countRemainedActive++;
-                    }
-                }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                mWaveListCardView.setTransitionName(mContext.getString(R.string.fragment_wave_title_trans) + position);
             }
 
-            mTotalProgessBar.setMax(countTotalChangee);
-            mTotalProgessBar.setProgress(countTotalGraduate);
+            change12WaveStatistics();
 
-            mGraduatedProgressBar.setMax(countTotalChangee);
-            mGraduatedProgressBar.setProgress(countTotalGraduate);
+        }
+        final int[] countTotalChangee = {0};
+        final int[] countTotalGraduate = {0};
+        final int[] countRemainedActive = {0};
 
-            mRemainedProgressBar.setMax(countTotalGraduate);
-            mRemainedProgressBar.setProgress(countRemainedActive);
+        private void change12WaveStatistics() {
+            final DiscpleLab discpleLab = DiscpleLab.get(mContext);
+            Change12Lab change12Lab = Change12Lab.get(mContext);
+            final C4DbHelperFunctions c4DbHelperFunction = new C4DbHelperFunctions(mContext);
+            final List<Changee> changees = change12Lab.getWaveChangee(mChange12.getChange12_id().toString());
+            new Thread() {
+                @Override
+                public void run() {
+                    for (final Changee changee : changees) {
+                        Log.d("Change12WaveList ", changee.getChange_12() + " " + changee.getChangee());
+                        final Disciple disciple = discpleLab.getDisciple(changee.getChangee().trim());
+//                        Log.d("IS_LEADER>", disciple.getDiscipler());
+                        boolean is_leader = c4DbHelperFunction.can_edit_and_delete_user(disciple.getDiscipler());
+//                        Log.d("IS_LEADER", String.valueOf(is_leader));
+                        if (is_leader) {
+                            countTotalChangee[0]++;
+                            if (changee.getChange_5_ok().trim().equals("on")) {
+                                countTotalGraduate[0]++;
+                                if (discpleLab.getRemainedActiveConsolidates(String.valueOf(changee.getChangee()))) {
+                                    countRemainedActive[0]++;
+                                }
+                            }
+                        }
+                        displayChange12Stats();
+                    }
+                }
+            }.start();
+
+        }
+
+        private void displayChange12Stats() {
+            ((Activity)mContext).runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mTotalGraduated.setText(" " + String.valueOf(countTotalGraduate[0]));
+                    mTotalConsolidates.setText(" " + String.valueOf(countTotalChangee[0]));
+                    mTotalRemainedActive.setText(" " + String.valueOf(countRemainedActive[0]));
+                    mTotalConsolidates1.setText(" " + String.valueOf(countTotalGraduate[0]));
+
+                    mTotalProgessBar.setMax(countTotalChangee[0]);
+                    mTotalProgessBar.setProgress(countTotalGraduate[0]);
+
+                    mGraduatedProgressBar.setMax(countTotalChangee[0]);
+                    mGraduatedProgressBar.setProgress(countTotalGraduate[0]);
+
+                    mRemainedProgressBar.setMax(countTotalGraduate[0]);
+                    mRemainedProgressBar.setProgress(countRemainedActive[0]);
+                }
+            });
         }
 
 
+        @Override
+        public void onClick(View v) {
+//            Toast.makeText(mContext, "Hello", Toast.LENGTH_SHORT).show();
+            TouchEffect TOUCH = new TouchEffect();
+            v.setOnTouchListener(TOUCH);
+
+            if(mAdapterCallback != null) {
+
+                mAdapterCallback.onWaveItemCallback(mWaveListCardView, mChangeWaveNum.getText().toString().trim(), mChangeWaveDate.getText().toString().trim());
+            }
+        }
     }
+
 
 
 }

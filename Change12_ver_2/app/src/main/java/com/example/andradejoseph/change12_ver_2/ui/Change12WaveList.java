@@ -10,6 +10,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
@@ -29,6 +32,7 @@ import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.example.andradejoseph.change12_ver_2.R;
 import com.example.andradejoseph.change12_ver_2.adapter.WaveListAdapter;
 import com.example.andradejoseph.change12_ver_2.model.Change12;
+import com.example.andradejoseph.change12_ver_2.model.Change12Lab;
 import com.example.andradejoseph.change12_ver_2.model.Changee;
 import com.example.andradejoseph.change12_ver_2.model.Disciple;
 import com.example.andradejoseph.change12_ver_2.model.DiscpleLab;
@@ -68,16 +72,15 @@ public class Change12WaveList  extends Fragment {
         assert mRecyclerView != null;
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         updateWaveList();
+
 
         return  v;
     }
 
     private void updateWaveList() {
-        DiscpleLab discpleLab = DiscpleLab.get(getContext());
-        List<Change12> change12s = discpleLab.getChange12();
-
+        Change12Lab change12 = Change12Lab.get(getContext());
+        List<Change12> change12s = change12.getChange12();
         if(mWaveListAdapter == null) {
             mWaveListAdapter = new WaveListAdapter(change12s,getContext());
             mRecyclerView.setAdapter(mWaveListAdapter);
@@ -85,6 +88,7 @@ public class Change12WaveList  extends Fragment {
             mWaveListAdapter.setChange(change12s);
             mWaveListAdapter.notifyDataSetChanged();
         }
+
     }
 
     @Override

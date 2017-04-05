@@ -6,7 +6,11 @@
     xmlns:card_view="http://schemas.android.com/tools"
     card_view:cardCornerRadius="0dp"
     card_view:cardElevation="8dp"
-    android:layout_margin="@dimen/card_margin">
+    android:layout_margin="@dimen/card_margin"
+    android:layout_marginTop="0dp"
+    android:id="@+id/wave_list_card_view"
+    android:transitionName="@string/fragment_wave_title_trans"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,9 +31,11 @@
             android:orientation="vertical"
             android:padding="8dp"
             >
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -37,6 +43,7 @@
                     android:textColor="@android:color/darker_gray"
                     android:textSize="24dp"
                     android:id="@+id/wave_num_title_tv"
+
                     />
 
                 <LinearLayout
@@ -45,6 +52,7 @@
                     android:layout_below="@+id/wave_num_title_tv"
                     android:orientation="horizontal"
                     android:id="@+id/date_liner_layout"
+
                     >
                     <ImageView
                         android:layout_width="30dp"
@@ -67,7 +75,6 @@
 
 
 
-
                 <View style="@style/Divider"
                     android:layout_below="@+id/date_liner_layout"
                     android:id="@+id/line_divider"
@@ -83,7 +90,44 @@
                     app:rcRadius="0dp"
                     android:layout_below="@+id/line_divider"
                     android:padding="4dp"
+                    android:visibility="gone"
                     />
+
+
+
+                <LinearLayout
+                    android:id="@+id/total_graduate_linear_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/total_consolidates_progress_bar"
+                    android:padding="2dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/total_graduated_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Graduated"
+                        android:layout_weight="2"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Graduated/Total Consolidates"
+                        android:layout_weight="2"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/total_consolidates_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Graduated"
+                        />
+
+                </LinearLayout>
 
                 <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                     android:id="@+id/graduated_consolidates_progress_bar"
@@ -93,9 +137,44 @@
                     app:rcBackgroundColor="#eeeeee"
                     app:rcBackgroundPadding="0dp"
                     app:rcRadius="0dp"
-                    android:layout_below="@+id/total_consolidates_progress_bar"
+                    android:layout_below="@+id/total_graduate_linear_description"
                     android:padding="4dp"
                     />
+
+
+                <LinearLayout
+                    android:id="@+id/total_remained_active_linear_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/graduated_consolidates_progress_bar"
+                    android:padding="2dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/total_remained_active_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Graduated"
+                        android:layout_weight="2"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Remained Active/Graduated"
+                        android:layout_weight="2"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/total_consolidates1_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Graduated"
+                        />
+
+                </LinearLayout>
 
                 <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
                     android:id="@+id/remained_consolidates_progress_bar"
@@ -105,7 +184,7 @@
                     app:rcBackgroundColor="#eeeeee"
                     app:rcBackgroundPadding="0dp"
                     app:rcRadius="0dp"
-                    android:layout_below="@+id/graduated_consolidates_progress_bar"
+                    android:layout_below="@+id/total_remained_active_linear_description"
                     android:padding="4dp"
                     />
             </RelativeLayout>

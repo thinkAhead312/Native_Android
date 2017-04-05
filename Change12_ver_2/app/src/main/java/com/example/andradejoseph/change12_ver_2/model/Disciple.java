@@ -25,8 +25,8 @@ public class Disciple {
     private String company;
     private String job_position;
     private String date_won;
-    private String discipler;
-    private String invited_by;
+    private String discipler = "";
+    private String invited_by = "";
     private String health_status;
     private String user_name;
     private String password;
