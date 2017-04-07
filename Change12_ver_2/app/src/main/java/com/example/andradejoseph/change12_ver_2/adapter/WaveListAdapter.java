@@ -3,6 +3,7 @@ package com.example.andradejoseph.change12_ver_2.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -34,12 +35,10 @@ public class WaveListAdapter extends RecyclerView.Adapter<WaveListAdapter.WaveHo
     private List<Change12> mChange12Waves;
     private Context mContext;
 
-    public AdapterCallback mAdapterCallback;
 
     public WaveListAdapter(List<Change12> change12Waves, Context context) {
         mChange12Waves = change12Waves;
         mContext = context;
-        mAdapterCallback = (AdapterCallback) mContext;
 
     }
 
@@ -64,10 +63,12 @@ public class WaveListAdapter extends RecyclerView.Adapter<WaveListAdapter.WaveHo
     }
 
     public void setChange(List<Change12> change12Waves) {
+
+
         mChange12Waves = change12Waves;
     }
 
-    public class WaveHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class WaveHolder extends RecyclerView.ViewHolder{
         private Change12 mChange12;
 
         private TextView mChangeWaveNum;
@@ -79,7 +80,6 @@ public class WaveListAdapter extends RecyclerView.Adapter<WaveListAdapter.WaveHo
 
         public WaveHolder(View itemView) {
             super(itemView);
-            itemView.setOnClickListener(this);
             mChangeWaveNum = (TextView) itemView.findViewById(R.id.wave_num_title_tv);
             mChangeWaveDate = (TextView) itemView.findViewById(R.id.date_tv);
             mTotalGraduated = (TextView) itemView.findViewById(R.id.total_graduated_tv);
@@ -89,7 +89,7 @@ public class WaveListAdapter extends RecyclerView.Adapter<WaveListAdapter.WaveHo
             mTotalProgessBar = (RoundCornerProgressBar) itemView.findViewById(R.id.total_consolidates_progress_bar);
             mGraduatedProgressBar = (RoundCornerProgressBar) itemView.findViewById(R.id.graduated_consolidates_progress_bar);
             mRemainedProgressBar = (RoundCornerProgressBar) itemView.findViewById(R.id.remained_consolidates_progress_bar);
-            mWaveListCardView = (CardView) itemView.findViewById(R.id.wave_list_card_view);
+            mWaveListCardView = (CardView) itemView.findViewById(R.id.wave_item_card_view);
 
 
 
@@ -99,50 +99,45 @@ public class WaveListAdapter extends RecyclerView.Adapter<WaveListAdapter.WaveHo
             mItemPosition = position;
             mChange12 = change12;
             mChangeWaveNum.setText("Change 12 Wave " + change12.getWave_num());
-            mChangeWaveDate.setText(change12.getStart_date() + " - " + change12.getEnd_date());
+            mChangeWaveDate.setText(change12.getStart_date() + " - " + mChange12.getEnd_date());
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                mWaveListCardView.setTransitionName(mContext.getString(R.string.fragment_wave_title_trans) + position);
-            }
 
             change12WaveStatistics();
 
         }
-        final int[] countTotalChangee = {0};
-        final int[] countTotalGraduate = {0};
-        final int[] countRemainedActive = {0};
+
 
         private void change12WaveStatistics() {
             final DiscpleLab discpleLab = DiscpleLab.get(mContext);
             Change12Lab change12Lab = Change12Lab.get(mContext);
             final C4DbHelperFunctions c4DbHelperFunction = new C4DbHelperFunctions(mContext);
             final List<Changee> changees = change12Lab.getWaveChangee(mChange12.getChange12_id().toString());
+
+            final int[] countTotalChangee = {0};
+            final int[] countTotalGraduate = {0};
+            final int[] countRemainedActive = {0};
+
             new Thread() {
                 @Override
                 public void run() {
                     for (final Changee changee : changees) {
-                        Log.d("Change12WaveList ", changee.getChange_12() + " " + changee.getChangee());
                         final Disciple disciple = discpleLab.getDisciple(changee.getChangee().trim());
-//                        Log.d("IS_LEADER>", disciple.getDiscipler());
                         boolean is_leader = c4DbHelperFunction.can_edit_and_delete_user(disciple.getDiscipler());
-//                        Log.d("IS_LEADER", String.valueOf(is_leader));
                         if (is_leader) {
                             countTotalChangee[0]++;
                             if (changee.getChange_5_ok().trim().equals("on")) {
                                 countTotalGraduate[0]++;
-                                if (discpleLab.getRemainedActiveConsolidates(String.valueOf(changee.getChangee()))) {
+                                if (discpleLab.getRemainedActiveConsolidates(String.valueOf(changee.getChangee())))
                                     countRemainedActive[0]++;
-                                }
                             }
                         }
-                        displayChange12Stats();
+                        displayChange12Stats(countTotalChangee,countTotalGraduate,countRemainedActive);
                     }
                 }
             }.start();
-
         }
 
-        private void displayChange12Stats() {
+        private void displayChange12Stats(final int[] countTotalChangee, final int[] countTotalGraduate, final int[] countRemainedActive) {
             ((Activity)mContext).runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -163,18 +158,6 @@ public class WaveListAdapter extends RecyclerView.Adapter<WaveListAdapter.WaveHo
             });
         }
 
-
-        @Override
-        public void onClick(View v) {
-//            Toast.makeText(mContext, "Hello", Toast.LENGTH_SHORT).show();
-            TouchEffect TOUCH = new TouchEffect();
-            v.setOnTouchListener(TOUCH);
-
-            if(mAdapterCallback != null) {
-
-                mAdapterCallback.onWaveItemCallback(mWaveListCardView, mChangeWaveNum.getText().toString().trim(), mChangeWaveDate.getText().toString().trim());
-            }
-        }
     }
 
 

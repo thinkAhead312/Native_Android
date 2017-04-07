@@ -8,8 +8,8 @@
     card_view:cardElevation="8dp"
     android:layout_margin="@dimen/card_margin"
     android:layout_marginTop="0dp"
-    android:id="@+id/wave_list_card_view"
-    android:transitionName="@string/fragment_wave_title_trans"
+    android:id="@+id/wave_item_card_view"
+    android:transitionName="@string/transition_name_card"
     >
 
     <LinearLayout

@@ -34,7 +34,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.webianks.hatkemessenger.R;
-import com.webianks.hatkemessenger.SMS;
+import com.webianks.hatkemessenger.Sms;
 import com.webianks.hatkemessenger.adapters.AllConversationAdapter;
 import com.webianks.hatkemessenger.adapters.ItemCLickListener;
 import com.webianks.hatkemessenger.constants.Constants;
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private AllConversationAdapter allConversationAdapter;
     private String TAG = MainActivity.class.getSimpleName();
     private String mCurFilter;
-    private List<SMS> data;
+    private List<Sms> data;
     private LinearLayoutManager linearLayoutManager;
     private BroadcastReceiver mReceiver;
     private ProgressBar progressBar;
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    private void setRecyclerView(List<SMS> data) {
+    private void setRecyclerView(List<Sms> data) {
         allConversationAdapter = new AllConversationAdapter(this, data);
         allConversationAdapter.setItemClickListener(this);
         recyclerView.setAdapter(allConversationAdapter);
@@ -303,15 +303,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void getAllSmsToFile(Cursor c) {
 
-        List<SMS> lstSms = new ArrayList<SMS>();
-        SMS objSMS = null;
+        List<Sms> lstSms = new ArrayList<Sms>();
+        Sms objSMS = null;
         int totalSMS = c.getCount();
 
         if (c.moveToFirst()) {
             for (int i = 0; i < totalSMS; i++) {
 
                 try {
-                    objSMS = new SMS();
+                    objSMS = new Sms();
                     objSMS.setId(c.getLong(c.getColumnIndexOrThrow("_id")));
                     objSMS.setAddress(c.getString(c
                             .getColumnIndexOrThrow("address")));
@@ -342,18 +342,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void sortAndSetToRecycler(List<SMS> lstSms) {
+    private void sortAndSetToRecycler(List<Sms> lstSms) {
 
-        Set<SMS> s = new LinkedHashSet<>(lstSms);
+        Set<Sms> s = new LinkedHashSet<>(lstSms);
         data = new ArrayList<>(s);
         setRecyclerView(data);
 
         convertToJson(lstSms);
     }
 
-    private void convertToJson(List<SMS> lstSms) {
+    private void convertToJson(List<Sms> lstSms) {
 
-        Type listType = new TypeToken<List<SMS>>() {
+        Type listType = new TypeToken<List<Sms>>() {
         }.getType();
         Gson gson = new Gson();
         String json = gson.toJson(lstSms, listType);

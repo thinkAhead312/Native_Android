@@ -4,7 +4,7 @@ package com.webianks.hatkemessenger;
  * Created by R Ankit on 24-12-2016.
  */
 
-public class SMS {
+public class Sms {
 
     private long _id;
     private String _address;
@@ -66,7 +66,7 @@ public class SMS {
     @Override
     public boolean equals(Object obj) {
 
-        SMS sms = (SMS) obj;
+        Sms sms = (Sms) obj;
 
         return _address.equals(sms._address);
     }

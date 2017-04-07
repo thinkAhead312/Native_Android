@@ -33,7 +33,9 @@
                 android:value="com.example.josephandrade.article_detail_transition.ArticleListActivity" />
         </activity>
         <activity android:name=".AfterFabAnimationActivity" />
-        <activity android:name=".ConsolidatesActivity"></activity>
+        <activity android:name=".WaveListActivity" />
+        <activity android:name=".WaveDetailActivity"
+            ></activity>
     </application>
 
 </manifest>

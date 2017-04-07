@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/orange_dk"
+        android:gravity="center_vertical"
+        android:padding="@dimen/pad_10dp" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/notify_near_bus"
+            android:textColor="@color/white"
+            android:textSize="@dimen/txt_14sp" />
+
+        <Switch
+            android:id="@+id/switch1"
+            style="@style/custom_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/orange_lt"
+        android:gravity="right"
+        android:paddingBottom="@dimen/pad_5dp"
+        android:paddingRight="@dimen/pad_10dp"
+        android:paddingTop="@dimen/pad_3dp"
+        android:text="Last updated at 11:32 PM"
+        android:textColor="@color/orange_dk"
+        android:textSize="@dimen/txt_12sp" />
+    
+    <com.google.android.gms.maps.MapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.9" />
+
+    <ScrollView
+        android:id="@+id/scr"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/main_color_green_dk" >
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/pad_10dp"
+                    android:background="@drawable/white_rect"
+                    android:drawableLeft="@drawable/ic_bus"
+                    android:drawablePadding="@dimen/pad_5dp"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/pad_3dp"
+                    android:text="102"
+                    android:textColor="@color/main_color_gray_dk"
+                    android:textSize="@dimen/txt_14sp" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/main_color_green"
+                    android:gravity="right|center_vertical"
+                    android:paddingRight="@dimen/pad_10dp"
+                    android:text="$4.50"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/txt_14sp" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/main_color_green"
+                    android:drawableLeft="@drawable/ic_walk_white"
+                    android:drawablePadding="@dimen/pad_3dp"
+                    android:gravity="center_vertical"
+                    android:paddingRight="@dimen/pad_10dp"
+                    android:text="45min"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/txt_14sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/main_color_green_lt1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/pad_10dp"
+                    android:paddingRight="@dimen/pad_10dp" >
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="15"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/txt_16sp" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minHeight="1dp"
+                        android:text="min"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/txt_12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/vList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

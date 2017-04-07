@@ -1,0 +1,330 @@
+[
+    {
+        "outputFile": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-large-mdpi-v4\\values-large-mdpi-v4.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 39,
+                    "endOffset": 90
+                },
+                "from": {
+                    "file": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\values-large-mdpi\\dimens.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 1,
+                        "startOffset": 92,
+                        "endColumn": 36,
+                        "endOffset": 127
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 95,
+                    "endColumn": 39,
+                    "endOffset": 130
+                },
+                "from": {
+                    "file": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\values-large-mdpi\\dimens.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 1,
+                        "startOffset": 130,
+                        "endColumn": 36,
+                        "endOffset": 165
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 135,
+                    "endColumn": 39,
+                    "endOffset": 170
+                },
+                "from": {
+                    "file": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\values-large-mdpi\\dimens.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 1,
+                        "startOffset": 168,
+                        "endColumn": 36,
+                        "endOffset": 203
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 175,
+                    "endColumn": 39,
+                    "endOffset": 210
+                },
+                "from": {
+                    "file": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\values-large-mdpi\\dimens.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 1,
+                        "startOffset": 206,
+                        "endColumn": 36,
+                        "endOffset": 241
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 215,
+                    "endColumn": 37,
+                    "endOffset": 248
+                },
+                "from": {
+                    "file": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\values-large-mdpi\\dimens.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 19,
+                        "endColumn": 37,
+                        "endOffset": 52
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 253,
+                    "endColumn": 38,
+                    "endOffset": 287
+                },
+                "from": {
+                    "file": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\values-large-mdpi\\dimens.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 1,
+                        "startOffset": 55,
+                        "endColumn": 35,
+                        "endOffset": 89
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 292,
+                    "endColumn": 44,
+                    "endOffset": 332
+                },
+                "from": {
+                    "file": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\values-large-mdpi\\dimens.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 1,
+                        "startOffset": 244,
+                        "endColumn": 41,
+                        "endOffset": 284
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 337,
+                    "endColumn": 46,
+                    "endOffset": 379
+                },
+                "from": {
+                    "file": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\values-large-mdpi\\dimens.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 1,
+                        "startOffset": 287,
+                        "endColumn": 43,
+                        "endOffset": 329
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 384,
+                    "endColumn": 39,
+                    "endOffset": 419
+                },
+                "from": {
+                    "file": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\values-large-mdpi\\dimens.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 1,
+                        "startOffset": 372,
+                        "endColumn": 36,
+                        "endOffset": 407
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 424,
+                    "endColumn": 39,
+                    "endOffset": 459
+                },
+                "from": {
+                    "file": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\values-large-mdpi\\dimens.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 1,
+                        "startOffset": 410,
+                        "endColumn": 36,
+                        "endOffset": 445
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 464,
+                    "endColumn": 39,
+                    "endOffset": 499
+                },
+                "from": {
+                    "file": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\values-large-mdpi\\dimens.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 1,
+                        "startOffset": 448,
+                        "endColumn": 36,
+                        "endOffset": 483
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 504,
+                    "endColumn": 39,
+                    "endOffset": 539
+                },
+                "from": {
+                    "file": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\values-large-mdpi\\dimens.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 1,
+                        "startOffset": 486,
+                        "endColumn": 36,
+                        "endOffset": 521
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 544,
+                    "endColumn": 39,
+                    "endOffset": 579
+                },
+                "from": {
+                    "file": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\values-large-mdpi\\dimens.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 1,
+                        "startOffset": 524,
+                        "endColumn": 36,
+                        "endOffset": 559
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 584,
+                    "endColumn": 39,
+                    "endOffset": 619
+                },
+                "from": {
+                    "file": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\values-large-mdpi\\dimens.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 1,
+                        "startOffset": 562,
+                        "endColumn": 36,
+                        "endOffset": 597
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 624,
+                    "endColumn": 39,
+                    "endOffset": 659
+                },
+                "from": {
+                    "file": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\values-large-mdpi\\dimens.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 1,
+                        "startOffset": 600,
+                        "endColumn": 36,
+                        "endOffset": 635
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 664,
+                    "endColumn": 39,
+                    "endOffset": 699
+                },
+                "from": {
+                    "file": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\values-large-mdpi\\dimens.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 1,
+                        "startOffset": 638,
+                        "endColumn": 36,
+                        "endOffset": 673
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 704,
+                    "endColumn": 38,
+                    "endOffset": 738
+                },
+                "from": {
+                    "file": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\values-large-mdpi\\dimens.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 1,
+                        "startOffset": 335,
+                        "endColumn": 35,
+                        "endOffset": 369
+                    }
+                }
+            }
+        ]
+    }
+]

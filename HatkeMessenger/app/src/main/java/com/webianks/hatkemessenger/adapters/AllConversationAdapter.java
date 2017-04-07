@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.webianks.hatkemessenger.R;
-import com.webianks.hatkemessenger.SMS;
+import com.webianks.hatkemessenger.Sms;
 import com.webianks.hatkemessenger.utils.ColorGeneratorModified;
 import com.webianks.hatkemessenger.utils.Helpers;
 
@@ -30,12 +30,12 @@ import java.util.List;
 public class AllConversationAdapter extends RecyclerView.Adapter<AllConversationAdapter.MyHolder> {
 
     private Context context;
-    private List<SMS> data;
+    private List<Sms> data;
     private ItemCLickListener itemClickListener;
     ColorGeneratorModified generator = ColorGeneratorModified.MATERIAL;
 
 
-    public AllConversationAdapter(Context context, List<SMS> data) {
+    public AllConversationAdapter(Context context, List<Sms> data) {
         this.context = context;
         this.data = data;
 
@@ -53,7 +53,7 @@ public class AllConversationAdapter extends RecyclerView.Adapter<AllConversation
     @Override
     public void onBindViewHolder(AllConversationAdapter.MyHolder holder, int position) {
 
-        SMS SMS = data.get(position);
+        Sms SMS = data.get(position);
 
         holder.senderContact.setText(SMS.getAddress());
         holder.message.setText(SMS.getMsg());

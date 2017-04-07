@@ -5,46 +5,24 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.transition.Explode;
 import android.transition.Slide;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.example.andradejoseph.change12_ver_2.constants.Change12Api;
-import com.example.andradejoseph.change12_ver_2.constants.Constants;
 import com.example.andradejoseph.change12_ver_2.custom.BaseActivity;
-import com.example.andradejoseph.change12_ver_2.model.Disciple;
-import com.example.andradejoseph.change12_ver_2.model.DiscpleLab;
 import com.example.andradejoseph.change12_ver_2.sessions.SessionManager;
 import com.example.andradejoseph.change12_ver_2.ui.ChangeIntroFragment;
 import com.example.andradejoseph.change12_ver_2.ui.LessonsFragment;
-import com.example.andradejoseph.change12_ver_2.utils.AppController;
 import com.example.andradejoseph.change12_ver_2.utils.DrawerActivity;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class Change12ManualActivity extends BaseActivity implements Callback{
@@ -118,7 +96,7 @@ public class Change12ManualActivity extends BaseActivity implements Callback{
 //                     slide.setDuration(1000);
 //                     getWindow().setExitTransition(slide);
 //                 }
-                 Intent i2 = ConsolidatesActivity.newIntent(Change12ManualActivity.this);
+                 Intent i2 = WaveListActivity.newIntent(Change12ManualActivity.this);
                  startActivity(i2);
                  finish();
                  break;

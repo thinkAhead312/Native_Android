@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public interface AdapterCallback {
 
-    void onWaveItemCallback(View mChangeWaveNum, String waveNum, String waveDate);
+    void onWaveItemCallback(View mChangeWaveNum, String waveNum, String waveDate, String waveId);
 
     void onPopStack();
 

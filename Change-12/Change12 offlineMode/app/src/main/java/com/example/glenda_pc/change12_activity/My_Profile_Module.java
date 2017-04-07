@@ -172,7 +172,8 @@ public class My_Profile_Module extends AppCompatActivity {
         chart.setDescription("My Chart");
         chart.animateXY(2000, 2000);
         chart.invalidate();
-        
+
+
     }
 
     private ArrayList<BarDataSet> getDataSet() {

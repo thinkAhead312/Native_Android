@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.example.andradejoseph.javaprimers.chapter2.chapter2_2_classes.TestProgression;
 import com.example.andradejoseph.javaprimers.chapter2.chapter2_3_interface.TestChapter2_3_interfaces;
+import com.example.andradejoseph.javaprimers.chapter3.chapter3_1.SortingAlgorithms;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
 
         new TestProgression();
         new TestChapter2_3_interfaces();
+
+        char[] charArray = {'g', 'b', 'c', 'd', 'e', 'f', 'a', 'h'};
+        SortingAlgorithms sortingAlgorithms = new SortingAlgorithms();
+        sortingAlgorithms.insertionSort(charArray);
 
     }
 }

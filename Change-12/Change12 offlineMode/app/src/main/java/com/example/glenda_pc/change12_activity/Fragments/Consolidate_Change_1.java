@@ -151,6 +151,7 @@ public class Consolidate_Change_1 extends Fragment {
         databaseAccess.queryChange12("Change 1");
         listName = new ArrayList<String>();
         listContactNumber =new ArrayList<String>();
+
         for(int i = 0; i<databaseAccess.resultSet.length(); i++) {
             Disciple_Set_Get disciple_set_get = new Disciple_Set_Get();
             JSONObject json = null;
@@ -245,9 +246,6 @@ public class Consolidate_Change_1 extends Fragment {
             e.printStackTrace();
         }
     }
-
-
-
 
     private void getData() {
         StringBuilder buffer = new StringBuilder();

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/gray_light"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/pad_5dp"
+    android:paddingLeft="@dimen/pad_10dp"
+    android:paddingRight="@dimen/pad_10dp"
+    android:paddingTop="@dimen/pad_5dp" >
+
+    <TextView
+        android:id="@+id/lbl1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="22" 
+        android:drawableLeft="@drawable/ic_bus"
+        android:background="@color/white"
+        android:padding="@dimen/pad_3dp"
+        android:gravity="center"
+        android:textSize="@dimen/txt_14sp"
+        android:drawablePadding="@dimen/pad_3dp"
+        android:textColor="@color/main_color_gray_dk"/>
+
+    <ImageView
+        android:id="@+id/dot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/gray_dot"
+        android:layout_margin="@dimen/pad_3dp" />
+ <TextView
+        android:id="@+id/lbl2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="22" 
+        android:drawableLeft="@drawable/ic_train"
+        android:background="@color/white"
+        android:padding="@dimen/pad_3dp"
+        android:gravity="center"
+        android:textSize="@dimen/txt_14sp"
+        android:drawablePadding="@dimen/pad_3dp"
+        android:textColor="@color/main_color_gray_dk"/>
+
+ <TextView
+     android:id="@+id/lbl3"
+     android:layout_width="0dp"
+     android:layout_weight="1"
+     android:layout_height="wrap_content"
+     android:gravity="right"
+     android:text="$10.0"
+     android:textSize="@dimen/txt_14sp"
+     android:textStyle="bold"
+     android:textColor="@color/blue_lt"
+     android:layout_marginRight="@dimen/pad_20dp" />
+ <TextView
+     android:id="@+id/lbl4"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="33"
+     android:textSize="@dimen/txt_14sp"
+     android:textStyle="bold"
+     android:textColor="@color/main_color_gray_dk"
+     />
+ <TextView
+     android:id="@+id/lbl5"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="min"
+     android:textSize="@dimen/txt_12sp"
+     android:textColor="@color/main_color_gray_dk"
+     />
+
+</LinearLayout>

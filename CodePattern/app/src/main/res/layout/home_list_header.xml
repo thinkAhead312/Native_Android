@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/btnW1"
+        style="@style/white_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_search_green"
+        android:text="@string/get_me_some" />
+
+     <Button
+         android:id="@+id/btnW2"
+         style="@style/white_btn"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginBottom="@dimen/pad_5dp"
+         android:layout_marginTop="@dimen/pad_5dp"
+         android:drawableStart="@drawable/ic_home_green"
+         android:text="@string/my_home" />
+
+      <Button
+          android:id="@+id/btnW3"
+          style="@style/white_btn"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:drawableStart="@drawable/ic_work_green"
+          android:text="@string/my_work_place" />
+
+      <TextView
+          android:id="@+id/textView1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="@dimen/pad_10dp"
+          android:layout_marginTop="@dimen/pad_10dp"
+          android:text="@string/saved_places"
+          android:textColor="@color/white" />
+
+</LinearLayout>

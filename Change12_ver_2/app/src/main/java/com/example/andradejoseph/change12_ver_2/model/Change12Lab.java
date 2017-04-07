@@ -50,6 +50,24 @@ public class Change12Lab extends Disciple{
                                      QUERY METHODS                                                  */
 
 
+    public Change12 getChange12(String changeWaveId) {
+        C4DbCursorWrapper cursor = queryChange12(
+                C4DbSchema.Change12.Cols.Change12_ID + " = ?",
+                new String[] {changeWaveId}
+        );
+
+        try {
+            if(cursor.getCount() == 0) {
+                return null;
+            }
+            cursor.moveToFirst();
+            return cursor.getChange12();
+        } finally {
+            cursor.close();
+        }
+    }
+
+
     public List<Changee> getWaveChangee(String waveNum) {
         List<Changee> changees = new ArrayList<>();
         String [] whereArgs = {waveNum};

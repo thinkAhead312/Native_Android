@@ -1,0 +1,214 @@
+[
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_nav3_sel.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_nav3_sel.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_direction.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_direction.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_nav6_sel.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_nav6_sel.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_nav2.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_nav2.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\switch_bg.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\switch_bg.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\drawer_shadow.9.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\drawer_shadow.9.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\tab_bg_sel.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\tab_bg_sel.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\actionbar_bg.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\actionbar_bg.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\edittext_bg.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\edittext_bg.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\white_btn.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\white_btn.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\swith_thumb.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\swith_thumb.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_route.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_route.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\tab_bg.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\tab_bg.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_work_green.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_work_green.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\logo_city.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\logo_city.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\gray_dot.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\gray_dot.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_walk_white.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_walk_white.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_bus.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_bus.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_checked.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_checked.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_tab4.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_tab4.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_nav6.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_nav6.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_nav1.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_nav1.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_nav3.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_nav3.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_nav4_sel.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_nav4_sel.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_flag.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_flag.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_tab1.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_tab1.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\arrow_green.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\arrow_green.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_nav5.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_nav5.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_thermometer.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_thermometer.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_tab3.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_tab3.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_search_green.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_search_green.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_walk.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_walk.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_refresh.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_refresh.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_x.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_x.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_nav4.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_nav4.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_nav5_sel.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_nav5_sel.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\map.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\map.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_nav2_sel.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_nav2_sel.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_drawer.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_drawer.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_launcher.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_home_green.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_home_green.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_tab2.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_tab2.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_edit.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_edit.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\btn_green_small.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\btn_green_small.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_checked_empty.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_checked_empty.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\arrow_wh_small.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\arrow_wh_small.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_train.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_train.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_tab5.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_tab5.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_nav1_sel.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_nav1_sel.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\icon1.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\icon1.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\ic_cloud.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\ic_cloud.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\splash.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\splash.png"
+    },
+    {
+        "merged": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi\\icon.png",
+        "source": "C:\\Users\\ANDRADEJOSEPH\\Documents\\Native_Android\\CodePattern\\app\\src\\main\\res\\drawable-large-hdpi\\icon.png"
+    }
+]
