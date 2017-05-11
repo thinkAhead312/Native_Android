@@ -12,25 +12,57 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            testCoverageEnabled true //let us testcoverage report when we do unit testing
+            minifyEnabled false //remove useless method in apk; otherwise false
+            useProguard false
+        }
+
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            useProguard true
         }
     }
 
     productFlavors {
-        //mock
-
-        //proud
+        mock {
+            applicationIdSuffix = ".mock"
+        }
+        prod {
+            applicationIdSuffix = ".prod"
+        }
     }
+
+    //remove mockRelease build variant because we don't need it
+    android.variantFilter { variant ->
+        if (variant.buildType.name.equals('release')
+                && variant.getFlavors().get(0).name.equals('mock')) {
+            variant.setIgnore(true);
+        }
+    }
+
+    // Always show the result of every unit test, even if it passes.
+    testOptions.unitTests.all {
+        testLogging {
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+        }
+    }
+
+    sourceSets { prod { java.srcDirs = ['src/prod/java', 'src/prod/java/'] } }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.android.support:support-v4:25.2.0'
+    compile 'com.android.support:design:25.2.0'
+
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+
     testCompile 'junit:junit:4.12'
 }

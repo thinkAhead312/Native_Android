@@ -3,6 +3,6 @@
     android:color="@color/colorAccent"
     >
     <item>
-        <color android:color="@color/colorPrimary"></color>
+        <color android:color="@color/colorPrimary"/>
     </item>
 </ripple>

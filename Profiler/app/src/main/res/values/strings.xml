@@ -10,4 +10,17 @@
     <string name="hint_email">example@sample.com</string>
     <string name="action_sign_in">SIGN IN</string>
     <string name="action_register">REGISTER</string>
+
+    <string name="action_logout">Log Out</string>
+
+    <string name="header_create">Create a New Account</string>
+    <string name="prompt_name">Name</string>
+    <string name="hint_username">John Smith</string>
+    <string name="prompt_confirm_password">Confirm</string>
+    <string name="prompt_create_account">CREATE ACCOUNT</string>
+    <string name="user_bio">About Me</string>
+    <string name="user_bio_example">Tell us a bit about yourself!</string>
+
+    <string name="user_interests">Interests</string>
+    <string name="user_interests_example">What are your favourite things to do?</string>
 </resources>
