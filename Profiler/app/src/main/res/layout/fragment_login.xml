@@ -6,94 +6,74 @@
     android:background="@color/colorPrimary"
     tools:context="com.example.andradejoseph.profiler.login.LoginFragment">
 
-    <ProgressBar
-        android:id="@+id/pro_login_loading"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="invisible"
-        />
-
     <RelativeLayout
         android:id="@+id/cont_login_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        >
+        android:gravity="center_horizontal">
 
         <TextView
-            style="@style/Label.CredentialHeader"
             android:id="@+id/lbl_login_header"
+            style="@style/Label.CredentialHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/header_welcome"
             android:layout_marginTop="16dp"
             android:gravity="center"
-            />
+            android:text="@string/header_welcome" />
 
         <TextView
             style="@style/Label.Sub"
             android:id="@+id/lbl_login_email_sub"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/prompt_email"
             android:layout_below="@+id/lbl_login_header"
-            />
+            android:text="@string/prompt_email" />
 
         <EditText
-            style="@style/InputField.Credential.Email"
             android:id="@+id/edt_login_email"
+            style="@style/InputField.Credential.Email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_email"
             android:layout_below="@+id/lbl_login_email_sub"
+            android:hint="@string/hint_email"
 
             />
-
 
         <TextView
             style="@style/Label.Sub"
             android:id="@+id/lbl_login_password_sub"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/prompt_password"
             android:layout_below="@+id/edt_login_email"
+            android:text="@string/prompt_password"
 
             />
 
         <EditText
-            style="@style/InputField.Credential.Password"
             android:id="@+id/edt_login_password"
+            style="@style/InputField.Credential.Password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/hint_password"
             android:layout_below="@+id/lbl_login_password_sub"
-
-            />
+            android:hint="@string/hint_password" />
 
         <Button
-            style="@style/Buttton.Flat.Primary"
             android:id="@+id/btn_login"
+            style="@style/Buttton.Flat.Primary"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:text="@string/action_sign_in"
             android:layout_below="@+id/edt_login_password"
-
-            />
-
+            android:layout_centerHorizontal="true"
+            android:text="@string/action_sign_in" />
 
         <Button
-            style="@style/Buttton.Flat.Primary"
             android:id="@+id/btn_create_account"
+            style="@style/Buttton.Flat.Primary"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:text="@string/action_register"
             android:layout_below="@+id/btn_login"
-
-
-
-            />
-
+            android:layout_centerHorizontal="true"
+            android:text="@string/action_register" />
 
     </RelativeLayout>
 

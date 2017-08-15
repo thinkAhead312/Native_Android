@@ -1,6 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.wiseass.profiler.createaccount.CreateAccountFragment"
+    tools:context="com.example.andradejoseph.profiler.createaccount.CreateAccountFragment"
     android:id="@+id/root_create_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -39,7 +39,7 @@
 
             <EditText
                 android:id="@+id/edt_create_name"
-                style="@style/InputField.Credential.Name"
+                style="@style/InputField.Credential.Email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/lbl_create_name_sub"
@@ -111,13 +111,5 @@
         </RelativeLayout>
 
     </ScrollView>
-
-    <ProgressBar
-        android:id="@+id/pro_create_account_loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminateTint="@color/colorAccent"
-        android:visibility="invisible" />
 
 </FrameLayout>

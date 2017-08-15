@@ -15,25 +15,30 @@ public interface ProfilePageContract {
         void setPresenter(ProfilePageContract.Presenter presenter);
 
         void setName (String name);
+
         void setEmail (String email);
+
         void setBio (String bio);
+
         void setInterests (String interests);
 
-        void setProfilePhotoUrl (String profilePhotoUrl);
+        void setProfilePhotoURL (String profilePhotoURL);
+
         void setDefaultProfilePhoto ();
 
-//        void startPhotoActivity();
-//        void startDetailActivity();
-//        void startProfileSettingsActivity ();
+        void startPhotoGalleryActivity();
 
-        void startLoginActivity();
+        void startProfileDetailActivity();
+
+        void startProfileSettingsActivity();
 
         void showLogoutSnackbar ();
+
+        void startLoginActivity();
 
         void setThumbnailLoadingIndicator(boolean show);
 
         void setDetailLoadingIndicators(boolean show);
-
 
     }
 
@@ -42,10 +47,15 @@ public interface ProfilePageContract {
         // most of those event on someone "click" on the user Interface
 
         void onThumbnailClick();
+
         void onEditProfileClick();
+
         void onLogoutClick();
+
         void onLogoutConfirmed();
+
         void onAccountSettingsClick();
+
         void onThumbnailLoaded();
     }
 }

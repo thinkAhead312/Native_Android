@@ -5,6 +5,7 @@ package com.example.andradejoseph.profiler;
  */
 
 public interface BasePresenter {
-    void subsribe();
+    void subscribe();
+
     void unsubscribe();
 }
